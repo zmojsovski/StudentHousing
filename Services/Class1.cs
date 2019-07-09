@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataTier
+namespace BusinessTier
 {
     public class Class1
     {
