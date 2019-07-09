@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Services.Models
+namespace DataAccess.Models
 {
     [Table("Apartments")]
     public class Apartment
@@ -19,6 +19,7 @@ namespace Services.Models
         DateTime AvailableFrom { get; set; }
         int NumberOfBeds { get; set; }
         City City { get; set; }
+        [ForeignKey("City")]
         int CityId { get; set; }
         ICollection<Rating> Ratings { get; set; }
     }
