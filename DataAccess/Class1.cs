@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataTier
+namespace DataAccess
 {
     public class Class1
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PresentationLayer
+namespace Services
 {
     public class Class1
     {
