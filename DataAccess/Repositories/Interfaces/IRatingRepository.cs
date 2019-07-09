@@ -5,10 +5,11 @@ using System.Text;
 
 namespace DataAccess.Repositories.Interfaces
 {
-    interface IRatingRepository
+    public interface IRatingRepository
     {
-        List<Rating> GetAll();
-        float GetById(int Id);
-        void Update();
+        IEnumerable<Rating> GetAll();
+
+        float GetAverageById(int Id);
+        void Save();
     }
 }

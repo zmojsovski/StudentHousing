@@ -2,26 +2,36 @@
 using DataAccess.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataAccess.Repositories
 {
-    class CityRepository : ICityRepository
+    public class CityRepository : ICityRepository
     {
-        public SHContext _context;
-
-        public List<City> GetAll()
+       private readonly SHContext _context;
+        
+        public CityRepository(SHContext _context)
         {
-            throw new NotImplementedException();
+            this._context = _context;
         }
 
         public City GetById(int Id)
         {
+           
+            return _context.Cities.FirstOrDefault(x => x.Id == Id);
             throw new NotImplementedException();
         }
 
-        public void Update()
+        public void Save()
         {
+            _context.SaveChanges();
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<City> ICityRepository.GetAll()
+        {
+            return _context.Cities.ToList();
             throw new NotImplementedException();
         }
     }

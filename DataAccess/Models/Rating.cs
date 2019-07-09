@@ -10,10 +10,10 @@ namespace DataAccess.Models
     public class Rating
     {
         [Key]
-        int Id { get; set; }
-        int RatingValue { get; set; }
-        Apartment Apartment { get; set; }
+        public int Id { get; set; }
+        public int RatingValue { get; set; }
+        public Apartment Apartment { get; set; }
         [ForeignKey("Apartment")]
-        int ApartmentId { get; set; }
+        public int ApartmentId { get; set; }
     }
 }

@@ -10,8 +10,8 @@ namespace DataAccess.Models
     public class City
     {
         [Key]
-        int Id { get; set; }
-        string Name { get; set; }
-        ICollection<Apartment> Apartments { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public ICollection<Apartment> Apartments { get; set; }
     }
 }

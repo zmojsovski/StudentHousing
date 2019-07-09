@@ -10,17 +10,17 @@ namespace DataAccess.Models
     public class Apartment
     {
         [Key]
-        int Id { get; set; }
-        string Name { get; set; }
-        string Address { get; set; }
-        decimal Price { get; set; }
-        string Description { get; set; }
-        string Phone { get; set; }
-        DateTime AvailableFrom { get; set; }
-        int NumberOfBeds { get; set; }
-        City City { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
+        public string Phone { get; set; }
+        public DateTime AvailableFrom { get; set; }
+        public int NumberOfBeds { get; set; }
+        public City City { get; set; }
         [ForeignKey("City")]
-        int CityId { get; set; }
-        ICollection<Rating> Ratings { get; set; }
+        public int CityId { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
     }
 }

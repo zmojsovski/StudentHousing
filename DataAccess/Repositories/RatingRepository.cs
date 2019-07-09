@@ -2,28 +2,43 @@
 using DataAccess.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataAccess.Repositories
 {
-    class RatingRepository : IRatingRepository
+    public class RatingRepository : IRatingRepository
     {
-        public SHContext _context;
-        public List<Rating> GetAll()
+        private readonly SHContext _context;
+        public RatingRepository(SHContext _context)
         {
+            this._context = _context;
+        }
+
+        public float GetAverageById(int Id)
+        {
+            
+            float sum = 0;
+            List<Rating> ratings = _context.Ratings.Where(x => x.ApartmentId == Id).ToList();
+            foreach (Rating r in ratings)
+            {
+                sum += Convert.ToSingle(r.RatingValue);
+                    //sum += float.Parse(r.RatingValue.ToString());
+            }
+            //ratings.ForEach(x => float.Parse(x.RatingValue)).ToList().Sum();
+            return sum / ratings.Count;
+            //throw new NotImplementedException();
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
             throw new NotImplementedException();
         }
 
-        public float GetById(int Id)
+        IEnumerable<Rating> IRatingRepository.GetAll()
         {
-            //get a list of Rating 
-            //get sum of RatingValue
-            //throw new NotImplementedException();
-            return 0;
-        }
-
-        public void Update()
-        {
+            return _context.Ratings.ToList();
             throw new NotImplementedException();
         }
     }

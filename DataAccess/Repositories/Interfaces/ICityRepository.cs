@@ -7,8 +7,8 @@ namespace DataAccess.Repositories.Interfaces
 {
     interface ICityRepository
     {
-        List<City> GetAll();
+        IEnumerable<City> GetAll();
         City GetById(int Id);
-        void Update();
+        void Save();
     }
 }

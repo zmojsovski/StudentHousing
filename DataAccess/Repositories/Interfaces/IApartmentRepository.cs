@@ -5,11 +5,11 @@ using System.Text;
 
 namespace DataAccess.Repositories.Interfaces
 {
-    interface IApartmentRepository
+    public interface IApartmentRepository
     {
-        List<Apartment> GetAll();
+        IEnumerable<Apartment> GetAll();
         Apartment GetById(int Id);
-        void Update();
-        void Add();
+        void Save();
+        void Add(Apartment apartment);
     }
 }

@@ -10,9 +10,9 @@ namespace DataAccess
     {
         public SHContext(DbContextOptions<SHContext> options) : base(options) { }
 
-        DbSet<Apartment> Apartments { get; set; }
-        DbSet<City> Cities { get; set; }
-        DbSet<Rating> Ratings { get; set; }
+        public DbSet<Apartment> Apartments { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
     }
 }
