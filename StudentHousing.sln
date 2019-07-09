@@ -5,9 +5,14 @@ VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentHousing", "StudentHousing\StudentHousing.csproj", "{7E931F27-E8E7-4DF6-B593-51F859C43635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{35FE1E87-E7A9-4360-A701-0E82FA7196AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{35FE1E87-E7A9-4360-A701-0E82FA7196AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{25986F83-DCFE-42AB-94CB-B09C6779B31D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{25986F83-DCFE-42AB-94CB-B09C6779B31D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{5A469AF0-EB9B-4B43-9342-729914308CD6}"
+	ProjectSection(SolutionItems) = preProject
+		..\files\new_logo.png = ..\files\new_logo.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
