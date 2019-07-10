@@ -11,7 +11,7 @@ html {
   /*background-color: lightgray;*/
 }
 body {
-    margin: 0;
+    
     /*background-color: lightgray;*/
 }
 article,
@@ -1612,6 +1612,7 @@ pre code {
 .row {
   margin-right: -15px;
   margin-left: -15px;
+  margin-top: 200px
 }
 .row-no-gutters {
   margin-right: 0;
