@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudentHousing.Models;
+using Services.Interfaces;
 
 namespace StudentHousing.Controllers
 {

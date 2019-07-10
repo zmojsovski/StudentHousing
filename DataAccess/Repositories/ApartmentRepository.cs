@@ -11,15 +11,21 @@ namespace DataAccess.Repositories
     {
         private  SHContext context = new SHContext();
 
-        public void Add(Apartment apartment)
+        public Apartment Add(Apartment apartment)
         {
             context.Apartments.Add(apartment);
+            return apartment;
         }
 
         public IEnumerable<Apartment> GetAll()
         {
             return context.Apartments.ToList();
 
+        }
+
+        public IEnumerable<Apartment> GetByCity(int id)
+        {
+            return context.Apartments.Where(x => x.CityId == id).ToList();
         }
 
         public Apartment GetById(int Id)
@@ -32,5 +38,6 @@ namespace DataAccess.Repositories
         {
             context.SaveChanges();
         }
+        
     }
 }

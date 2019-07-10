@@ -10,6 +10,7 @@ namespace DataAccess.Repositories.Interfaces
         IEnumerable<Apartment> GetAll();
         Apartment GetById(int Id);
         void Save();
-        void Add(Apartment apartment);
+        Apartment Add(Apartment apartment);
+        IEnumerable<Apartment> GetByCity(int id);
     }
 }
