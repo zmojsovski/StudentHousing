@@ -1,11 +1,15 @@
-﻿using System;
+﻿using DataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Services.Interfaces
 {
-    interface IApartmentService
+    public interface IApartmentService
     {
+
+        bool CreateApartment();
+        IEnumerable<Apartment> SortApartments();
 
     }
 }
