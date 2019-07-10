@@ -12,6 +12,6 @@ namespace DataAccess.Repositories.Interfaces
         void Save();
         Apartment Add(Apartment apartment);
         IEnumerable<Apartment> GetByCity(int id);
-        IEnumerable<Apartment> SearchApartment(string name, DateTime availableFrom, int numberOfBeds);
+        IEnumerable<Apartment> SearchApartment(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds);
     }
 }

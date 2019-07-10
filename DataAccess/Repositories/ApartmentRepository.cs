@@ -27,6 +27,7 @@ namespace DataAccess.Repositories
         public IEnumerable<Apartment> GetByCity(int id)
         {
             return context.Apartments.Where(x => x.CityId == id).ToList();
+            //return context.Apartments.ToList();
         }
 
         public Apartment GetById(int Id)
@@ -40,7 +41,7 @@ namespace DataAccess.Repositories
             context.SaveChanges();
         }
 
-        public IEnumerable<Apartment> SearchApartment(string name, DateTime availableFrom, int numberOfBeds)
+        public IEnumerable<Apartment> SearchApartment(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds)
         {
             return context.Apartments.Where(x => x.Name.Equals(name) && x.AvailableFrom.Equals(availableFrom)
             && x.NumberOfBeds == numberOfBeds).ToList();

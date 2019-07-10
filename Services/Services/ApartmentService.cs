@@ -28,7 +28,7 @@ namespace Services.Services
             return apartmentRepository.GetByCity(id);
         }
 
-        public IEnumerable<Apartment> SearchApartments(string name, DateTime availableFrom, int numberOfBeds)
+        public IEnumerable<Apartment> SearchApartments(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds)
         {
             return apartmentRepository.SearchApartment(name, availableFrom, numberOfBeds);
         }

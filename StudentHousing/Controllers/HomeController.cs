@@ -14,8 +14,10 @@ namespace StudentHousing.Controllers
     {
         ApartmentService apartmentService = new ApartmentService();
         RatingService ratingService = new RatingService();
+        
         public IActionResult Index()
         {
+            
             return View();
         }
 
@@ -44,9 +46,15 @@ namespace StudentHousing.Controllers
 
             return View();
         }
-
-        public IActionResult Privacy()
+        [HttpGet]
+        [Route("/Privacy/{id}")]
+        public IActionResult Privacy(int id)
         {
+            IEnumerable<Apartment> apartments = apartmentService.GetApartmentsbyCity(id);
+            if (apartments != null)
+            {
+                return Ok(apartments);
+            }
             return View();
         }
 

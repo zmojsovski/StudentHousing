@@ -10,7 +10,7 @@ namespace Services.Interfaces
 
         bool CreateApartment(Apartment apartment);
         IEnumerable<Apartment> SortbyPriceApartments();
-        IEnumerable<Apartment> SearchApartments(String name, DateTime availableFrom, int numberOfBeds);
+        IEnumerable<Apartment> SearchApartments(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds);
         IEnumerable<Apartment> GetApartmentsbyCity(int id);
     }
 }
