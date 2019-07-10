@@ -13,6 +13,7 @@ namespace StudentHousing.Controllers
     public class HomeController : Controller
     {
         ApartmentService apartmentService = new ApartmentService();
+        RatingService ratingService = new RatingService();
         public IActionResult Index()
         {
             return View();
@@ -30,10 +31,16 @@ namespace StudentHousing.Controllers
             ViewData["Message"] = "Your application description page.";
             return View();
         }
+        [HttpPost]
         [Route("/contact")]
-        public IActionResult Contact()
+        public IActionResult Contact([FromBody]Rating model)
         {
-            ViewData["Message"] = "Your contact page.";
+            if (ModelState.IsValid)
+            {
+                var flag = ratingService.SendRating(model);
+                return Ok(flag);
+            }
+            ViewData["Message"] = "";
 
             return View();
         }
