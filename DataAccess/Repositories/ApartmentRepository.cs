@@ -38,6 +38,11 @@ namespace DataAccess.Repositories
         {
             context.SaveChanges();
         }
-        
+
+        public IEnumerable<Apartment> SearchApartment(string name, DateTime availableFrom, int numberOfBeds)
+        {
+            return context.Apartments.Where(x => x.Name.Equals(name) && x.AvailableFrom.Equals(availableFrom)
+            && x.NumberOfBeds == numberOfBeds).ToList();
+        }
     }
 }

@@ -30,12 +30,14 @@ namespace Services.Services
 
         public IEnumerable<Apartment> SearchApartments(string name, DateTime availableFrom, int numberOfBeds)
         {
-            throw new NotImplementedException();
+            return apartmentRepository.SearchApartment(name, availableFrom, numberOfBeds);
         }
 
         public IEnumerable<Apartment> SortbyPriceApartments()
         {
-            throw new NotImplementedException();
+
+
+            return null;
         }
     }
 }
