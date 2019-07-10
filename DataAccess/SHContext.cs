@@ -12,9 +12,11 @@ namespace DataAccess
     {
 
        // private readonly string connectionString;
-        public SHContext(string connectionString) : base(GetOptions(connectionString))
+       //requires a value in the constructor for the repositories
+        public SHContext(string connectionString = "") : base(GetOptions(connectionString))
         {
         }
+
 
         private static DbContextOptions GetOptions(string connectionString)
         {
