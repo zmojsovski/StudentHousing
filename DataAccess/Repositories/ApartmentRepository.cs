@@ -14,6 +14,7 @@ namespace DataAccess.Repositories
         public Apartment Add(Apartment apartment)
         {
             context.Apartments.Add(apartment);
+            Save();
             return apartment;
         }
 

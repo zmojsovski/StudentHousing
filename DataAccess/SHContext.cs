@@ -13,7 +13,7 @@ namespace DataAccess
 
        // private readonly string connectionString;
        //requires a value in the constructor for the repositories
-        public SHContext(string connectionString = "") : base(GetOptions(connectionString))
+        public SHContext(string connectionString = "Data Source=192.168.5.117;Database=StudentHousing;User Id=StudentHousing; Password=Student123@;") : base(GetOptions(connectionString))
         {
         }
 

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Services.Services
 {
-    class ApartmentService : IApartmentService
+   public class ApartmentService : IApartmentService
     {
         ApartmentRepository apartmentRepository = new ApartmentRepository();
         public bool CreateApartment(Apartment apartment)
