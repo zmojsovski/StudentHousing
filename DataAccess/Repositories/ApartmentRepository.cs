@@ -24,6 +24,17 @@ namespace DataAccess.Repositories
 
         }
 
+        public float GetAverageRating(int id)
+        {
+            var ratings = context.Ratings.Where(x => x.ApartmentId == id).ToList();
+            float sum = 0;
+            foreach(var rating in ratings)
+            {
+                sum += rating.RatingValue;
+            }
+            return sum / ratings.Count;
+        }
+
         public IEnumerable<Apartment> GetByCity(int id)
         {
             return context.Apartments.Where(x => x.CityId == id).ToList();
@@ -46,5 +57,6 @@ namespace DataAccess.Repositories
             return context.Apartments.Where(x => x.Name.Equals(name) && x.AvailableFrom.Equals(availableFrom)
             && x.NumberOfBeds == numberOfBeds).ToList();
         }
+
     }
 }

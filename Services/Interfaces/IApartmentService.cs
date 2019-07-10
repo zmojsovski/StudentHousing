@@ -12,5 +12,6 @@ namespace Services.Interfaces
         IEnumerable<Apartment> SortbyPriceApartments();
         IEnumerable<Apartment> SearchApartments(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds);
         IEnumerable<Apartment> GetApartmentsbyCity(int id);
+        IEnumerable<Apartment> SortbyRatingApartments();
     }
 }

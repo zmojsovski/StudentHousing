@@ -53,6 +53,11 @@ namespace StudentHousing.Controllers
             IEnumerable<Apartment> apartments = apartmentService.GetApartmentsbyCity(id);
             if (apartments != null)
             {
+                foreach(var apt in apartments)
+                {
+                    var datetime = apt.AvailableFrom;
+                    apt.AvailableFrom = datetime.Date;
+                }
                 return Ok(apartments);
             }
             return View();

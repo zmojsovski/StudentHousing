@@ -13,5 +13,6 @@ namespace DataAccess.Repositories.Interfaces
         Apartment Add(Apartment apartment);
         IEnumerable<Apartment> GetByCity(int id);
         IEnumerable<Apartment> SearchApartment(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds);
+        float GetAverageRating(int id);
     }
 }

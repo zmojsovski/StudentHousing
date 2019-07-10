@@ -35,9 +35,20 @@ namespace Services.Services
 
         public IEnumerable<Apartment> SortbyPriceApartments()
         {
-
-
+            //var apartments = apartmentRepository.GetAll();
+            //return from apt in apartments
+            //       orderby apt.Price
+            //       select apt;
             return null;
+        }
+
+        public IEnumerable<Apartment> SortbyRatingApartments()
+        {
+            //return from apt in apartmentRepository.GetAll()
+            //       orderby apartmentRepository.GetAverageRating(apt.Id)
+            //       select apt;
+            return null;
+
         }
     }
 }
