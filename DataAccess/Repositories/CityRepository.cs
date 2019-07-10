@@ -9,30 +9,25 @@ namespace DataAccess.Repositories
 {
     public class CityRepository : ICityRepository
     {
-       private readonly SHContext _context;
-        
-        public CityRepository(SHContext _context)
-        {
-            this._context = _context;
-        }
+       private  SHContext context = new SHContext();
 
         public City GetById(int Id)
         {
            
-            return _context.Cities.FirstOrDefault(x => x.Id == Id);
-            throw new NotImplementedException();
+            return context.Cities.FirstOrDefault(x => x.Id == Id);
+          
         }
 
         public void Save()
         {
-            _context.SaveChanges();
-            throw new NotImplementedException();
+            context.SaveChanges();
+          
         }
 
         IEnumerable<City> ICityRepository.GetAll()
         {
-            return _context.Cities.ToList();
-            throw new NotImplementedException();
+            return context.Cities.ToList();
+          
         }
     }
 }

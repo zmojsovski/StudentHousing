@@ -27,7 +27,6 @@ namespace StudentHousing
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                services.AddDbContext<DataAccess.SHContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;

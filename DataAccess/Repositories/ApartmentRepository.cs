@@ -9,34 +9,28 @@ namespace DataAccess.Repositories
 {
     public class ApartmentRepository : IApartmentRepository
     {
-        private readonly SHContext _context;
+        private  SHContext context = new SHContext();
 
-        public ApartmentRepository(SHContext _context)
-        {
-            this._context = _context;
-        }
         public void Add(Apartment apartment)
         {
-            _context.Apartments.Add(apartment);
-            throw new NotImplementedException();
+            context.Apartments.Add(apartment);
         }
 
         public IEnumerable<Apartment> GetAll()
         {
-            return _context.Apartments.ToList();
-            throw new NotImplementedException();
+            return context.Apartments.ToList();
+
         }
 
         public Apartment GetById(int Id)
         {
-            return _context.Apartments.FirstOrDefault(x => x.Id == Id);
-            throw new NotImplementedException();
+            return context.Apartments.FirstOrDefault(x => x.Id == Id);
+          
         }
 
         public void Save()
         {
-            _context.SaveChanges();
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
     }
 }

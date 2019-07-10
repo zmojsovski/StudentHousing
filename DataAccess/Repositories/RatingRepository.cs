@@ -9,17 +9,13 @@ namespace DataAccess.Repositories
 {
     public class RatingRepository : IRatingRepository
     {
-        private readonly SHContext _context;
-        public RatingRepository(SHContext _context)
-        {
-            this._context = _context;
-        }
+        private SHContext context = new SHContext();
 
         public float GetAverageById(int Id)
         {
             
             float sum = 0;
-            List<Rating> ratings = _context.Ratings.Where(x => x.ApartmentId == Id).ToList();
+            List<Rating> ratings = context.Ratings.Where(x => x.ApartmentId == Id).ToList();
             foreach (Rating r in ratings)
             {
                 sum += Convert.ToSingle(r.RatingValue);
@@ -32,14 +28,14 @@ namespace DataAccess.Repositories
 
         public void Save()
         {
-            _context.SaveChanges();
-            throw new NotImplementedException();
+            context.SaveChanges();
+          
         }
 
         IEnumerable<Rating> IRatingRepository.GetAll()
         {
-            return _context.Ratings.ToList();
-            throw new NotImplementedException();
+            return context.Ratings.ToList();
+          
         }
     }
 }
