@@ -11,11 +11,6 @@ namespace DataAccess.Repositories
     {
         private SHContext context = new SHContext();
 
-        public float GetAverageById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Rating> GetRatingsById(int Id)
         {
             return context.Ratings.Where(x => x.Id == Id); 

@@ -8,7 +8,6 @@ namespace Services.Interfaces
     interface IRatingService
     {
         IEnumerable<Apartment> SortByRating();
-        float RatingAverage(int Id);
         bool SendRating(Rating rating);
     }
 }

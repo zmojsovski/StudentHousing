@@ -22,10 +22,7 @@ namespace Services.Services
             return false;
         }
 
-        public float RatingAverage(int Id)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public IEnumerable<Apartment> SortByRating()
         {
