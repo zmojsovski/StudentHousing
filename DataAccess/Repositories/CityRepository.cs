@@ -24,9 +24,9 @@ namespace DataAccess.Repositories
           
         }
 
-        IEnumerable<City> ICityRepository.GetAll()
+        public IEnumerable<City> GetAll()
         {
-            return context.Cities.ToList();
+            return context.Cities;
           
         }
     }
