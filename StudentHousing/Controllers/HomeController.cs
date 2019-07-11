@@ -39,7 +39,7 @@ namespace StudentHousing.Controllers
 
                 };
                 apartmentService.CreateApartment(apartment);
-               // return Json(new {Success = true, Message= "Apartment was succesfully created."});
+              //  return Json(new {Success = true, Message= "Apartment was succesfully created."});
             }
             return View();
         }
@@ -47,6 +47,7 @@ namespace StudentHousing.Controllers
         [Route("/about")]
         public IActionResult About()
         {
+
            
             ViewData["Title"] = "Create Apartment";
             return View();

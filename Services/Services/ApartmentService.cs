@@ -12,7 +12,7 @@ namespace Services.Services
     {
         ApartmentRepository apartmentRepository = new ApartmentRepository();
         RatingRepository ratingRepository = new RatingRepository();
-        public bool CreateApartment(Apartment apartment)
+        public void CreateApartment(Apartment apartment)
         {
             //if apartment in base: return true
             //Apartment apartment = ApartmentRepository.GetById();
