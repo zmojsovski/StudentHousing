@@ -15,7 +15,7 @@ namespace StudentHousing.Controllers
     {
         IApartmentService apartmentService = new ApartmentService();
         IRatingService ratingService = new RatingService();
-
+        ICityService cityService = new CityService();
         public IActionResult Index()
         {
             
@@ -47,9 +47,10 @@ namespace StudentHousing.Controllers
         [Route("/about")]
         public IActionResult About()
         {
-           
-            ViewData["Title"] = "Create Apartment";
-            return View();
+
+            //ViewData["Title"] = "Create Apartment";
+            //return View();
+            return Ok(cityService.GetAll().ToList());
         }
         [HttpPost]
         [Route("/addrating")]

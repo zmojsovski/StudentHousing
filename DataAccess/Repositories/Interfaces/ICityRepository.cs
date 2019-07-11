@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccess.Repositories.Interfaces
 {
-    interface ICityRepository
+    public interface ICityRepository
     {
         IEnumerable<City> GetAll();
         City GetById(int Id);

@@ -7,13 +7,12 @@ using System.Text;
 
 namespace Services.Services
 {
-    class CityService : ICityService
+    public class CityService : ICityService
     {
         CityRepository cityRepository = new CityRepository();
-
-        public City GetCityById(int Id)
+        public IEnumerable<City> GetAll()
         {
-            return cityRepository.GetById(Id);
+            return cityRepository.GetAll();
         }
     }
 }

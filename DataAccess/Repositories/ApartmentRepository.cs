@@ -45,9 +45,9 @@ namespace DataAccess.Repositories
         //    return ApartmentAvgRatingDict;
         //}
 
-        public IEnumerable<Apartment> GetByCity(int id)
+        public IQueryable<Apartment> GetByCity(int id)
         {
-            return context.Apartments.Where(x => x.CityId == id).ToList();
+            return context.Apartments.Where(x => x.CityId == id);
             //return context.Apartments.ToList();
         }
 
@@ -62,7 +62,7 @@ namespace DataAccess.Repositories
             context.SaveChanges();
         }
 
-        public IEnumerable<Apartment> SearchApartment(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds)
+        public IEnumerable<Apartment> SearchApartment(int cityId, string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds)
         {
             //vo service 
             //buildable query with condition

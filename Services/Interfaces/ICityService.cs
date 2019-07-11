@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Services.Interfaces
 {
-    interface ICityService
+    public interface ICityService
     {
-        City GetCityById(int Id);
+        IEnumerable<City> GetAll();
     }
 }
