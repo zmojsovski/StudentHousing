@@ -15,7 +15,7 @@ namespace StudentHousing.Controllers
     {
         IApartmentService apartmentService = new ApartmentService();
         IRatingService ratingService = new RatingService();
-        
+
         public IActionResult Index()
         {
             
@@ -52,17 +52,16 @@ namespace StudentHousing.Controllers
             return View();
         }
         [HttpPost]
-        [Route("/contact")]
-        public IActionResult Contact([FromBody]Rating model)
+        [Route("/addrating")]
+        public IActionResult AddRating([FromBody]Rating model)
         {
             if (ModelState.IsValid)
             {
-                var flag = ratingService.SendRating(model);
-                return Ok(flag);
+                var averageRating = ratingService.AddRating(model);
+                return Json(new { Success = true, AverageRating = averageRating}); 
             }
-            ViewData["Message"] = "";
-
-            return View();
+            
+            return Json(new { Success = false});             
         }
         [HttpGet]
         [Route("/Privacy/{id}")]

@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Services.Interfaces
 {
- public interface IRatingService
+    interface ICityService
     {
-        IEnumerable<Apartment> SortByRating();
-        float AddRating(Rating rating);
+        City GetCityById(int Id);
     }
 }
