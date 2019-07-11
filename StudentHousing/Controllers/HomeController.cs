@@ -56,13 +56,21 @@ namespace StudentHousing.Controllers
         [Route("/addrating")]
         public IActionResult AddRating([FromBody]Rating model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var averageRating = ratingService.AddRating(model);
-                return Json(new { Success = true, AverageRating = averageRating}); 
+                //if (ModelState.IsValid)
+                //{
+                    var averageRating = ratingService.AddRating(model);
+                    return Json(new { Success = true, AverageRating = averageRating });
+                //}
+            }
+            catch(Exception e)
+            {
+                return Json(new { Success = false, Message = "Validation Error" });
             }
             
-            return Json(new { Success = false});             
+            
+                        
         }
         [HttpGet]
         [Route("/Privacy/{id}")]
