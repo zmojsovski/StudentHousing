@@ -54,13 +54,18 @@ namespace StudentHousing.Controllers
         }
         [HttpPost]
         [Route("/addrating")]
-        public IActionResult AddRating([FromBody]Rating model)
+        public IActionResult AddRating([FromBody]RatingModel model)
         {
             try
             {
                 //if (ModelState.IsValid)
                 //{
-                    var averageRating = ratingService.AddRating(model);
+                var rating = new Rating
+                {
+                    RatingValue = model.RatingValue,
+                    ApartmentId = model.ApartmentId
+                };
+                    var averageRating = ratingService.AddRating(rating);
                     return Json(new { Success = true, AverageRating = averageRating });
                 //}
             }
