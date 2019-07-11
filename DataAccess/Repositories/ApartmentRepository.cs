@@ -35,6 +35,16 @@ namespace DataAccess.Repositories
             return sum / ratings.Count;
         }
 
+        public Dictionary<Apartment, float> GetByAverageRatingApartments()
+        {
+            Dictionary<Apartment, float> ApartmentAvgRatingDict = new Dictionary<Apartment, float>();
+            foreach(var apt in context.Apartments)
+            {
+                ApartmentAvgRatingDict.Add(apt, GetAverageRating(apt.Id));
+            }
+            return ApartmentAvgRatingDict;
+        }
+
         public IEnumerable<Apartment> GetByCity(int id)
         {
             return context.Apartments.Where(x => x.CityId == id).ToList();

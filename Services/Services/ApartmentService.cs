@@ -3,6 +3,7 @@ using DataAccess.Repositories;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Services.Services
@@ -44,11 +45,14 @@ namespace Services.Services
 
         public IEnumerable<Apartment> SortbyRatingApartments()
         {
-            //return from apt in apartmentRepository.GetAll()
-            //       orderby apartmentRepository.GetAverageRating(apt.Id)
-            //       select apt;
-            return null;
-
+            var myList = apartmentRepository.GetByAverageRatingApartments().ToList();
+            myList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+            List<Apartment> apartments = new List<Apartment>();
+            foreach(var apt in myList)
+            {
+                apartments.Add(apt.Key);
+            }
+            return apartments;
         }
     }
 }

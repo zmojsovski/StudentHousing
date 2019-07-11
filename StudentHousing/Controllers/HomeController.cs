@@ -50,16 +50,27 @@ namespace StudentHousing.Controllers
         [Route("/Privacy/{id}")]
         public IActionResult Privacy(int id)
         {
-            IEnumerable<Apartment> apartments = apartmentService.GetApartmentsbyCity(id);
-            if (apartments != null)
+
+           //return Ok((List<Apartment>)apartmentService.SortbyRatingApartments());
+            var list = apartmentService.SortbyRatingApartments().ToList();
+            var listNmaes = new List<string>();
+            foreach(var apt in list)
             {
-                foreach(var apt in apartments)
-                {
-                    var datetime = apt.AvailableFrom;
-                    apt.AvailableFrom = datetime.Date;
-                }
-                return Ok(apartments);
+
+                listNmaes.Add(apt.Name);
             }
+            return Ok(listNmaes);
+
+            //IEnumerable<Apartment> apartments = apartmentService.GetApartmentsbyCity(id);
+            //if (apartments != null)
+            //{
+            //    foreach(var apt in apartments)
+            //    {
+            //        var datetime = apt.AvailableFrom;
+            //        apt.AvailableFrom = datetime.Date;
+            //    }
+            //    return Ok(apartments);
+            //}
             return View();
         }
 
