@@ -11,7 +11,8 @@ namespace Services.Services
    public class ApartmentService : IApartmentService
     {
         ApartmentRepository apartmentRepository = new ApartmentRepository();
-        public void CreateApartment(Apartment apartment)
+        RatingRepository ratingRepository = new RatingRepository();
+        public bool CreateApartment(Apartment apartment)
         {
             //if apartment in base: return true
             //Apartment apartment = ApartmentRepository.GetById();
@@ -27,7 +28,7 @@ namespace Services.Services
             return apartmentRepository.GetByCity(id);
         }
 
-        public IEnumerable<Apartment> SearchApartments(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds)
+        public IEnumerable<Apartment> SearchApartments(string name, DateTime? availableFrom, int? numberOfBeds)
         {
             return apartmentRepository.SearchApartment(name, availableFrom, numberOfBeds);
         }
@@ -50,19 +51,32 @@ namespace Services.Services
 
         public IEnumerable<Apartment> SortbyRatingApartments(int flag)
         {
-            var myList = apartmentRepository.GetByAverageRatingApartments().ToList();
-            if(flag == 0)
-                myList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
-                
-            else
-                myList.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
+            //var myList = apartmentRepository.GetByAverageRatingApartments().ToList();
+            //if(flag == 0)
+            //    myList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 
-            List<Apartment> apartments = new List<Apartment>();
-            foreach(var apt in myList)
+            //else
+            //    myList.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
+
+            //List<Apartment> apartments = new List<Apartment>();
+            //foreach(var apt in myList)
+            //{
+            //    apartments.Add(apt.Key);
+            //}
+            //return apartments;
+
+            Dictionary<Apartment, float> ApartmentAvgRatingDict = new Dictionary<Apartment, float>();
+
+            var apartments = apartmentRepository.GetAll();
+            var ratings = ratingRepository.GetAll();
+
+            foreach(var apt in apartments)
             {
-                apartments.Add(apt.Key);
+                var averageRating = ratings.Where(x => x.ApartmentId == apt.Id).Select(x => x.RatingValue).Average();
+                ApartmentAvgRatingDict.Add(apt, (float)averageRating);
             }
-            return apartments;
+            ApartmentAvgRatingDict.ToList().Sort((x1, x2) => x1.Value.CompareTo(x2.Value));
+            return ApartmentAvgRatingDict.Keys;
         }
     }
 }

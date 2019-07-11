@@ -29,7 +29,7 @@ namespace DataAccess.Repositories
         }
 
 
-        IEnumerable<Rating> IRatingRepository.GetAll()
+        public IEnumerable<Rating> GetAll()
         {
             return context.Ratings.ToList();
         }

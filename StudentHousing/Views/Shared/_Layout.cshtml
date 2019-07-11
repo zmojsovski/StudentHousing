@@ -14,6 +14,8 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/fonts/font-awesome.min.css">*@
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </environment>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -42,7 +44,25 @@
     
 
     <partial name="_CookieConsentPartial" />
-
+    <div class="search-bar">
+        <div class="search-container">
+            <select name="city">
+                
+            </select>
+            <form id="form-block" caction="/action_page.php">
+                <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
+                <input type="date" placeholder="Search by Availability..." name="searchByDate" />
+                <select name="searchByBeds">
+                    <option value="0">All</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <button type="submit"><i class="fa-search"></i>Search</button>
+            </form>
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
