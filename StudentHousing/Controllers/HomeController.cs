@@ -51,8 +51,8 @@ namespace StudentHousing.Controllers
         public IActionResult Privacy(int id)
         {
 
-           //return Ok((List<Apartment>)apartmentService.SortbyRatingApartments());
-            var list = apartmentService.SortbyRatingApartments().ToList();
+            //return Ok((List<Apartment>)apartmentService.SortbyRatingApartments());
+            var list = apartmentService.SortbyPriceApartments(id).ToList();
             var listNmaes = new List<string>();
             foreach(var apt in list)
             {
