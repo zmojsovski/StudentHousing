@@ -4,6 +4,7 @@ using DataAccess.Repositories;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Services.Services
@@ -12,16 +13,16 @@ namespace Services.Services
     {
         RatingRepository ratingRepository = new RatingRepository();
 
-        public bool SendRating(Rating rating)
+        public float AddRating(Rating rating)
         {
-            var newRating = ratingRepository.Add(rating);
-            if (newRating != null)
-            {
-                return true;
-            }
-            return false;
-        }
+            ratingRepository.Add(rating);
+            ratingRepository.Save();
+            var ratingsByApartment = ratingRepository.GetAll().Where(x => x.ApartmentId == rating.ApartmentId);
+            return ratingsByApartment.Sum(x => x.RatingValue) / ratingsByApartment.Count();
 
+        }
+        // try catch 
+       
        
 
         public IEnumerable<Apartment> SortByRating()

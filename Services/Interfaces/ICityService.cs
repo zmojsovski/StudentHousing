@@ -3,12 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Repositories.Interfaces
+namespace Services.Interfaces
 {
-    public interface ICityRepository
+    public interface ICityService
     {
         IEnumerable<City> GetAll();
-        City GetById(int Id);
-        void Save();
     }
 }

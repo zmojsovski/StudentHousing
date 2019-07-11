@@ -28,9 +28,23 @@ namespace Services.Services
             return apartmentRepository.GetByCity(id);
         }
 
-        public IEnumerable<Apartment> SearchApartments(string name, DateTime? availableFrom, int? numberOfBeds)
+        public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds)
         {
-            return apartmentRepository.SearchApartment(name, availableFrom, numberOfBeds);
+            IQueryable<Apartment> query = apartmentRepository.GetByCity(cityId);
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(x => x.Name.Contains(name));
+            }
+            if (availableFrom != null)
+            {
+                query = query.Where(x => x.AvailableFrom.Date >= availableFrom.GetValueOrDefault().Date);
+            }
+            if (numberOfBeds != null && numberOfBeds > 0)
+            {
+                query = query.Where(x => x.NumberOfBeds == numberOfBeds);
+            }
+
+            return query.ToList();
         }
 
         public IEnumerable<Apartment> SortbyPriceApartments(int flag)

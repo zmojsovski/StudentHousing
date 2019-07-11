@@ -8,6 +8,6 @@ namespace Services.Interfaces
  public interface IRatingService
     {
         IEnumerable<Apartment> SortByRating();
-        bool SendRating(Rating rating);
+        float AddRating(Rating rating);
     }
 }

@@ -10,7 +10,7 @@ namespace Services.Interfaces
 
         void CreateApartment(Apartment apartment);
         IEnumerable<Apartment> SortbyPriceApartments(int flag);
-        IEnumerable<Apartment> SearchApartments(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds);
+        IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds);
         IEnumerable<Apartment> GetApartmentsbyCity(int id);
         //IEnumerable<Apartment> SortbyRatingApartments(int flag);
     }
