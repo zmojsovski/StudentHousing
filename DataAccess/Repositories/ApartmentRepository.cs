@@ -35,15 +35,15 @@ namespace DataAccess.Repositories
             return sum / ratings.Count;
         }
 
-        public Dictionary<Apartment, float> GetByAverageRatingApartments()
-        {
-            Dictionary<Apartment, float> ApartmentAvgRatingDict = new Dictionary<Apartment, float>();
-            foreach(var apt in context.Apartments)
-            {
-                ApartmentAvgRatingDict.Add(apt, GetAverageRating(apt.Id));
-            }
-            return ApartmentAvgRatingDict;
-        }
+        //public Dictionary<Apartment, float> GetByAverageRatingApartments()
+        //{
+        //    Dictionary<Apartment, float> ApartmentAvgRatingDict = new Dictionary<Apartment, float>();
+        //    foreach(var apt in context.Apartments)
+        //    {
+        //        ApartmentAvgRatingDict.Add(apt, GetAverageRating(apt.Id));
+        //    }
+        //    return ApartmentAvgRatingDict;
+        //}
 
         public IEnumerable<Apartment> GetByCity(int id)
         {
@@ -64,6 +64,8 @@ namespace DataAccess.Repositories
 
         public IEnumerable<Apartment> SearchApartment(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds)
         {
+            //vo service 
+            //buildable query with condition
             return context.Apartments.Where(x => x.Name.Equals(name) && x.AvailableFrom.Equals(availableFrom)
             && x.NumberOfBeds == numberOfBeds).ToList();
         }
