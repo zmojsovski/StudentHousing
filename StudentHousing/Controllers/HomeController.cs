@@ -18,8 +18,18 @@ namespace StudentHousing.Controllers
         ICityService cityService = new CityService();
         public IActionResult Index()
         {
-            
-            return View();
+            var allCities = cityService.GetAll();
+            //ViewBag.cities = allCities;
+            ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+            //apartmentsViewModel.Cities = allCities.ToList();
+            foreach(var city in allCities)
+            {
+                apartmentsViewModel.Cities.Add(new CityModel{
+                    Id = city.Id,
+                    Name = city.Name
+                });
+            }
+            return View(apartmentsViewModel.Cities);
         }
 
         [HttpPost]

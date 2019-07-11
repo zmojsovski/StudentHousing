@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using StudentHousing.Models
+@Model  ApartmentsViewModel
+
 <html>
 <body style="margin-top:50px">
 
@@ -8,8 +11,8 @@
 
     <div class="search-bar">
         <div class="search-container">
-            @*/  @Html.DropDownList("Cities",*@
-
+            @*@Html.DropDownList()*@
+            
             <form id="form-block" caction="/action_page.php">
                 <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
                 <input type="date" placeholder="Search by Availability..." name="searchByDate" />

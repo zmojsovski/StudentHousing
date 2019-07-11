@@ -6853,7 +6853,7 @@ button.close {
     align-items: center;
     background-color: darkgoldenrod;
     height: 100px;
-    width: 70%;
+    width: 100%;
 }
 
 .search-container input[type=text] {
