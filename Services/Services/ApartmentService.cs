@@ -11,17 +11,15 @@ namespace Services.Services
    public class ApartmentService : IApartmentService
     {
         ApartmentRepository apartmentRepository = new ApartmentRepository();
-        public bool CreateApartment(Apartment apartment)
+        public void CreateApartment(Apartment apartment)
         {
             //if apartment in base: return true
             //Apartment apartment = ApartmentRepository.GetById();
             //mislam deka getApartment treba da vrakja bool vo ApartmentRepository
-            var newApartment = apartmentRepository.Add(apartment);
-            if (newApartment != null)
-            {
-                return true;
-            }
-            return false;
+         
+
+          apartmentRepository.Add(apartment);
+           
         }
 
         public IEnumerable<Apartment> GetApartmentsbyCity(int id)

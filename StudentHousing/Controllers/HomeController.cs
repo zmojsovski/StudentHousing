@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using StudentHousing.Models;
 using DataAccess.Models;
 using Services.Services;
+using Services.Interfaces;
 
 namespace StudentHousing.Controllers
 {
     public class HomeController : Controller
     {
-        ApartmentService apartmentService = new ApartmentService();
-        RatingService ratingService = new RatingService();
+        IApartmentService apartmentService = new ApartmentService();
+        IRatingService ratingService = new RatingService();
         
         public IActionResult Index()
         {
@@ -22,15 +23,32 @@ namespace StudentHousing.Controllers
         }
 
         [HttpPost]
-        [Route("/about")]
-        public IActionResult About([FromBody]Apartment model)
+        public IActionResult Create([FromBody] ApartmentModel model)
         {
             if (ModelState.IsValid)
             {
-                var flag = apartmentService.CreateApartment(model);
-                return Ok(flag);
+                var apartment = new Apartment
+                {
+                    Name = model.Name,
+                    Address = model.Address,
+                    Price = model.Price,
+                    NumberOfBeds = model.NumberOfBeds,
+                    Description = model.Description,
+                    Phone = model.Phone,
+                    CityId = model.CityId
+
+                };
+                apartmentService.CreateApartment(apartment);
+               // return Json(new {Success = true, Message= "Apartment was succesfully created."});
             }
-            ViewData["Message"] = "Your application description page.";
+            return View();
+        }
+        [HttpGet]
+        [Route("/about")]
+        public IActionResult About()
+        {
+           
+            ViewData["Title"] = "Create Apartment";
             return View();
         }
         [HttpPost]

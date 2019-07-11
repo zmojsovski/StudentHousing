@@ -8,7 +8,7 @@ namespace Services.Interfaces
     public interface IApartmentService
     {
 
-        bool CreateApartment(Apartment apartment);
+        void CreateApartment(Apartment apartment);
         IEnumerable<Apartment> SortbyPriceApartments(int flag);
         IEnumerable<Apartment> SearchApartments(string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds);
         IEnumerable<Apartment> GetApartmentsbyCity(int id);
