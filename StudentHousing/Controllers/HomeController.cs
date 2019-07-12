@@ -8,6 +8,7 @@ using StudentHousing.Models;
 using DataAccess.Models;
 using Services.Services;
 using Services.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace StudentHousing.Controllers
 {
@@ -22,14 +23,19 @@ namespace StudentHousing.Controllers
             //ViewBag.cities = allCities;
             ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
             //apartmentsViewModel.Cities = allCities.ToList();
-            foreach(var city in allCities)
+            //foreach(var city in allCities)
+            //{
+            //    apartmentsViewModel.Cities.Add(new CityModel{
+            //        Id = city.Id,
+            //        Name = city.Name
+            //    });
+            //}
+            apartmentsViewModel.Cities = allCities.Select(x => new SelectListItem
             {
-                apartmentsViewModel.Cities.Add(new CityModel{
-                    Id = city.Id,
-                    Name = city.Name
-                });
-            }
-            return View(apartmentsViewModel.Cities);
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
+            return View(apartmentsViewModel);
         }
 
         [HttpPost]

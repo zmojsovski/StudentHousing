@@ -6851,7 +6851,7 @@ button.close {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkgoldenrod;
+    background-color: #F4BD6B;
     height: 100px;
     width: 100%;
 }
