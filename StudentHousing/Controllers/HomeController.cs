@@ -20,21 +20,25 @@ namespace StudentHousing.Controllers
         public IActionResult Index()
         {
             var allCities = cityService.GetAll();
-            //ViewBag.cities = allCities;
             ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
-            //apartmentsViewModel.Cities = allCities.ToList();
-            //foreach(var city in allCities)
-            //{
-            //    apartmentsViewModel.Cities.Add(new CityModel{
-            //        Id = city.Id,
-            //        Name = city.Name
-            //    });
-            //}
             apartmentsViewModel.Cities = allCities.Select(x => new SelectListItem
             {
                 Text = x.Name,
                 Value = x.Id.ToString()
             }).ToList();
+
+            var apartments = apartmentService.GetApartmentsbyCity(1);
+            apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Price = x.Price,
+                AvailableFrom = x.AvailableFrom,
+                NumberOfBeds = x.NumberOfBeds,
+                AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
+            }).ToList();
+            
+
             return View(apartmentsViewModel);
         }
 

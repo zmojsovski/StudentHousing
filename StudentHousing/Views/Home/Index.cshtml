@@ -30,6 +30,27 @@
         </div>
     </div>
 
+    <div class="sorting-area">
+        <div class="sorting-content">
+            <span class="property-name">Name</span>
+            <span class="property-name">Available From</span>
+            <span class="property-name">Number of beds</span>
+            <span class="property-name">
+                Sort by price
+                <a href="#" class="arrow-sort">
+                    <span class="arrow-logo glyphicon glyphicon-arrow-down"></span>
+                </a>
+            </span>
+            <span class="property-name">
+                Sort by rating
+                <a href="#">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </a>
+            </span>
+        </div>
+    </div>
+
+
 
     <div class="star-rating">
         @*<input type="button" value="Input Button" /><img src="~/images/star.png" />*@
@@ -58,10 +79,29 @@
     <script src="~/js/Rating.js"></script>
 
 
+    <div class="listOfApts">
+        @foreach (var apt in Model.Apartments)
+        {
+            @*<li>@apt.Name</li>*@
+            <div class="apartment-box">
+
+                <div class="apartment-content">
+                    <span class="apartment-item"><img src="~/images/apartment_img.png" /></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.Name</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.AvailableFrom.Date</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.NumberOfBeds</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.Price</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.AverageRating</span></span>
+                </div>
+            </div>
+        }
+    </div>
+
+
     @*@RenderSection("Scripts", required: false)*@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
-
+    <script src="~/js/ArrowFlip.js"></script>
 </body>
 </html>
