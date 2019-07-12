@@ -59,6 +59,10 @@ namespace StudentHousing
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                        
+                //routes.MapRoute("addrating", 
+                //    "home/addrating",
+                //   defaults: new { controller = "Home", action = "AddRating" });
             });
         }
     }
