@@ -1600,7 +1600,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    
+    width: 1200px;
   }
 }
 .container-fluid {
@@ -4298,7 +4298,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
+  position: sticky;
   right: 0;
   left: 0;
   z-index: 1030;
@@ -4678,7 +4678,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse {
     background-color: #8399FD;
     border-color: transparent;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     
 }
 .navbar-inverse .navbar-brand {
@@ -6657,20 +6657,23 @@ button.close {
 .visible-lg-inline-block {
   display: none !important;
 }
-@media  {
-  .visible-xs {
-    display: block !important;
-  }
-  table.visible-xs {
-    display: table !important;
-  }
-  tr.visible-xs {
-    display: table-row !important;
-  }
-  th.visible-xs,
-  td.visible-xs {
-    display: table-cell !important;
-  }
+@media(max-width: 767px) {
+    .visible-xs {
+        display: block !important;
+    }
+
+    table.visible-xs {
+        display: table !important;
+    }
+
+    tr.visible-xs {
+        display: table-row !important;
+    }
+
+    th.visible-xs,
+    td.visible-xs {
+        display: table-cell !important;
+    }
 }
 @media (max-width: 767px) {
   .visible-xs-block {
@@ -6958,21 +6961,27 @@ button.close {
     padding-bottom: 50px;
     padding-left: 25px;
     padding-right: 25px;
-    position: relative;
     display: inline-block;
     vertical-align: middle;
     top: 50%;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .apartment-item {
     box-sizing: border-box;
     float: left;
     width: 16%;
     vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.apartment-data{
-    float: right;
+.apartment-data {
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
     /*padding-left: 20%;*/
 }
 .apartment-item img{
@@ -6981,5 +6990,10 @@ button.close {
 }
 .row{
     
+}
+
+.glyphicon-star-empty {
+    font-size: 24px; 
+    color: black;
 }
 /*# sourceMappingURL=bootstrap.css.map */

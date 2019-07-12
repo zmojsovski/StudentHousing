@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
+
 }
 
 <html>
@@ -12,7 +13,7 @@
 
     <div class="search-bar">
         <div class="search-container">
-            <span>@Html.DropDownList("CityDDL", Model.Cities)</span>
+            @Html.DropDownList("CityDDL", Model.Cities)
 
 
             <form id="form-block" caction="/action_page.php">
@@ -38,13 +39,13 @@
             <span class="property-name">
                 Sort by price
                 <a href="#" class="arrow-sort">
-                    <span class="arrow-logo glyphicon glyphicon-arrow-down"></span>
+                    <span class="arrow-price glyphicon glyphicon-arrow-down" onclick="PriceFlipOnClick()"></span>
                 </a>
             </span>
             <span class="property-name">
                 Sort by rating
-                <a href="#">
-                    <span class="glyphicon glyphicon-arrow-down"></span>
+                <a href="#" class="arrow-sort">
+                    <span class="arrow-rating glyphicon glyphicon-arrow-down" onclick="RatingFlipOnClick()"></span>
                 </a>
             </span>
         </div>
@@ -55,26 +56,26 @@
     <div class="star-rating">
         @*<input type="button" value="Input Button" /><img src="~/images/star.png" />*@
         @*<a href="#">
-            <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="Rate()">
-                <input type="button" width="35" height="35">
-            </span>
-        </a>*@
+                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="Rate()">
+                    <input type="button" width="35" height="35">
+                </span>
+            </a>*@
 
-            <a href="">
-                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(1)"></span>
-            </a>
-            <a href="">
-                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(2)"></span>
-            </a>
-            <a href="">
-                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(3)"></span>
-            </a>
-            <a href="">
-                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(4)"></span>
-            </a>
-            <a href="">
-                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(5)"></span>
-            </a>
+        <a href="">
+            <span class="glyphicon glyphicon-star-empty" onclick="getRating(1)"></span>
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-star-empty" onclick="getRating(2)"></span>
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-star-empty" onclick="getRating(3)"></span>
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-star-empty" onclick="getRating(4)"></span>
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-star-empty" onclick="getRating(5)"></span>
+        </a>
     </div>
     <script src="~/js/Rating.js"></script>
 
@@ -84,7 +85,6 @@
         {
             @*<li>@apt.Name</li>*@
             <div class="apartment-box">
-
                 <div class="apartment-content">
                     <span class="apartment-item"><img src="~/images/apartment_img.png" /></span>
                     <span class="apartment-item"><span class="apartment-data">@apt.Name</span></span>
@@ -102,6 +102,8 @@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/js/ArrowFlip.js"></script>
+    <script src="~/js/GetApartmentsByCity.js"></script>
 </body>
 </html>

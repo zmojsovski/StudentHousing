@@ -18,7 +18,7 @@ namespace Services.Services
             //Apartment apartment = ApartmentRepository.GetById();
             //mislam deka getApartment treba da vrakja bool vo ApartmentRepository
          
-
+            
           apartmentRepository.Add(apartment);
            
         }

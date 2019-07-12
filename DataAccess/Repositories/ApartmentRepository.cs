@@ -62,7 +62,7 @@ namespace DataAccess.Repositories
             context.SaveChanges();
         }
 
-        public IEnumerable<Apartment> SearchApartment(int cityId, string name, Nullable<DateTime> availableFrom, Nullable<int> numberOfBeds)
+        public IEnumerable<Apartment> SearchApartment(int cityId, string name, DateTime? availableFrom, int? numberOfBeds)
         {
             //vo service 
             //buildable query with condition
