@@ -13,23 +13,49 @@
     <div class="search-bar">
         <div class="search-container">
             <span>@Html.DropDownList("CityDDL", Model.Cities)</span>
-            
 
-                <form id="form-block" caction="/action_page.php">
-                    <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
-                    <input type="date" placeholder="Search by Availability..." name="searchByDate" />
-                    <select name="searchByBeds">
-                        <option value="0">All</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    <button type="submit"><i class="fa-search"></i>Search</button>
-                </form>
+
+            <form id="form-block" caction="/action_page.php">
+                <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
+                <input type="date" placeholder="Search by Availability..." name="searchByDate" />
+                <select name="searchByBeds">
+                    <option value="0">All</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <button type="submit"><i class="fa-search"></i>Search</button>
+            </form>
         </div>
     </div>
 
+
+    <div class="star-rating">
+        @*<input type="button" value="Input Button" /><img src="~/images/star.png" />*@
+        @*<a href="#">
+            <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="Rate()">
+                <input type="button" width="35" height="35">
+            </span>
+        </a>*@
+
+            <a href="">
+                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(1)"></span>
+            </a>
+            <a href="">
+                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(2)"></span>
+            </a>
+            <a href="">
+                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(3)"></span>
+            </a>
+            <a href="">
+                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(4)"></span>
+            </a>
+            <a href="">
+                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="getRating(5)"></span>
+            </a>
+    </div>
+    <script src="~/js/Rating.js"></script>
 
 
     @*@RenderSection("Scripts", required: false)*@
