@@ -21,7 +21,9 @@ namespace StudentHousing.Models
         [StringLength(15, ErrorMessage = "Phone Number too long")]
         [RegularExpression("07[0-9]{7}")]
         public string Phone { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         [Required(ErrorMessage = "Apartment Availability must be picked")]
+        [DataType(DataType.Date)]
         public DateTime AvailableFrom { get; set; }
         [Required]
         [Range(1, 4, ErrorMessage = "The Number of Beds must be between 1 and 4")]
