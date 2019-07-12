@@ -13,20 +13,20 @@
     <div class="search-bar">
         <div class="search-container">
             <span>@Html.DropDownList("CityDDL", Model.Cities)</span>
-            
 
-                <form id="form-block" caction="/action_page.php">
-                    <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
-                    <input type="date" placeholder="Search by Availability..." name="searchByDate" />
-                    <select name="searchByBeds">
-                        <option value="0">All</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    <button type="submit"><i class="fa-search"></i>Search</button>
-                </form>
+
+            <form id="form-block" caction="/action_page.php">
+                <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
+                <input type="date" placeholder="Search by Availability..." name="searchByDate" />
+                <select name="searchByBeds">
+                    <option value="0">All</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <button type="submit"><i class="fa-search"></i>Search</button>
+            </form>
         </div>
     </div>
 
@@ -37,8 +37,8 @@
             <span class="property-name">Number of beds</span>
             <span class="property-name">
                 Sort by price
-                <a href="#">
-                    <span id="sortPrice" class="glyphicon glyphicon-arrow-down"></span>
+                <a href="#" class="arrow-sort">
+                    <span class="arrow-logo glyphicon glyphicon-arrow-down"></span>
                 </a>
             </span>
             <span class="property-name">
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    
+
 
 
     <div class="listOfApts">
@@ -58,13 +58,14 @@
         {
             @*<li>@apt.Name</li>*@
             <div class="apartment-box">
+
                 <div class="apartment-content">
                     <span class="apartment-item"><img src="~/images/apartment_img.png" /></span>
-                    <span class="apartment-item">@apt.Name</span>
-                    <span class="apartment-item">@apt.AvailableFrom.Date</span>
-                    <span class="apartment-item">@apt.NumberOfBeds</span>
-                    <span class="apartment-item">@apt.Price</span>
-                    <span class="apartment-item">@apt.AverageRating</span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.Name</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.AvailableFrom.Date</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.NumberOfBeds</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.Price</span></span>
+                    <span class="apartment-item"><span class="apartment-data">@apt.AverageRating</span></span>
                 </div>
             </div>
         }
@@ -75,6 +76,6 @@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
-
+    <script src="~/js/ArrowFlip.js"></script>
 </body>
 </html>

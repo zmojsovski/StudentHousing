@@ -1600,7 +1600,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    
   }
 }
 .container-fluid {
@@ -1612,7 +1612,7 @@ pre code {
 .row {
   margin-right: -15px;
   margin-left: -15px;
-  margin-top: 200px
+  margin-top: 20px;
 }
 .row-no-gutters {
   margin-right: 0;
@@ -2051,7 +2051,7 @@ pre code {
     width: 41.66666667%;
   }
   .col-md-4 {
-    width: 33.33333333%;
+    width: 50%;
   }
   .col-md-3 {
     width: 25%;
@@ -2713,12 +2713,13 @@ textarea.form-control {
   height: auto;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"].form-control,
-  input[type="time"].form-control,
-  input[type="datetime-local"].form-control,
-  input[type="month"].form-control {
-    line-height: 34px;
-  }
+    input[type="date"].form-control,
+    input[type="time"].form-control,
+    input[type="datetime-local"].form-control,
+    input[type="month"].form-control {
+        line-height: 34px;
+        width: 196px;
+    }
   input[type="date"].input-sm,
   input[type="time"].input-sm,
   input[type="datetime-local"].input-sm,
@@ -3045,6 +3046,7 @@ select[multiple].input-lg {
   .form-inline .control-label {
     margin-bottom: 0;
     vertical-align: middle;
+    width: 200px;
   }
   .form-inline .radio,
   .form-inline .checkbox {
@@ -6655,7 +6657,7 @@ button.close {
 .visible-lg-inline-block {
   display: none !important;
 }
-@media (max-width: 767px) {
+@media  {
   .visible-xs {
     display: block !important;
   }
@@ -6952,17 +6954,32 @@ button.close {
 }
 
 .apartment-content {
-    padding: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    position: relative;
+    display: inline-block;
     vertical-align: middle;
+    top: 50%;
     height: 100%;
+    width: 100%;
 }
-.apartment-item{
-    
-    
+.apartment-item {
+    box-sizing: border-box;
+    float: left;
+    width: 16%;
+    vertical-align: middle;
+}
+.apartment-data{
+    float: right;
+    /*padding-left: 20%;*/
 }
 .apartment-item img{
     height: 100%;
-    width: 20%;
+    width: 100%;
 }
-
+.row{
+    
+}
 /*# sourceMappingURL=bootstrap.css.map */

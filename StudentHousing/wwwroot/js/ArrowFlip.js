@@ -1,6 +1,6 @@
 ﻿$(function () {
-    $(".glyphicon glyphicon-arrow-down").on("click", function () {
-        $(this).toggleClass(".glyphicon glyphicon-arrow-up");
-        $(this).toggleClass(".glyphicon glyphicon-arrow-down");
+    $(".arrow-sort").on("click", function (event) {
+        $(".arrow-logo").toggleClass(".glyphicon glyphicon-arrow-up");
+        $(".arrow-logo").toggleClass(".glyphicon glyphicon-arrow-down");
     });
 });
