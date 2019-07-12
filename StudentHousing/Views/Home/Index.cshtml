@@ -30,6 +30,12 @@
         </div>
     </div>
 
+    <div class="listOfApts">
+        @foreach(var apt in Model.Apartments)
+        {
+            <li>@apt.Name</li>
+        }
+    </div>
 
 
     @*@RenderSection("Scripts", required: false)*@

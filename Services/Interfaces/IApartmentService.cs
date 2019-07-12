@@ -7,7 +7,7 @@ namespace Services.Interfaces
 {
     public interface IApartmentService
     {
-
+        float GetaverageRatingbyId(int id);
         void CreateApartment(Apartment apartment);
         IEnumerable<Apartment> SortbyPriceApartments(int flag);
         IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds);

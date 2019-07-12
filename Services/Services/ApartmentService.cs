@@ -28,6 +28,13 @@ namespace Services.Services
             return apartmentRepository.GetByCity(id);
         }
 
+        public float GetaverageRatingbyId(int id)
+        {
+            var averageRating = ratingRepository.GetAll().Where(x => 
+            x.ApartmentId == id).Select(x => x.RatingValue).Average();
+            return (float)averageRating;
+        }
+
         public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds)
         {
             IQueryable<Apartment> query = apartmentRepository.GetByCity(cityId);
@@ -47,6 +54,7 @@ namespace Services.Services
             return query.ToList();
         }
 
+
         public IEnumerable<Apartment> SortbyPriceApartments(int flag)
         {
             //var apartments = apartmentRepository.GetAll();
@@ -65,19 +73,7 @@ namespace Services.Services
 
         public IEnumerable<Apartment> SortbyRatingApartments(int flag)
         {
-            //var myList = apartmentRepository.GetByAverageRatingApartments().ToList();
-            //if(flag == 0)
-            //    myList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
-
-            //else
-            //    myList.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
-
-            //List<Apartment> apartments = new List<Apartment>();
-            //foreach(var apt in myList)
-            //{
-            //    apartments.Add(apt.Key);
-            //}
-            //return apartments;
+            
 
             Dictionary<Apartment, float> ApartmentAvgRatingDict = new Dictionary<Apartment, float>();
 

@@ -28,6 +28,6 @@ namespace StudentHousing.Models
         public int NumberOfBeds { get; set; }
         [Required]
         public int CityId { get; set; }
-        public decimal AverageRating { get; set; }
+        public float AverageRating { get; set; }
     }
 }
