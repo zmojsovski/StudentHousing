@@ -39,5 +39,18 @@ namespace DataAccess
         public DbSet<City> Cities { get; set; }
         public DbSet<Rating> Ratings { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+          /*  modelBuilder.Entity<City>()
+                .HasMany<Apartment>(); */
+
+            modelBuilder.Entity<Apartment>()
+           .HasOne<City>(s => s.City)
+           .WithMany(g => g.Apartments)
+           .HasForeignKey(s => s.CityId);
+
+        }
+        
     }
 }
+
