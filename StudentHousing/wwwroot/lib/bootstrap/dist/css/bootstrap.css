@@ -6855,13 +6855,21 @@ button.close {
     height: 100px;
     width: 100%;
 }
-
+#CityDDL {
+    padding: 9px;
+    height: 40px;
+    font-size: 17px;
+    border: none;
+    width: auto;
+    margin-right: 75px;
+}
 .search-container input[type=text] {
     padding: 7px;
     height: 40px;
     font-size: 17px;
     border: none;
-    width: 300px
+    width: 300px;
+    /*margin-left: 5px;*/
 }
     .search-container input[type=date] {
         padding: 6px;
