@@ -1,67 +1,72 @@
-﻿@model StudentHousing.Models.ApartmentModel
+@model StudentHousing.Models.ApartmentModel
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<div id="apsuccmsg" class="hidden alert alert-success"></div>
 <h2 class="text-center">Create Apartment</h2>
 
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create" class="form-inline">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Address" class="control-label"></label>
-                    <input asp-for="Address" class="form-control" />
-                    <span asp-validation-for="Address" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Price" class="control-label"></label>
-                    <input asp-for="Price" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Phone" class="control-label"></label>
-                    <input asp-for="Phone" class="form-control" />
-                    <span asp-validation-for="Phone" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="AvailableFrom" class="control-label"></label>
-                    <input asp-for="AvailableFrom" class="form-control" />
-                    <span asp-validation-for="AvailableFrom" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="NumberOfBeds" class="control-label"></label>
-                    <input asp-for="NumberOfBeds" class="form-control" />
-                    <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CityId" class="control-label"></label>
-                    <input asp-for="CityId" class="form-control" />
-                    <span asp-validation-for="CityId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="AverageRating" class="control-label"></label>
-                    <input asp-for="AverageRating" class="form-control" />
-                    <span asp-validation-for="AverageRating" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </form>
-        </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" class="form-inline">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableFrom" class="control-label"></label>
+                <input asp-for="AvailableFrom" class="form-control" />
+                <span asp-validation-for="AvailableFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfBeds" class="control-label"></label>
+                <input asp-for="NumberOfBeds" class="form-control" />
+                <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <input asp-for="CityId" class="form-control" />
+                <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AverageRating" class="control-label"></label>
+                <input asp-for="AverageRating" class="form-control" />
+                <span asp-validation-for="AverageRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="apartmentcreate" type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
     </div>
+</div>
 
 <div>
     <a asp-action="Index">Back to List</a>
@@ -70,3 +75,18 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script>
+    sample.CreateApartment = function () {
+        $.ajax({
+            type: "POST", url: "@Url.Action("Create")",
+            success: function (data) {
+                $("#apsuccmsg").html(data.Message);
+                $("#apsuccmsg").removeClass("hidden");
+            },
+            accept: 'application/json'
+        });
+    };
+    $("#apartmentcreate").click(function () {
+        sample.CreateApartment();
+    });
+</script>
