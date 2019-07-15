@@ -23,6 +23,11 @@ namespace Services.Services
            
         }
 
+        public Apartment GetApartmentById(int id)
+        {
+            return apartmentRepository.GetById(id);
+        }
+
         public IEnumerable<Apartment> GetApartmentByName(string name)
         {
             var apartments = apartmentRepository.GetAll();

@@ -19,6 +19,7 @@ namespace StudentHousing.Controllers
         IRatingService ratingService = new RatingService();
         ICityService cityService = new CityService();
         ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+        RatingsViewModel ratingsViewModel = new RatingsViewModel();
         
         [HttpGet]
         public IActionResult Index()
@@ -33,6 +34,8 @@ namespace StudentHousing.Controllers
             var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id);
             return this.View(model);
         }
+
+
 
         [HttpGet]
         [Route("home/getapartmentsbycity")]
@@ -56,6 +59,15 @@ namespace StudentHousing.Controllers
                 AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
             }).ToList();
             return apartmentsViewModel;
+        }
+        [HttpGet]
+        [Route("home/getapartmentsbysearch")]
+        public IActionResult GetApartmentsBySearch()
+        {
+            //get query from service with all parameters taken into consid.
+            int id = 1;
+            var model = this.GetFullAndPartialViewModel(id);
+            return PartialView("_ListApartments", model);
         }
 
         [HttpPost]
@@ -89,33 +101,52 @@ namespace StudentHousing.Controllers
         }
         [HttpPost]
         [Route("home/addrating")]
-        public IActionResult AddRating(int ApartmentId, int RatingValue)
+        public IActionResult AddRating(int apartmentId, int ratingValue)
         {
-            try
+            //try
+            //{
+            //    //if (ModelState.IsValid)
+            //    //{
+            //    RatingModel ratingModel = new RatingModel()
+            //    {
+            //        RatingValue = RatingValue,
+            //        ApartmentId = ApartmentId
+            //    };
+            //    Rating r = new Rating();
+            //    var averageRating = ratingService.AddRating(r);
+            //    return Json(new { Success = true, AverageRating = averageRating });
+            //    //}
+            //}
+            //catch(Exception e)
+            //{
+            //    return Json(new { Success = false, Message = "Validation Error" });
+            //}
+            //finally
+            //{
+
+            //}
+            RatingModel ratingModel = new RatingModel()
             {
-                //if (ModelState.IsValid)
-                //{
-                RatingModel ratingModel = new RatingModel()
-                {
-                    RatingValue = RatingValue,
-                    ApartmentId = ApartmentId
-                };
-                Rating r = new Rating();
-                var averageRating = ratingService.AddRating(r);
-                return Json(new { Success = true, AverageRating = averageRating });
-                //}
-            }
-            catch(Exception e)
-            {
-                return Json(new { Success = false, Message = "Validation Error" });
-            }
-            finally
-            {
-                
-            }
+                RatingValue = ratingValue,
+                ApartmentId = apartmentId
+            };
+
+            ratingsViewModel.ApartmentId = apartmentId;
+            //add this to ratingsviewmodel 
+            apartmentService.GetApartmentById(apartmentId);
+            //from service get average rating after adding new rating with ratingService
+          
+
+            return null;
             
                         
         }
+
+
+
+
+
+
         [HttpGet]
         [Route("/Privacy/{id}")]
         public IActionResult Privacy(int id)

@@ -19,7 +19,7 @@ $(document).ready(function () {
             url: '/Home/AddRating',
             type: 'POST',
             dataType: 'json',
-            data: { ApartmentId: "apartmentId", RatingValue: "ratingValue" },
+            data: { ApartmentId: apartmentId, RatingValue: ratingValue },
             success: function (data) {
                 alert("ok");
             },
