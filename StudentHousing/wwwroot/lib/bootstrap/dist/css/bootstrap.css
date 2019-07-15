@@ -2719,6 +2719,7 @@ textarea.form-control {
     input[type="month"].form-control {
         line-height: 34px;
         width: 196px;
+        
     }
   input[type="date"].input-sm,
   input[type="time"].input-sm,

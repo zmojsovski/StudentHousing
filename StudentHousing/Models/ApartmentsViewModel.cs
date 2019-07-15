@@ -9,6 +9,7 @@ namespace StudentHousing.Models
 {
     public class ApartmentsViewModel
     {
+        public int CityId { get; set; }
         public List<ApartmentModel> Apartments { get; set; }
         public List<SelectListItem> Cities { get; set; }
     }

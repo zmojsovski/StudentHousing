@@ -79,25 +79,12 @@
 
 
     </div>
-
-
-    <div class="listOfApts">
-        @foreach (var apt in Model.Apartments)
-        {
-            @*<li>@apt.Name</li>*@
-            <div class="apartment-box">
-                <div class="apartment-content">
-                    <span class="apartment-item"><img src="~/images/apartment_img.png" /></span>
-                    <span class="apartment-item"><span class="apartment-data">@apt.Name</span></span>
-                    <span class="apartment-item"><span class="apartment-data">@apt.AvailableFrom.Date</span></span>
-                    <span class="apartment-item"><span class="apartment-data">@apt.NumberOfBeds</span></span>
-                    <span class="apartment-item"><span class="apartment-data">@apt.Price</span></span>
-                    <span class="apartment-item"><span class="apartment-data">@apt.AverageRating</span></span>
-                </div>
-            </div>
+    <div id="cityResults">
+        @{
+            Html.RenderPartial("_ListApartments", Model);
         }
-    </div>
 
+    </div>
 
     @*@RenderSection("Scripts", required: false)*@
     @section Scripts {
