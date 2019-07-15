@@ -1,21 +1,8 @@
 ﻿$(document).ready(function () {
-    $("#CityDDL").on("change", function () {
-        var selectedValue = $("#CityDDL").val();
-        console.log(selectedValue);
-        
-
+    $("#CityDDL").change(function () {
+        var id = $("#CityDDL").val();
+        $.get('home/getapartmentsbycity', { id: id }, function (response) {
+            $("#cityResults").html(response);
+        });
     });
-
-    //$.ajax({
-    //    method: 'GET',
-    //    url: "@Url.Action("LoadListByCity")",
-    //    success: function (data) {
-            
-    //    }
-
-    //});
 });
-//function GetApartmentsByCity() {
-    
-
-//}
