@@ -9,6 +9,7 @@ using DataAccess.Models;
 using Services.Services;
 using Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Cors;
 
 namespace StudentHousing.Controllers
 {

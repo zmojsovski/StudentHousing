@@ -53,30 +53,23 @@
 
 
 
-    <div class="star-rating">
-        @*<input type="button" value="Input Button" /><img src="~/images/star.png" />*@
-        @*<a href="#">
-                <span class="glyphicon glyphicon-star-empty" style="font-size: 24px; color: black" onclick="Rate()">
-                    <input type="button" width="35" height="35">
-                </span>
-            </a>*@
+    <div class="star-rating" id="star">
 
         <a href="">
-            <span class="glyphicon glyphicon-star-empty" onclick="getRating(1)"></span>
+            <span id="star1" class="glyphicon glyphicon-star-empty rating" onclick="Test(1)"></span>
         </a>
         <a href="">
-            <span class="glyphicon glyphicon-star-empty" onclick="getRating(2)"></span>
+            <span id="star2" class="glyphicon glyphicon-star-empty rating" onclick="Test(2)"></span>
         </a>
         <a href="">
-            <span class="glyphicon glyphicon-star-empty" onclick="getRating(3)"></span>
+            <span id="star3" class="glyphicon glyphicon-star-empty rating" onclick="Test(3)"></span>
         </a>
         <a href="">
-            <span class="glyphicon glyphicon-star-empty" onclick="getRating(4)"></span>
+            <span id="star4" class="glyphicon glyphicon-star-empty rating" onclick="Test(4)"></span>
         </a>
         <a href="">
-            <span class="glyphicon glyphicon-star-empty" onclick="getRating(5)"></span>
+            <span id="star5" class="glyphicon glyphicon-star-empty rating" onclick="Test(5)"></span>
         </a>
-
 
     </div>
 
@@ -107,5 +100,9 @@
     <script src="~/js/ArrowFlip.js"></script>
     <script src="~/js/GetApartmentsByCity.js"></script>
     <script src="~/js/Rating.js"></script>
+
+    
+
+ 
 </body>
 </html>
