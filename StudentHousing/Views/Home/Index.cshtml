@@ -53,25 +53,28 @@
 
 
 
-    <div class="star-rating" id="star">
+    <div class="star-rating">
+
+
 
         <a href="">
-            <span id="star1" class="glyphicon glyphicon-star-empty rating" onclick="Test(1)"></span>
+            <span id="1" class="glyphicon glyphicon-star-empty rating"></span>
         </a>
         <a href="">
-            <span id="star2" class="glyphicon glyphicon-star-empty rating" onclick="Test(2)"></span>
+            <span id="2" class="glyphicon glyphicon-star-empty rating" onclick="Test(2)"></span>
         </a>
         <a href="">
-            <span id="star3" class="glyphicon glyphicon-star-empty rating" onclick="Test(3)"></span>
+            <span id="3" class="glyphicon glyphicon-star-empty rating" onclick="Test(3)"></span>
         </a>
         <a href="">
-            <span id="star4" class="glyphicon glyphicon-star-empty rating" onclick="Test(4)"></span>
+            <span id="4" class="glyphicon glyphicon-star-empty rating" onclick="Test(4)"></span>
         </a>
         <a href="">
-            <span id="star5" class="glyphicon glyphicon-star-empty rating" onclick="Test(5)"></span>
+            <span id="5" class="glyphicon glyphicon-star-empty rating" onclick="Test(5)"></span>
         </a>
 
     </div>
+
     <div id="cityResults">
         @{
             Html.RenderPartial("_ListApartments", Model);

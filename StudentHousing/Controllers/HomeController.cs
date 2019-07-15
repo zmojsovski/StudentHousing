@@ -19,6 +19,7 @@ namespace StudentHousing.Controllers
         IRatingService ratingService = new RatingService();
         ICityService cityService = new CityService();
         ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+        
         [HttpGet]
         public IActionResult Index()
         {
@@ -94,20 +95,24 @@ namespace StudentHousing.Controllers
             {
                 //if (ModelState.IsValid)
                 //{
-                var rating = new Rating
+                RatingModel ratingModel = new RatingModel()
                 {
                     RatingValue = RatingValue,
                     ApartmentId = ApartmentId
                 };
-                    var averageRating = ratingService.AddRating(rating);
-                    return Json(new { Success = true, AverageRating = averageRating });
+                Rating r = new Rating();
+                var averageRating = ratingService.AddRating(r);
+                return Json(new { Success = true, AverageRating = averageRating });
                 //}
             }
             catch(Exception e)
             {
                 return Json(new { Success = false, Message = "Validation Error" });
             }
-            
+            finally
+            {
+                
+            }
             
                         
         }

@@ -8,29 +8,24 @@
 //});
 
 
+$(document).ready(function () {
 
-function Test(a) {
+    $(".rating").click(function () {
+        
+        var apartmentId = 1;
+        var ratingValue = this.id;
 
-    var apartmentId = 1;
-
-    var ratings = {
-        ApartmentId: apartmentId,
-        RatingValue: a,
-    };
-
-    $.ajax({
-        type: 'POST',
-        url: '/home/addrating',
-        headers: {
-            'ratings-Requested-With': 'XMLHttpRequest'
-        },
-        data: ratings,
-        contentType: 'application/json',
-        success: function (a) {
-            alert(a);
-        },
-        error: function () {
-            alert("error");
-        }
-    })
-}
+        $.ajax({
+            url: '/Home/AddRating',
+            type: 'POST',
+            dataType: 'json',
+            data: { ApartmentId: apartmentId, RatingValue: ratingValue },
+            success: function (data) {
+                alert("ok");
+            },
+            error: function (data) {
+                alert("not ok");
+            }
+        });
+    });
+});
