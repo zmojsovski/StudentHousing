@@ -17,11 +17,13 @@ namespace Services.Services
             //if apartment in base: return true
             //Apartment apartment = ApartmentRepository.GetById();
             //mislam deka getApartment treba da vrakja bool vo ApartmentRepository
-         
+
             
           apartmentRepository.Add(apartment);
            
         }
+
+
 
         public IEnumerable<Apartment> GetApartmentsbyCity(int id)
         {
@@ -30,9 +32,11 @@ namespace Services.Services
 
         public float GetaverageRatingbyId(int id)
         {
-            var averageRating = ratingRepository.GetAll().Where(x => 
-            x.ApartmentId == id).Select(x => x.RatingValue).Average();
-            return (float)averageRating;
+            //     var averageRating = ratingRepository.GetAll().Where(x => 
+            //     x.ApartmentId == id).Select(x => x.RatingValue).Average();
+            //   return (float)averageRating;
+
+            return 0;
         }
 
         public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds)

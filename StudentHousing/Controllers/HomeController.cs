@@ -30,12 +30,12 @@ namespace StudentHousing.Controllers
             var apartments = apartmentService.GetApartmentsbyCity(1);
             apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
             {
-                Id = x.Id,
+                //Id = x.Id,
                 Name = x.Name,
                 Price = x.Price,
                 AvailableFrom = x.AvailableFrom,
                 NumberOfBeds = x.NumberOfBeds,
-                AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
+              //  AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
             }).ToList();
             
 

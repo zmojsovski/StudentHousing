@@ -19,7 +19,7 @@ namespace StudentHousing.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] ApartmentModel model)
+        public IActionResult Create([FromForm] ApartmentModel model)
         {
             if (ModelState.IsValid)
             {
@@ -31,11 +31,13 @@ namespace StudentHousing.Controllers
                     NumberOfBeds = model.NumberOfBeds,
                     Description = model.Description,
                     Phone = model.Phone,
-                    CityId = model.CityId
+                    CityId = model.CityId,
+                    AvailableFrom = model.AvailableFrom
 
                 };
                 apartmentService.CreateApartment(apartment);
-                 return Json(new {Success = true, Message= "Apartment was succesfully created."});
+                //   return Json(new {Success = true, Message= "Apartment was succesfully created."});
+                ViewBag.Message = "I JUST WANT TO FUCKING WORK!";
             }
             return View();
         }
