@@ -13,6 +13,7 @@ namespace StudentHousing.Controllers
     public class ApartmentController : Controller
     {
         IApartmentService apartmentService = new ApartmentService();
+        ICityService cityService = new CityService();
         public IActionResult Index()
         {
             return View();
@@ -35,9 +36,14 @@ namespace StudentHousing.Controllers
                     AvailableFrom = model.AvailableFrom
 
                 };
-                apartmentService.CreateApartment(apartment);
-                //   return Json(new {Success = true, Message= "Apartment was succesfully created."});
-                ViewBag.Message = "I JUST WANT TO FUCKING WORK!";
+                var apt = apartmentService.GetApartmentByName(apartment.Name);
+                if (!(apt != null))
+                {
+                    apartmentService.CreateApartment(apartment);
+                    //   return Json(new {Success = true, Message= "Apartment was succesfully created."});
+                    ViewBag.Success = "Apartment successfully Created!";
+                }
+                ViewBag.Error = "Apartment Name Taken!";
             }
             return View();
         }
@@ -46,6 +52,10 @@ namespace StudentHousing.Controllers
         {
 
             ViewData["Title"] = "Create Apartment";
+            var cities = cityService.GetAll();
+            var broj = cities.Count();
+            ViewBag.cities = cities;
+            ViewBag.brojac = broj;
             return View();
         }
     }

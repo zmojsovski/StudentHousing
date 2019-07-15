@@ -23,7 +23,13 @@ namespace Services.Services
            
         }
 
+        public IEnumerable<Apartment> GetApartmentByName(string name)
+        {
+            var apartments = apartmentRepository.GetAll();
+            var apartment = apartments.Where(x => x.Name == name);
 
+            return apartment;
+        }
 
         public IEnumerable<Apartment> GetApartmentsbyCity(int id)
         {
