@@ -17,7 +17,7 @@ namespace StudentHousing.Controllers
         IApartmentService apartmentService = new ApartmentService();
         IRatingService ratingService = new RatingService();
         ICityService cityService = new CityService();
-        public IActionResult Index()
+        public IActionResult Index(int cityId)
         {
             var allCities = cityService.GetAll();
             ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
@@ -27,7 +27,7 @@ namespace StudentHousing.Controllers
                 Value = x.Id.ToString()
             }).ToList();
 
-            var apartments = apartmentService.GetApartmentsbyCity(1);
+            var apartments = apartmentService.GetApartmentsbyCity(cityId);
             apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
             {
                 Id = x.Id,
@@ -40,6 +40,23 @@ namespace StudentHousing.Controllers
             
 
             return View(apartmentsViewModel);
+        }
+        [HttpGet]
+        public IActionResult LoadListByCity(int id)
+        {
+            var apartments = apartmentService.GetApartmentsbyCity(id);
+            ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+            apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Price = x.Price,
+                AvailableFrom = x.AvailableFrom,
+                NumberOfBeds = x.NumberOfBeds,
+                AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
+            }).ToList();
+            return Json(apartmentsViewModel);
+
         }
 
         [HttpPost]

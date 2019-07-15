@@ -35,7 +35,8 @@ namespace StudentHousing.Controllers
 
                 };
                 apartmentService.CreateApartment(apartment);
-                 return Json(new {Success = true, Message= "Apartment was succesfully created."});
+                //ViewData["Message"] = "Apartment has been created!";
+                return Json(new { Message = "Apartment created!" });
             }
             return View();
         }

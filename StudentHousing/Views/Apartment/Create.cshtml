@@ -62,7 +62,7 @@
                 <span asp-validation-for="AverageRating" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input id="apartmentcreate" type="submit" value="Create" class="btn btn-default" />
+                <input id="apartmentcreate" onclick="CreateApt()" type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>
@@ -75,18 +75,33 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<script>
-    sample.CreateApartment = function () {
-        $.ajax({
-            type: "POST", url: "@Url.Action("Create")",
-            success: function (data) {
-                $("#apsuccmsg").html(data.Message);
-                $("#apsuccmsg").removeClass("hidden");
-            },
-            accept: 'application/json'
+@*<script>
+        sample.CreateApartment = function () {
+            var serviceUrl = '/Apartment/Create'
+            $.ajax({
+                type: "POST",
+                url: serviceUrl,
+                data: param = "",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $("#apsuccmsg").html(data.Message);
+                    $("#apsuccmsg").removeClass("hidden");
+                },
+                accept: 'application/json'
+            });
+        };
+        $("#apartmentcreate").click(function () {
+            sample.CreateApartment();
         });
-    };
-    $("#apartmentcreate").click(function () {
-        sample.CreateApartment();
-    });
-</script>
+    </script>*@
+<script src="~/lib/jquery/dist/jquery.js"></script>
+@*<script>
+    function RabotiLi() {
+        let poraka = ViewData["Message"];
+        if (poraka != null) {
+            $("#apsuccmsg").removeClass("hidden");
+        }
+    }
+</script>*@
+<script src="~/js/CreateApt.js"></script>
