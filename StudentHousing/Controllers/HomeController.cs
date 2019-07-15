@@ -18,35 +18,33 @@ namespace StudentHousing.Controllers
         IApartmentService apartmentService = new ApartmentService();
         IRatingService ratingService = new RatingService();
         ICityService cityService = new CityService();
-        public IActionResult Index(int cityId)
+        ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+        [HttpGet]
+        public IActionResult Index()
         {
             var allCities = cityService.GetAll();
-            ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
             apartmentsViewModel.Cities = allCities.Select(x => new SelectListItem
             {
                 Text = x.Name,
                 Value = x.Id.ToString()
             }).ToList();
 
-            var apartments = apartmentService.GetApartmentsbyCity(cityId);
-            apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
-            {
-                //Id = x.Id,
-                Name = x.Name,
-                Price = x.Price,
-                AvailableFrom = x.AvailableFrom,
-                NumberOfBeds = x.NumberOfBeds,
-              //  AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
-            }).ToList();
-            
-
-            return View(apartmentsViewModel);
+            var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id);
+            return this.View(model);
         }
+
         [HttpGet]
-        public IActionResult LoadListByCity(int id)
+        [Route("home/getapartmentsbycity")]
+        public IActionResult GetApartmentsByCity([FromQuery]int id)
         {
-            var apartments = apartmentService.GetApartmentsbyCity(id);
-            ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+            var model = this.GetFullAndPartialViewModel(id);
+            return PartialView("_ListApartments", model);
+
+        }
+
+        private ApartmentsViewModel GetFullAndPartialViewModel(int cityId)
+        {
+            var apartments = apartmentService.GetApartmentsbyCity(cityId);
             apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
             {
                 Id = x.Id,
@@ -56,8 +54,7 @@ namespace StudentHousing.Controllers
                 NumberOfBeds = x.NumberOfBeds,
                 AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
             }).ToList();
-            return Json(apartmentsViewModel);
-
+            return apartmentsViewModel;
         }
 
         [HttpPost]
@@ -77,7 +74,6 @@ namespace StudentHousing.Controllers
 
                 };
                 apartmentService.CreateApartment(apartment);
-              //  return Json(new {Success = true, Message= "Apartment was succesfully created."});
             }
             return View();
         }
