@@ -9,7 +9,7 @@
         display: none;
     }
 </style>
-<div id="apsuccmsg" class="hidden alert alert-success"></div>
+<div id="apsuccmsg" class="hidden alert alert-success">Apartment has been Created!</div>
 <h2 class="text-center">Create Apartment</h2>
 
 <div class="row">
@@ -57,12 +57,7 @@
                 <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AverageRating" class="control-label"></label>
-                <input asp-for="AverageRating" class="form-control" />
-                <span asp-validation-for="AverageRating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input id="apartmentcreate" onclick="CreateApt()" type="submit" value="Create" class="btn btn-default" />
+                <input id="apartmentcreate" type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>
@@ -72,36 +67,15 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                 $("#apsuccmsg").removeClass("hidden");
+            };
+    </script>
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-@*<script>
-        sample.CreateApartment = function () {
-            var serviceUrl = '/Apartment/Create'
-            $.ajax({
-                type: "POST",
-                url: serviceUrl,
-                data: param = "",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    $("#apsuccmsg").html(data.Message);
-                    $("#apsuccmsg").removeClass("hidden");
-                },
-                accept: 'application/json'
-            });
-        };
-        $("#apartmentcreate").click(function () {
-            sample.CreateApartment();
-        });
-    </script>*@
-<script src="~/lib/jquery/dist/jquery.js"></script>
-@*<script>
-    function RabotiLi() {
-        let poraka = ViewData["Message"];
-        if (poraka != null) {
-            $("#apsuccmsg").removeClass("hidden");
-        }
-    }
-</script>*@
-<script src="~/js/CreateApt.js"></script>
+<script src="~/lib/jquery/jquery.js"></script>
