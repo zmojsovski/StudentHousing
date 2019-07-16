@@ -101,51 +101,26 @@ namespace StudentHousing.Controllers
         }
         [HttpPost]
         [Route("home/addrating")]
-        public IActionResult AddRating(int apartmentId, int ratingValue)
+        public void AddRating(int apartmentId, int ratingValue)
         {
-            //try
-            //{
-            //    //if (ModelState.IsValid)
-            //    //{
-            //    RatingModel ratingModel = new RatingModel()
-            //    {
-            //        RatingValue = RatingValue,
-            //        ApartmentId = ApartmentId
-            //    };
-            //    Rating r = new Rating();
-            //    var averageRating = ratingService.AddRating(r);
-            //    return Json(new { Success = true, AverageRating = averageRating });
-            //    //}
-            //}
-            //catch(Exception e)
-            //{
-            //    return Json(new { Success = false, Message = "Validation Error" });
-            //}
-            //finally
-            //{
-
-            //}
-            RatingModel ratingModel = new RatingModel()
-            {
-                RatingValue = ratingValue,
-                ApartmentId = apartmentId
-            };
-
-            ratingsViewModel.ApartmentId = apartmentId;
-            //add this to ratingsviewmodel 
-            apartmentService.GetApartmentById(apartmentId);
-            //from service get average rating after adding new rating with ratingService
-          
-
-            return null;
             
-                        
+            var aptId = apartmentId;
+            var ratVal = ratingValue;
+            var avgRatingNow = ratingService.AddRating(ratVal, aptId);
+            //ViewData["avgRating"] = avgRatingNow.ToString();
+            //ViewBag.MyRating = avgRatingNow.ToString();
+            //var apt = apartmentService.GetAll().FirstOrDefault(x => x.Id == aptId);
+            //apt.AverageRating = avgRatingNow;
+            //apartmentsViewModel.Apartments.Add(apt);
+            //apartmentsViewModel.Apartments.FirstOrDefault(x => x.Id == aptId).AverageRating = avgRatingNow;
+            //RatingModel ratingModel = new RatingModel()
+            //{
+            //    AverageRating = avgRatingNow
+            //};
+            //return PartialView("_RatingSection", ratingModel);
+
+
         }
-
-
-
-
-
 
         [HttpGet]
         [Route("/Privacy/{id}")]
