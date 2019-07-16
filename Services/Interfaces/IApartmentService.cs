@@ -9,6 +9,8 @@ namespace Services.Interfaces
     {
         float GetaverageRatingbyId(int id);
 
+        IEnumerable<Apartment> GetAll();
+
        IEnumerable<Apartment> GetApartmentByName(string name);
         void CreateApartment(Apartment apartment);
         IEnumerable<Apartment> SortbyPriceApartments(int flag);

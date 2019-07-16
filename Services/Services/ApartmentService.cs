@@ -22,7 +22,10 @@ namespace Services.Services
           apartmentRepository.Add(apartment);
            
         }
-
+        public IEnumerable<Apartment> GetAll()
+        {
+            return apartmentRepository.GetAll();
+        }
         public Apartment GetApartmentById(int id)
         {
             return apartmentRepository.GetById(id);
