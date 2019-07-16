@@ -6992,9 +6992,13 @@ button.close {
 .row{
     
 }
-
 .glyphicon-star-empty {
-    font-size: 24px; 
+    font-size: 24px;
     color: black;
+}
+
+.glyphicon-star {
+    font-size: 24px;
+    color: grey;
 }
 /*# sourceMappingURL=bootstrap.css.map */
