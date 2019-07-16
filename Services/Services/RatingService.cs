@@ -25,7 +25,7 @@ namespace Services.Services
             ratingRepository.Add(rating);
             ratingRepository.Save();
             var ratingsByApartment = ratingRepository.GetAll().Where(x => x.ApartmentId == aptId);
-            return ratingsByApartment.Sum(x => x.RatingValue) / ratingsByApartment.Count();
+            return (float)ratingsByApartment.Sum(x => x.RatingValue) / ratingsByApartment.Count();
 
         }
         // try catch 
