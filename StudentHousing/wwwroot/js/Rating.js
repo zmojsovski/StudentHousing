@@ -1,31 +1,35 @@
-﻿//$(document).ready(function () {
-//    var apartmentId = 1;
-//    $('.rating').on('click', function () {
-//        //var a = $(this).val();
-//        var value = (".rating").attr("value");
-//        alert(value);
-//    })
-//});
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     $(".rating").click(function () {
         event.preventDefault();
         var apartmentId = 1;
         var ratingValue = this.id;
-
+        var avgRating = 0;
         $.ajax({
             url: '/Home/AddRating',
             type: 'POST',
             dataType: 'json',
             data: { ApartmentId: apartmentId, RatingValue: ratingValue },
             success: function (data) {
-                alert("ok");
+                //alert("ok");
             },
             error: function (data) {
-                alert("not ok");
+               // alert("not ok");
             }
         });
+
+        //$.ajax({
+        //    url: '/Home/AddRating',
+        //    type: 'GET',
+        //    dataType: 'json',
+        //    data: { AverageRating: avgRating },
+        //    success: function (data) {
+        //        alert("ok");
+        //    },
+        //    error: function (data) {
+        //        alert("not ok");
+        //    }
+        //});
+
     });
 });
