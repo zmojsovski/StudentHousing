@@ -98,7 +98,7 @@ namespace StudentHousing.Controllers
         }
         [HttpPost]
         [Route("home/addrating")]
-        public void AddRating(int apartmentId, int ratingValue)
+        public decimal AddRating(int apartmentId, int ratingValue)
         {
             
             var aptId = apartmentId;
@@ -108,17 +108,17 @@ namespace StudentHousing.Controllers
             //ViewBag.MyRating = avgRatingNow.ToString();
             //apartmentService.GetAll().FirstOrDefault(x => x.Id == aptId).AverageRating = avgRatingNow;
 
-            
 
-            
+
+
             //apartmentsViewModel.Apartments.FirstOrDefault(x => x.Id == aptId).AverageRating = avgRatingNow;
             //RatingModel ratingModel = new RatingModel()
             //{
             //    AverageRating = avgRatingNow
             //};
             //return PartialView("_RatingSection", apartmentsViewModel);
-
-
+            return (decimal)avgRatingNow;
+            
         }
 
         [HttpGet]

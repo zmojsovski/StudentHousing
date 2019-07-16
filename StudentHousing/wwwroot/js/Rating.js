@@ -2,6 +2,9 @@
 
     //$(".rating").hover(function () {
     //    rated = false;
+
+    //    var id = $(this).parent().parent().parent().parent().children(":nth-of-type(2)").children().attr("value");
+
     //    if (this.id == "1") {
     //        $(this).css("color", "yellow");
     //    }
@@ -40,8 +43,9 @@
 
     $(".rating").click(function () {
         event.preventDefault();
-
         var apartmentId = $(this).parent().parent().parent().parent().children(":nth-of-type(2)").children().attr("value");
+        var ratingValueText = $(this).parent().parent().parent().parent().children(":nth-of-type(7)").children();
+       // alert(ratingValueText);
         //var apartmentId=0;
         var ratingValue = this.id;
         var avgRating = 0;
@@ -49,14 +53,13 @@
         $.ajax({
             url: '/Home/AddRating',
             type: 'POST',
-            contentType: 'application/javascript',
             data: { apartmentId: apartmentId, ratingValue: ratingValue },
             dataType: 'json',
             success: function (data) {
-                alert(data);
+                ratingValueText.text("Average Rating: " + data.toFixed(2));
             },
             error: function (data) {
-                alert("no" + data);
+                alert("not ok");
             }
         });
 
