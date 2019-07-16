@@ -14,18 +14,14 @@ namespace Services.Services
         RatingRepository ratingRepository = new RatingRepository();
         public void CreateApartment(Apartment apartment)
         {
-            //if apartment in base: return true
-            //Apartment apartment = ApartmentRepository.GetById();
-            //mislam deka getApartment treba da vrakja bool vo ApartmentRepository
-
-            
           apartmentRepository.Add(apartment);
-           
         }
+
         public IEnumerable<Apartment> GetAll()
         {
             return apartmentRepository.GetAll();
         }
+
         public Apartment GetApartmentById(int id)
         {
             return apartmentRepository.GetById(id);
@@ -35,7 +31,6 @@ namespace Services.Services
         {
             var apartments = apartmentRepository.GetAll();
             var apartment = apartments.Where(x => x.Name == name);
-
             return apartment;
         }
 
@@ -58,7 +53,7 @@ namespace Services.Services
             IQueryable<Apartment> query = apartmentRepository.GetByCity(cityId);
             if (!string.IsNullOrEmpty(name))
             {
-                query = query.Where(x => x.Name.Contains(name));
+                query = query.Where(x => x.Name.ToLower().Contains(name.ToLower()));
             }
             if (availableFrom != null)
             {
@@ -66,7 +61,7 @@ namespace Services.Services
             }
             if (numberOfBeds != null && numberOfBeds > 0)
             {
-                query = query.Where(x => x.NumberOfBeds == numberOfBeds);
+                query = query.Where(x => x.NumberOfBeds >= numberOfBeds);
             }
 
             return query.ToList();

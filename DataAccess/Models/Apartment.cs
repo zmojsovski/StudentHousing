@@ -17,6 +17,7 @@ namespace DataAccess.Models
         public int NumberOfBeds { get; set; }
         public City City { get; set; }
         public int CityId { get; set; }
+        //public float AverageRating { get; set; }
         public List<Rating> Ratings { get; set; }
     }
 }

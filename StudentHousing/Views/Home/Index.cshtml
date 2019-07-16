@@ -17,16 +17,16 @@
 
 
             <form id="form-block" caction="/action_page.php">
-                <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
-                <input type="date" placeholder="Search by Availability..." name="searchByDate" />
-                <select name="searchByBeds">
+                <input id="name" type="text" placeholder="Search by Apartment Name..." name="searchByName" />
+                <input id="availableFrom" type="date" placeholder="Search by Availability..." name="searchByDate" />
+                <select id="numberOfBeds" name="searchByBeds">
                     <option value="0">All</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                 </select>
-                <button type="submit"><i class="fa-search"></i>Search</button>
+                <button id="submit" type="button"><i class="fa-search"></i>Search</button>
             </form>
         </div>
     </div>
@@ -51,30 +51,6 @@
         </div>
     </div>
 
-
-
-    @*<div class="star-rating">
-
-
-
-            <a href="">
-                <span id="1" class="glyphicon glyphicon-star-empty rating"></span>
-            </a>
-            <a href="">
-                <span id="2" class="glyphicon glyphicon-star-empty rating"></span>
-            </a>
-            <a href="">
-                <span id="3" class="glyphicon glyphicon-star-empty rating"></span>
-            </a>
-            <a href="">
-                <span id="4" class="glyphicon glyphicon-star-empty rating"></span>
-            </a>
-            <a href="">
-                <span id="5" class="glyphicon glyphicon-star-empty rating"></span>
-            </a>
-
-        </div>*@
-
     <div id="cityResults">
         @{
             Html.RenderPartial("_ListApartments", Model);
@@ -89,9 +65,8 @@
     }
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/js/ArrowFlip.js"></script>
-    <script src="~/js/GetApartmentsByCity.js"></script>
     <script src="~/js/Rating.js"></script>
-
+    <script src="~/js/Search.js"></script>
 
 
 

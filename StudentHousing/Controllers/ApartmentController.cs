@@ -36,7 +36,7 @@ namespace StudentHousing.Controllers
                     AvailableFrom = model.AvailableFrom
 
                 };
-                var apt = apartmentService.GetAll().FirstOrDefault(x => x.Name == apartment.Name);
+                var apt = apartmentService.GetAll().FirstOrDefault(x => x.Name.ToLower() == apartment.Name.ToLower());
                 if (apt == null)
                 {
                     apartmentService.CreateApartment(apartment);

@@ -31,24 +31,13 @@ namespace StudentHousing.Controllers
                 Value = x.Id.ToString()
             }).ToList();
 
-            var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id);
+            var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null);
             return this.View(model);
         }
 
-
-
-        [HttpGet]
-        [Route("home/getapartmentsbycity")]
-        public IActionResult GetApartmentsByCity([FromQuery]int id)
+        private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds)
         {
-            var model = this.GetFullAndPartialViewModel(id);
-            return PartialView("_ListApartments", model);
-
-        }
-
-        private ApartmentsViewModel GetFullAndPartialViewModel(int cityId)
-        {
-            var apartments = apartmentService.GetApartmentsbyCity(cityId);
+            var apartments = apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds);
             apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
             {
                 Id = x.Id,
@@ -60,15 +49,17 @@ namespace StudentHousing.Controllers
             }).ToList();
             return apartmentsViewModel;
         }
+
         [HttpGet]
         [Route("home/getapartmentsbysearch")]
-        public IActionResult GetApartmentsBySearch()
+        public IActionResult GetApartmentsBySearch([FromQuery]int cityId, [FromQuery]string name, [FromQuery]DateTime availableFrom, [FromQuery]int numberOfBeds)
         {
-            //get query from service with all parameters taken into consid.
-            int id = 1;
-            var model = this.GetFullAndPartialViewModel(id);
+            var model = this.GetFullAndPartialViewModel(cityId, name, availableFrom, numberOfBeds);
             return PartialView("_ListApartments", model);
+
         }
+
+
 
         [HttpPost]
         public IActionResult Create([FromBody] ApartmentModel model)
@@ -90,6 +81,12 @@ namespace StudentHousing.Controllers
             }
             return View();
         }
+
+
+
+
+
+
         [HttpGet]
         [Route("/about")]
         public IActionResult About()
@@ -109,15 +106,17 @@ namespace StudentHousing.Controllers
             var avgRatingNow = ratingService.AddRating(ratVal, aptId);
             //ViewData["avgRating"] = avgRatingNow.ToString();
             //ViewBag.MyRating = avgRatingNow.ToString();
-            //var apt = apartmentService.GetAll().FirstOrDefault(x => x.Id == aptId);
-            //apt.AverageRating = avgRatingNow;
-            //apartmentsViewModel.Apartments.Add(apt);
+            //apartmentService.GetAll().FirstOrDefault(x => x.Id == aptId).AverageRating = avgRatingNow;
+
+            
+
+            
             //apartmentsViewModel.Apartments.FirstOrDefault(x => x.Id == aptId).AverageRating = avgRatingNow;
             //RatingModel ratingModel = new RatingModel()
             //{
             //    AverageRating = avgRatingNow
             //};
-            //return PartialView("_RatingSection", ratingModel);
+            //return PartialView("_RatingSection", apartmentsViewModel);
 
 
         }
