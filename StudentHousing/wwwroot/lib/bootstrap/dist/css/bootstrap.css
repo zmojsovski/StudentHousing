@@ -6979,10 +6979,16 @@ button.close {
     justify-content: center;
     align-items: center;
 }
+#bed-icon{
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}
 .apartment-data {
     vertical-align: middle;
     display: flex;
     justify-content: center;
+    align-items: center;
     /*padding-left: 20%;*/
 }
 .apartment-item img{
