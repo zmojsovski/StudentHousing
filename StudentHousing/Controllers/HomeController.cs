@@ -46,6 +46,12 @@ namespace StudentHousing.Controllers
 
         }
 
+        public int GetAptIdByName(string Name)
+        {
+            var apt = apartmentService.GetAll().FirstOrDefault(x => x.Name == Name);
+            return apt.Id;
+        }
+
         private ApartmentsViewModel GetFullAndPartialViewModel(int cityId)
         {
             var apartments = apartmentService.GetApartmentsbyCity(cityId);
@@ -118,8 +124,6 @@ namespace StudentHousing.Controllers
             //    AverageRating = avgRatingNow
             //};
             //return PartialView("_RatingSection", ratingModel);
-
-
         }
 
         [HttpGet]
