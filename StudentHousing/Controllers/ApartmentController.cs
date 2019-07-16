@@ -36,14 +36,17 @@ namespace StudentHousing.Controllers
                     AvailableFrom = model.AvailableFrom
 
                 };
-                var apt = apartmentService.GetApartmentByName(apartment.Name);
-                if (!(apt != null))
+                var apt = apartmentService.GetAll().FirstOrDefault(x => x.Name == apartment.Name);
+                if (apt == null)
                 {
                     apartmentService.CreateApartment(apartment);
                     //   return Json(new {Success = true, Message= "Apartment was succesfully created."});
                     ViewBag.Success = "Apartment successfully Created!";
                 }
-                ViewBag.Error = "Apartment Name Taken!";
+                else
+                {
+                    ViewBag.Error = "Apartment Name Taken!";
+                }
             }
             return View();
         }
