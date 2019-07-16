@@ -60,6 +60,26 @@ namespace StudentHousing.Controllers
         }
 
 
+        //[HttpGet]
+        //[Route("home/sortapartmentsbyprice")]
+        //public IActionResult SortApartmentsByPrice(int flag)
+        //{
+        //    var model = GetSortedApartmentsByPrice(flag);
+        //    return PartialView("_ListApartments", model);
+
+        //}
+
+        //private ApartmentsViewModel GetSortedApartmentsByPrice(int flag)
+        //{
+        //    var apartments = apartmentsViewModel.Apartments;
+        //    if(flag == 1)
+        //        apartments.Sort((x1, x2) => x1.Price.CompareTo(x2.Price));
+        //    else if(flag == 0)
+        //        apartments.Sort((x1, x2) => x2.Price.CompareTo(x1.Price));
+        //    apartmentsViewModel.Apartments = apartments;
+        //    return apartmentsViewModel;
+        //}
+
 
         [HttpPost]
         public IActionResult Create([FromBody] ApartmentModel model)

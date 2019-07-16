@@ -6912,7 +6912,7 @@ button.close {
         
 }
 .search-container button:hover {
-    background: #3c763d;
+    background-color: dimgrey;
 }
 
 @media screen and (max-width: 600px) {
