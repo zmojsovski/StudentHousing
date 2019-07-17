@@ -11,16 +11,15 @@ namespace DataAccess.Repositories
     {
         private  SHContext context = new SHContext();
 
-        public Apartment Add(Apartment apartment)
+        public void Add(Apartment apartment)
         {
             context.Apartments.Add(apartment);
-            Save();
-            return apartment;
+            context.SaveChanges();
         }
 
-        public IEnumerable<Apartment> GetAll()
+        public IQueryable<Apartment> GetAll()
         {
-            return context.Apartments.ToList();
+            return context.Apartments;
 
         }
 
@@ -35,31 +34,15 @@ namespace DataAccess.Repositories
             return sum / ratings.Count;
         }
 
-        //public Dictionary<Apartment, float> GetByAverageRatingApartments()
-        //{
-        //    Dictionary<Apartment, float> ApartmentAvgRatingDict = new Dictionary<Apartment, float>();
-        //    foreach(var apt in context.Apartments)
-        //    {
-        //        ApartmentAvgRatingDict.Add(apt, GetAverageRating(apt.Id));
-        //    }
-        //    return ApartmentAvgRatingDict;
-        //}
-
         public IQueryable<Apartment> GetByCity(int id)
         {
-            return context.Apartments.Where(x => x.CityId == id);
-            //return context.Apartments.ToList();
+            return context.Apartments.Where(x => x.CityId == id);           ;
         }
 
         public Apartment GetById(int Id)
         {
             return context.Apartments.FirstOrDefault(x => x.Id == Id);
           
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
         }
 
         public IEnumerable<Apartment> SearchApartment(int cityId, string name, DateTime? availableFrom, int? numberOfBeds)

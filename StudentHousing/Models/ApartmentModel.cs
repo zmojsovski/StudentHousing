@@ -14,22 +14,26 @@ namespace StudentHousing.Models
         public string Name { get; set; }
         [StringLength(100, ErrorMessage = "Address can contain maximum 100 characters")]
         public string Address { get; set; }
-        [Required(ErrorMessage = "Price per month must be inserted")]
+        [Required(ErrorMessage = "Price per month is required")]
         public decimal Price { get; set; }
-        [StringLength(500, ErrorMessage = "Description is too long")]
+        [StringLength(500, ErrorMessage = "Description can contain maximum 500 characters")]
         public string Description { get; set; }
-        [StringLength(15, ErrorMessage = "Phone Number too long")]
-        [RegularExpression("07[0-9]{7}")]
+        [StringLength(15, ErrorMessage = "Phone number can contain maximum 15 characters")]
+        [RegularExpression("07[0-9]{7}",ErrorMessage = "Phone number is invalid")]
         public string Phone { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [Required(ErrorMessage = "Apartment Availability must be picked")]
+        [Required(ErrorMessage = "Apartment availability is required")]
         [DataType(DataType.Date)]
         public DateTime AvailableFrom { get; set; }
         [Required]
-        [Range(1, 4, ErrorMessage = "The Number of Beds must be between 1 and 4")]
+        [Range(1, 4, ErrorMessage = "The Number of beds must be between 1 and 4")]
         public int NumberOfBeds { get; set; }
         [Required]
         public int CityId { get; set; }
         public float AverageRating { get; set; }
+        public bool IsSuccess { get; set; }
+        public bool IsDuplicateName { get; set; }
+
+        public bool IsTryCatch { get; set; }
     }
 }

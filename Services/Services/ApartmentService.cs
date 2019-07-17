@@ -1,5 +1,6 @@
 ﻿using DataAccess.Models;
 using DataAccess.Repositories;
+using DataAccess.Repositories.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,15 @@ namespace Services.Services
 {
    public class ApartmentService : IApartmentService
     {
-        ApartmentRepository apartmentRepository = new ApartmentRepository();
-        RatingRepository ratingRepository = new RatingRepository();
+        IApartmentRepository apartmentRepository = new ApartmentRepository();
+        IRatingRepository ratingRepository = new RatingRepository();
+
         public void CreateApartment(Apartment apartment)
         {
           apartmentRepository.Add(apartment);
         }
 
-        public IEnumerable<Apartment> GetAll()
+        public IQueryable<Apartment> GetAll()
         {
             return apartmentRepository.GetAll();
         }
@@ -27,11 +29,9 @@ namespace Services.Services
             return apartmentRepository.GetById(id);
         }
 
-        public IEnumerable<Apartment> GetApartmentByName(string name)
+        public Apartment GetApartmentByName(string name)
         {
-            var apartments = apartmentRepository.GetAll();
-            var apartment = apartments.Where(x => x.Name == name);
-            return apartment;
+            return apartmentRepository.GetAll().FirstOrDefault(x => x.Name == name);          
         }
 
         public IEnumerable<Apartment> GetApartmentsbyCity(int id)

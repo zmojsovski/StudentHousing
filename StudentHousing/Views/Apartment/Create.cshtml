@@ -4,20 +4,22 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .hidden {
-        display: none;
-    }
-    
-    .btn{
-        width:110px;
-        margin-left:380px;
-    }
-</style>
 <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.css" />
 
- <div id="apsuccmsg" class="hidden alert alert-success">Apartment has been Created!</div>
-<h2 class="text-center">Create Apartment</h2>
+@if (Model?.IsSuccess == true)
+{
+    <div class="alert alert-success">Apartment has been successfully created.</div>
+}
+@if (Model?.IsDuplicateName == true)
+{
+    <div  class="alert alert-danger">Apartment name already exists.</div>
+}
+@if (Model?.IsTryCatch == true)
+{
+    <div  class="alert alert-danger">There was an error while creating your apartment please try again.</div>
+}
+
+<h2>Create Apartment</h2>
 
 <div class="row">
     <div class="col-md-8">
@@ -54,7 +56,7 @@
             </div>
             <br />
             <div class="form-group">
-                @Html.LabelFor(model => model.AvailableFrom, "Available From:",htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.AvailableFrom, "Available From:", htmlAttributes: new { @class = "control-label" })
                 @Html.TextBoxFor(model => model.AvailableFrom,
                 new
                      {
@@ -87,60 +89,28 @@
                 <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
             <br />
+            <br />
+            <br />
             <div class="form-group">
-                <input id="apartmentcreate" type="submit" value="Create" class="btn btn-default" />
+                <input id="apartmentcreate" type="submit" value="Create" class="btn createbutton btn-default" />
             </div>
         </form>
     </div>
 </div>
 
-@*<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
-
-@if (ViewBag.Success != null)
-{
-    <script type="text/javascript">
-        window.onload = function () {
-            $("#apsuccmsg").removeClass("hidden");
-            $("#apsuccmsg").html("Apartment has Been Created!");
-        };
-    </script>
-}
-
-@if (ViewBag.Error != null)
-{
-    <script type="text/javascript">
-        window.onload = function () {
-            $("#apsuccmsg").removeClass("alert-success");
-            $("#apsuccmsg").addClass("alert-danger");
-            $("#apsuccmsg").html("Apartment Name is already in use!");
-            $("#apsuccmsg").removeClass("hidden");
-        };
-    </script>
-}
-
-<script src="~/lib/jquery/jquery.js"></script>
-<script src="~/lib/jqueryui/jquery-ui.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#AvailableFrom").datepicker({
-        dateFormat: "mm-dd-yy",
-        minDate: -0,
-    });
-    $("#AvailableFrom").rules("add", {
-        required: true,
-        messages: {
-            required: "The Available From Date is mandatory!",
-        }
-    });
-    
-});
-</script>
-
+<div>
+    @*<a asp-action="Index">Back to List</a>*@
+    <a asp-controller="Home"
+       asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/js/CreateApt.js"></script>
+
 }
 
