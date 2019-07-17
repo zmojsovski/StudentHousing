@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -35,5 +36,8 @@ namespace StudentHousing.Models
         public bool IsDuplicateName { get; set; }
 
         public bool IsTryCatch { get; set; }
+
+        public List<SelectListItem> Cities { get; set; }
+        public List<SelectListItem> NumberOfBedsList { get; set; }
     }
 }

@@ -12,14 +12,16 @@
 }
 @if (Model?.IsDuplicateName == true)
 {
-    <div  class="alert alert-danger">Apartment name already exists.</div>
+    <div class="alert alert-danger">Apartment name already exists.</div>
 }
 @if (Model?.IsTryCatch == true)
 {
-    <div  class="alert alert-danger">There was an error while creating your apartment please try again.</div>
+    <div class="alert alert-danger">There was an error while creating your apartment please try again.</div>
 }
 
 <h2>Create Apartment</h2>
+@Html.HiddenFor(m=>m.NumberOfBedsList, Model.NumberOfBedsList)
+@Html.HiddenFor(m=>m.Cities,Model.Cities)
 
 <div class="row">
     <div class="col-md-8">
@@ -56,36 +58,32 @@
             </div>
             <br />
             <div class="form-group">
-                @Html.LabelFor(model => model.AvailableFrom, "Available From:", htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.AvailableFrom, "Available From:", htmlAttributes: new { @class = "control-label", })
                 @Html.TextBoxFor(model => model.AvailableFrom,
                 new
                      {
                          @id = "AvailableFrom",
                          @class = "form-control input-md datepicker",
+                         @autocomplete = "off",
                      })
                 @Html.ValidationMessageFor(model => model.AvailableFrom, "", new { @class = "text-danger" })
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="NumberOfBeds" class="control-label">Number of Beds:</label>
-                <select class="form-control" id="NumberOfBeds" name="NumberOfBeds">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                @*<select class="form-control" id="NumberOfBeds" name="NumberOfBeds">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>*@
+                @Html.DropDownListFor(m => m.NumberOfBeds, Model.NumberOfBedsList, new { @class = "form-control" });
                 <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="CityId" class="control-label">City:</label>
-                <select id="CityId" name="CityId" class="form-control">
-                    <option value="1">Skopje</option>
-                    <option value="2">Ohrid</option>
-                    <option value="3">Kumanovo</option>
-                    <option value="4">Tetovo</option>
-                    <option value="5">Bitola</option>
-                </select>
+                @Html.DropDownListFor(m => m.CityId, Model.Cities, new { @class = "form-control" });
                 <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
             <br />
@@ -99,18 +97,15 @@
 </div>
 
 <div>
-    @*<a asp-action="Index">Back to List</a>*@
     <a asp-controller="Home"
        asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/jqueryui/jquery-ui.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/js/CreateApt.js"></script>
-
 }
 

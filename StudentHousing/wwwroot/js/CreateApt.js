@@ -5,6 +5,7 @@
         minDate: -0,
     });
 
+
     //$("#AvailableFrom").rules("add", {
     //    required: true,
     //    messages: {
