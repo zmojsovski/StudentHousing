@@ -60,20 +60,20 @@ namespace Services.Services
                 query = query.Where(x => x.NumberOfBeds >= numberOfBeds);
             }
 
-            if (sortType == "price")
-            {
-                if (sortDirection == "down")
-                    query = query.OrderBy(x => x.Price);
-                else
-                    query = query.OrderByDescending(x => x.Price);
-            }
-            else if (sortType == "rating")
-            {
-                if (sortDirection == "down")
-                    query = query.OrderBy(x => x.AverageRating);
-                else
-                    query = query.OrderByDescending(x => x.AverageRating);
-            }
+            //if (sortType == "price")
+            //{
+            //    if (sortDirection == "down")
+            //        query = query.OrderBy(x => x.Price);
+            //    else
+            //        query = query.OrderByDescending(x => x.Price);
+            //}
+            //else if (sortType == "rating")
+            //{
+            //    if (sortDirection == "down")
+            //        query = query.OrderBy(x => x.AverageRating);
+            //    else
+            //        query = query.OrderByDescending(x => x.AverageRating);
+            //}
             return query.ToList();
         }
 

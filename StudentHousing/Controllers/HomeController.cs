@@ -47,21 +47,21 @@ namespace StudentHousing.Controllers
                 AverageRating = float.Parse(apartmentService.GetaverageRatingbyId(x.Id).ToString("0.00"))
             }).ToList();
 
-           
-            //if (sortType == "price")
-            //{
-            //    if(sortDirection == "down")
-            //       apartments = apartments.OrderBy(x => x.Price).ToList();
-            //    else
-            //        apartments = apartments.OrderByDescending(x => x.Price).ToList();
-            //}
-            //else if(sortType == "rating")
-            //{
-            //    if (sortDirection == "down")
-            //        apartments = apartments.OrderBy(x => x.AverageRating).ToList();
-            //    else
-            //        apartments = apartments.OrderByDescending(x => x.AverageRating).ToList();
-            //}
+
+            if (sortType == "price")
+            {
+                if (sortDirection == "down")
+                    apartments = apartments.OrderBy(x => x.Price).ToList();
+                else
+                    apartments = apartments.OrderByDescending(x => x.Price).ToList();
+            }
+            else if (sortType == "rating")
+            {
+                if (sortDirection == "down")
+                    apartments = apartments.OrderBy(x => x.AverageRating).ToList();
+                else
+                    apartments = apartments.OrderByDescending(x => x.AverageRating).ToList();
+            }
             apartmentsViewModel.Apartments = apartments;
             return apartmentsViewModel;    
         }
