@@ -14,8 +14,14 @@ namespace StudentHousing.Controllers
     {
         IApartmentService apartmentService = new ApartmentService();
         ICityService cityService = new CityService();
-        public IActionResult Index()
+              
+        [HttpGet]
+        public IActionResult Create()
         {
+            //  var cities = cityService.get
+            // select selectlistiteme
+            var model = new ApartmentModel();
+          //  model.c
             return View();
         }
 
@@ -24,6 +30,14 @@ namespace StudentHousing.Controllers
         {
             if (ModelState.IsValid)
             {
+                var apt = apartmentService.GetApartmentByName(model.Name);
+                if (apt != null)
+                {
+                    model.IsDuplicateName = true;
+                    return View(model);
+                }
+
+
                 var apartment = new Apartment
                 {
                     Name = model.Name,
@@ -34,32 +48,18 @@ namespace StudentHousing.Controllers
                     Phone = model.Phone,
                     CityId = model.CityId,
                     AvailableFrom = model.AvailableFrom
-
                 };
-                var apt = apartmentService.GetAll().FirstOrDefault(x => x.Name.ToLower() == apartment.Name.ToLower());
-                if (apt == null)
+                try
                 {
                     apartmentService.CreateApartment(apartment);
-                    //   return Json(new {Success = true, Message= "Apartment was succesfully created."});
-                    ViewBag.Success = "Apartment successfully Created!";
+                    model.IsSuccess = true;
                 }
-                else
+                catch
                 {
-                    ViewBag.Error = "Apartment Name Taken!";
+                    model.IsTryCatch = true;
                 }
             }
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Create()
-        {
-
-            ViewData["Title"] = "Create Apartment";
-            var cities = cityService.GetAll();
-            var broj = cities.Count();
-            ViewBag.cities = cities;
-            ViewBag.brojac = broj;
-            return View();
-        }
+            return View(model);
+        }      
     }
 }
