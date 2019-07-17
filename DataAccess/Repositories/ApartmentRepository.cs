@@ -36,7 +36,7 @@ namespace DataAccess.Repositories
 
         public IQueryable<Apartment> GetByCity(int id)
         {
-            return context.Apartments.Where(x => x.CityId == id);           ;
+            return context.Apartments.Where(x => x.CityId == id);          
         }
 
         public Apartment GetById(int Id)

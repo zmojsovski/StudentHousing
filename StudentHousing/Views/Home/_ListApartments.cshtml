@@ -12,20 +12,23 @@
                 <span class="apartment-item"><span class="apartment-data">@apt.AvailableFrom.ToString().Split(" ")[0]</span></span>
                 <span class="apartment-item"><span class="apartment-data">@apt.NumberOfBeds  <img id="bed-icon" src="~/images/bed-icon.png"></span></span>
                 <span class="apartment-item"><span class="apartment-data">$@apt.Price</span></span>
-                <span class="apartment-item">
+                <span class="apartment-item" id="stars">
                     <span class="apartment-data" value="0">
-                            <a href=""><span id="1" class="glyphicon glyphicon-star rating" value="1"></span></a>
-                            <a href=""><span id="2" class="glyphicon glyphicon-star rating" value="2"></span></a>
-                            <a href=""><span id="3" class="glyphicon glyphicon-star rating" value="3"></span></a>
-                            <a href=""><span id="4" class="glyphicon glyphicon-star rating" value="4"></span></a>
-                            <a href=""><span id="5" class="glyphicon glyphicon-star rating" value="5"></span></a>
+                        <a href=""><span id="1" class="glyphicon glyphicon-star rating" value="1"></span></a>
+                        <a href=""><span id="2" class="glyphicon glyphicon-star rating" value="2"></span></a>
+                        <a href=""><span id="3" class="glyphicon glyphicon-star rating" value="3"></span></a>
+                        <a href=""><span id="4" class="glyphicon glyphicon-star rating" value="4"></span></a>
+                        <a href=""><span id="5" class="glyphicon glyphicon-star rating" value="5"></span></a>
+                    </span>
+                    <span>
+                        <p>Average rating: @apt.AverageRating.ToString()</p>
                     </span>
                 </span>
-                <span>
-                    <p>Average rating: @apt.AverageRating.ToString()</p>
-                </span>
+                
                 
             </div>
         </div>
     }
 </div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/Rating.js"></script>
