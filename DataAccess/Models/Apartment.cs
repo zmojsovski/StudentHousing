@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace DataAccess.Models
 {
@@ -18,5 +19,7 @@ namespace DataAccess.Models
         public City City { get; set; }
         public int CityId { get; set; }
         public List<Rating> Ratings { get; set; }
+        [NotMapped]
+        public float AverageRating { get { return Ratings.Sum(x => x.RatingValue); } }
     }
 }

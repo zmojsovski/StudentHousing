@@ -44,7 +44,7 @@ namespace Services.Services
             return apartmentRepository.GetAverageRating(id);
         }    
 
-        public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds)
+        public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)
         {
             IQueryable<Apartment> query = apartmentRepository.GetByCity(cityId);
             if (!string.IsNullOrEmpty(name))
@@ -60,6 +60,20 @@ namespace Services.Services
                 query = query.Where(x => x.NumberOfBeds >= numberOfBeds);
             }
 
+            if (sortType == "price")
+            {
+                if (sortDirection == "down")
+                    query = query.OrderBy(x => x.Price);
+                else
+                    query = query.OrderByDescending(x => x.Price);
+            }
+            else if (sortType == "rating")
+            {
+                if (sortDirection == "down")
+                    query = query.OrderBy(x => x.AverageRating);
+                else
+                    query = query.OrderByDescending(x => x.AverageRating);
+            }
             return query.ToList();
         }
 

@@ -19,7 +19,6 @@ namespace StudentHousing.Controllers
         IRatingService ratingService = new RatingService();
         ICityService cityService = new CityService();
         ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
-        RatingsViewModel ratingsViewModel = new RatingsViewModel();
         
         [HttpGet]
         public IActionResult Index()
@@ -37,7 +36,7 @@ namespace StudentHousing.Controllers
 
         private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)
         {
-            var apartments = apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds)
+            var apartments = apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds, sortType, sortDirection)
                 .Select(x => new ApartmentModel
             {
                 Id = x.Id,
@@ -49,20 +48,20 @@ namespace StudentHousing.Controllers
             }).ToList();
 
            
-            if (sortType == "price")
-            {
-                if(sortDirection == "down")
-                   apartments = apartments.OrderBy(x => x.Price).ToList();
-                else
-                    apartments = apartments.OrderByDescending(x => x.Price).ToList();
-            }
-            else if(sortType == "rating")
-            {
-                if (sortDirection == "down")
-                    apartments = apartments.OrderBy(x => x.AverageRating).ToList();
-                else
-                    apartments = apartments.OrderByDescending(x => x.AverageRating).ToList();
-            }
+            //if (sortType == "price")
+            //{
+            //    if(sortDirection == "down")
+            //       apartments = apartments.OrderBy(x => x.Price).ToList();
+            //    else
+            //        apartments = apartments.OrderByDescending(x => x.Price).ToList();
+            //}
+            //else if(sortType == "rating")
+            //{
+            //    if (sortDirection == "down")
+            //        apartments = apartments.OrderBy(x => x.AverageRating).ToList();
+            //    else
+            //        apartments = apartments.OrderByDescending(x => x.AverageRating).ToList();
+            //}
             apartmentsViewModel.Apartments = apartments;
             return apartmentsViewModel;    
         }
