@@ -36,16 +36,12 @@ namespace Services.Services
 
         public IEnumerable<Apartment> GetApartmentsbyCity(int id)
         {
-            return apartmentRepository.GetByCity(id);
+            return (apartmentRepository.GetByCity(id));
         }
 
         public float GetaverageRatingbyId(int id)
         {
-            //     var averageRating = ratingRepository.GetAll().Where(x => 
-            //     x.ApartmentId == id).Select(x => x.RatingValue).Average();
-            //   return (float)averageRating;
-
-            return 0;
+            return apartmentRepository.GetAverageRating(id);
         }
 
         public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds)

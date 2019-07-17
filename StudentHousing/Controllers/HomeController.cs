@@ -31,11 +31,11 @@ namespace StudentHousing.Controllers
                 Value = x.Id.ToString()
             }).ToList();
 
-            var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null);
+            var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null, 0, 0);
             return this.View(model);
         }
 
-        private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds)
+        private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds, int flagPrice, int flagRating)
         {
             var apartments = apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds);
             apartmentsViewModel.Apartments = apartments.Select(x => new ApartmentModel
@@ -45,40 +45,34 @@ namespace StudentHousing.Controllers
                 Price = x.Price,
                 AvailableFrom = x.AvailableFrom,
                 NumberOfBeds = x.NumberOfBeds,
-                AverageRating = apartmentService.GetaverageRatingbyId(x.Id)
+                AverageRating = float.Parse(apartmentService.GetaverageRatingbyId(x.Id).ToString("0.00"))
             }).ToList();
-            return apartmentsViewModel;
+
+            if (flagPrice > flagRating)
+            {
+                if (flagPrice != 0 && flagPrice % 2 == 1)
+                    apartmentsViewModel.Apartments.Sort((x1, x2) => x2.Price.CompareTo(x1.Price));
+                else if (flagPrice != 0 && flagPrice % 2 == 0)
+                    apartmentsViewModel.Apartments.Sort((x1, x2) => x1.Price.CompareTo(x2.Price));
+            }
+            else if(flagRating > flagPrice)
+            {
+                if (flagRating != 0 && flagRating % 2 == 1)
+                    apartmentsViewModel.Apartments.Sort((x1, x2) => x2.AverageRating.CompareTo(x1.AverageRating));
+                else if (flagRating != 0 && flagRating % 2 == 0)
+                    apartmentsViewModel.Apartments.Sort((x1, x2) => x1.AverageRating.CompareTo(x2.AverageRating));
+            }
+            return apartmentsViewModel;    
         }
 
         [HttpGet]
         [Route("home/getapartmentsbysearch")]
-        public IActionResult GetApartmentsBySearch([FromQuery]int cityId, [FromQuery]string name, [FromQuery]DateTime availableFrom, [FromQuery]int numberOfBeds)
+        public IActionResult GetApartmentsBySearch([FromQuery]int cityId, [FromQuery]string name, [FromQuery]DateTime availableFrom, [FromQuery]int numberOfBeds, int flagPrice, int flagRating)
         {
-            var model = this.GetFullAndPartialViewModel(cityId, name, availableFrom, numberOfBeds);
+            var model = this.GetFullAndPartialViewModel(cityId, name, availableFrom, numberOfBeds, flagPrice, flagRating);
             return PartialView("_ListApartments", model);
 
         }
-
-
-        //[HttpGet]
-        //[Route("home/sortapartmentsbyprice")]
-        //public IActionResult SortApartmentsByPrice(int flag)
-        //{
-        //    var model = GetSortedApartmentsByPrice(flag);
-        //    return PartialView("_ListApartments", model);
-
-        //}
-
-        //private ApartmentsViewModel GetSortedApartmentsByPrice(int flag)
-        //{
-        //    var apartments = apartmentsViewModel.Apartments;
-        //    if(flag == 1)
-        //        apartments.Sort((x1, x2) => x1.Price.CompareTo(x2.Price));
-        //    else if(flag == 0)
-        //        apartments.Sort((x1, x2) => x2.Price.CompareTo(x1.Price));
-        //    apartmentsViewModel.Apartments = apartments;
-        //    return apartmentsViewModel;
-        //}
 
 
         [HttpPost]
