@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.Interfaces;
 using Services.Services;
 using StudentHousing.Models;
@@ -18,11 +19,16 @@ namespace StudentHousing.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //  var cities = cityService.get
-            // select selectlistiteme
-            var model = new ApartmentModel();
-          //  model.c
-            return View();
+            var model = new ApartmentModel()
+            {
+                NumberOfBedsList = getNumberOfBeds(),
+                Cities = getAllCities(),
+                AvailableFrom = getTodayDate()
+            };
+
+            //  model.c
+
+            return View(model);
         }
 
         [HttpPost]
@@ -34,6 +40,8 @@ namespace StudentHousing.Controllers
                 if (apt != null)
                 {
                     model.IsDuplicateName = true;
+                    model.Cities = getAllCities();
+                    model.NumberOfBedsList = getNumberOfBeds();
                     return View(model);
                 }
 
@@ -59,7 +67,34 @@ namespace StudentHousing.Controllers
                     model.IsTryCatch = true;
                 }
             }
+
+            model.Cities = getAllCities();
+            model.NumberOfBedsList = getNumberOfBeds();
             return View(model);
-        }      
+        }   
+        public List<SelectListItem> getNumberOfBeds() {
+            var listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem { Text = "1", Value = "1" });
+            listItems.Add(new SelectListItem { Text = "2", Value = "2" });
+            listItems.Add(new SelectListItem { Text = "3", Value = "3" });
+            listItems.Add(new SelectListItem { Text = "4", Value = "4" });
+            return listItems;
+        }
+
+        public List<SelectListItem> getAllCities()
+        {
+            var allCities = cityService.GetAll();
+        return    allCities.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
+        }
+
+        public DateTime getTodayDate()
+        {
+            DateTime today = DateTime.Today;
+            return today;
+        }
     }
 }
