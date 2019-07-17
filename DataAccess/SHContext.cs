@@ -49,6 +49,7 @@ namespace DataAccess
            .WithMany(g => g.Apartments)
            .HasForeignKey(s => s.CityId);
             modelBuilder.Entity<Apartment>().HasMany<Rating>(x => x.Ratings).WithOne(x => x.Apartment).HasPrincipalKey(x => x.Id);
+
         }
         
     }
