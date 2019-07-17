@@ -14,7 +14,7 @@ namespace Services.Interfaces
 
         Apartment GetApartmentByName(string name);
         void CreateApartment(Apartment apartment);
-        IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds);
+        IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection);
         IEnumerable<Apartment> GetApartmentsbyCity(int id);
         //IEnumerable<Apartment> SortbyRatingApartments(int flag);
         Apartment GetApartmentById(int id);
