@@ -66,7 +66,9 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        
+        <footer>
+            <p>&copy; 2019 - StudentHousing</p>
+        </footer>
     </div>
 
     <environment include="Development">
@@ -74,7 +76,7 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/jqueryui/jquery-ui.js"></script>
         @*<script src="~/js/Rating.js"></script>*@
-        
+
         @*<script src="~/js/site.js" asp-append-version="true"></script>*@
     </environment>
     <environment exclude="Development">
@@ -94,8 +96,7 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+
 </body>
-<footer>
-    <p>&copy; 2019 - StudentHousing</p>
-</footer>
+
 </html>
