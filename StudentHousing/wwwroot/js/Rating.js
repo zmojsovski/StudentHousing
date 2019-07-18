@@ -3,33 +3,39 @@
     var flag = 0;
     $(".rating").hover(function () {
         flag = 1;
-        var apartmentId = $(this).parent().parent().parent().parent().children(":nth-of-type(2)").children().attr("value");
+        var apartmentId = $(this).parents(".apartment - box").attr("id");
         if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
             event.preventDefault();
             var VAL = $(this).attr("value");
-            var Parent = $(this).parent().parent();
-            for (let i = 0; i <= VAL; i++) {
-                Parent.children(":nth-of-type(" + i + ")").children().css("color", "yellow");
+            for (let i = 1; i <= VAL; i++) {
+                $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "yellow");
             }
-
         }
     },
 
         function () {
-            var apartmentId = $(this).parent().parent().parent().parent().children(":nth-of-type(2)").children().attr("value");
+            var apartmentId = $(this).parents(".apartment - box").attr("id");
             if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
-                var Parent = $(this).parent().parent();
                 var VAL = $(this).attr("value");
-                for (let i = 0; i <= VAL; i++) {
-                    Parent.children(":nth-of-type(" + i + ")").children().css("color", "grey");
+                for (let i = 1; i <= VAL; i++) {
+                    $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
                 }
+
+                var TheColor = $(this).css("color");
+
+                if (TheColor == 'rgb(128, 128, 128)') {
+                    for (i = VAL; i <= 5; i++)
+                        $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
+                }
+                
             }
         });
 
     $(".rating").click(function () {
 
         event.preventDefault();
-        var ratingValue = $(this).attr("id");
+        flag = 0;
+        var ratingValue = $(this).attr("value");
         var apartmentId = $(this).parents('.apartment-box').attr("id");
         var avgRatingText = $(this).parents('.apartment-box').find('.totalAverage');
         var ESlabel = $(this).parents('.apartment-box').children().find('#success-error-message');
