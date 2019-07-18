@@ -1613,6 +1613,8 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 .row-no-gutters {
   margin-right: 0;
@@ -1674,6 +1676,8 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  
+  
 }
 .col-xs-1,
 .col-xs-2,
@@ -2666,7 +2670,7 @@ output {
   font-size: 14px;
   line-height: 1.42857143;
   color: #555555;
-  background-color: #fff;
+  background-color: lightgray;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -2678,7 +2682,8 @@ output {
   transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  margin-bottom: 10px;
+  margin: 10px;
+
 }
 .form-control:focus {
   border-color: #66afe9;
@@ -2745,6 +2750,7 @@ textarea.form-control {
 }
 .form-group {
   margin-bottom: 15px;
+  width: 1000px;
 }
 .radio,
 .checkbox {
@@ -3027,7 +3033,7 @@ select[multiple].input-lg {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    width: 600px;
     vertical-align: middle;
   }
   .form-inline .form-control-static {
@@ -7011,8 +7017,18 @@ button.close {
     height: 100%;
     width: 100%;
 }
-.row{
-    
+/*.row {
+    display: flex;
+    width: 100%;
+}*/
+
+#form-container{
+    background-color: white;
+    padding-left: 157px;
+}
+#form-container h2{
+    margin-bottom: 60px;
+    margin-top: 40px;
 }
 .glyphicon-star-empty {
     font-size: 24px;
@@ -7022,14 +7038,21 @@ button.close {
 .rating {
     font-size: 24px;
     color: grey;
-}
 
-#design{
+}
+#apartmentcreate {
+    width: 600px;
+    margin-left: 213px;
+    margin-bottom: 50px;
+    background-color: #F4BD6B;
+}
+#description-area{
+    height: 120px;
+}
+#design {
     width: 400px;
 }
-
-#apartmentform {
-    background-color: white;
+.backtolist{
+    margin-bottom: 100px;
 }
-
 /*# sourceMappingURL=bootstrap.css.map */

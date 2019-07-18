@@ -19,7 +19,7 @@
     <div class="alert alert-danger">There was an error while creating your apartment please try again.</div>
 }
 
-
+<h2>Create Apartment</h2>
 @Html.HiddenFor(m=>m.NumberOfBedsList, Model.NumberOfBedsList)
 @Html.HiddenFor(m=>m.Cities,Model.Cities)
 
@@ -108,11 +108,11 @@
 
     </div>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        <script src="~/lib/jquery/jquery.js"></script>
-        <script src="~/lib/jqueryui/jquery-ui.js"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-        <script src="~/js/CreateApt.js"></script>
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/js/CreateApt.js"></script>
+}
 
