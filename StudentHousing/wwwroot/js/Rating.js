@@ -3,6 +3,9 @@
     var flag = 0;
     $(".rating").hover(function () {
         flag = 1;
+        for (let i = 1; i <= 5; i++) {
+            $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
+        }
         var apartmentId = $(this).parents(".apartment - box").attr("id");
         if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
             event.preventDefault();
