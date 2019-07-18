@@ -13,8 +13,6 @@
             }
 
         }
-        //alert(VAL);
-
     },
 
         function () {

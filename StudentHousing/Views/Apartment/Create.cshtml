@@ -93,19 +93,22 @@
                 <input id="apartmentcreate" type="submit" value="Create" class="btn createbutton btn-default" />
             </div>
         </form>
+
     </div>
-</div>
+    <div class="col-md-4">
+        <img id="design" src="~/images/create-picture.jpg" />
+    </div>
 
-<div>
-    <a asp-controller="Home"
-       asp-action="Index">Back to List</a>
-</div>
+    <div class="row">
+        <a asp-controller="Home"
+           asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="~/lib/jquery/jquery.js"></script>
-    <script src="~/lib/jqueryui/jquery-ui.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="~/js/CreateApt.js"></script>
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/jqueryui/jquery-ui.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/js/CreateApt.js"></script>
+    }
 

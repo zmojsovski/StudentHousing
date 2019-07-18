@@ -8,15 +8,10 @@ namespace Services.Interfaces
 {
     public interface IApartmentService
     {
-        float GetaverageRatingbyId(int id);
-
-        IQueryable<Apartment> GetAll();
-
+        //IQueryable<Apartment> GetApartments();
         Apartment GetApartmentByName(string name);
         void CreateApartment(Apartment apartment);
         IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection);
-        IEnumerable<Apartment> GetApartmentsbyCity(int id);
-        //IEnumerable<Apartment> SortbyRatingApartments(int flag);
-        Apartment GetApartmentById(int id);
+        //IEnumerable<Apartment> GetApartmentsbyCity(int id);
     }
 }
