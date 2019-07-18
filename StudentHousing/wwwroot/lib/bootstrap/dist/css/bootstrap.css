@@ -7052,6 +7052,11 @@ button.close {
 #design {
     width: 400px;
 }
+
+.createbutton {
+    width: 110px;
+    margin-left: 273px;
+}
 .backtolist{
     margin-bottom: 100px;
 }
