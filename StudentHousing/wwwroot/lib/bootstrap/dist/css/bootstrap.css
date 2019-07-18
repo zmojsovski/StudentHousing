@@ -6983,7 +6983,14 @@ button.close {
     display: block;
     padding-top: 50px;
 }
-#stars p{
+/*#stars p{
+    padding-left: 20px;
+}*/
+
+.average-parent {
+    padding-left: 20px;
+}
+.success-error {
     padding-left: 20px;
 }
 #bed-icon{
@@ -7015,4 +7022,6 @@ button.close {
     font-size: 24px;
     color: grey;
 }
+
+
 /*# sourceMappingURL=bootstrap.css.map */

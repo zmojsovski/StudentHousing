@@ -31,33 +31,24 @@
     $(".rating").click(function () {
 
         event.preventDefault();
-        var apartmentId = $(this).parent().parent().parent().parent().children(":nth-of-type(2)").children().attr("value");
-        var ratingValueText = $(this).parent().parent().parent().children(":nth-of-type(2)").children();
-        // alert(ratingValueText);
-        //var apartmentId=0;
-        var ratingValue = this.id;
-        var Parent = $(this).parent().parent();
-        for (let i = 1; i <= ratingValue; i++) {
-            Parent.children(":nth-of-type(" + i + ")").children().css("color", "yellow");
-        }
-
-        flag = 0;
-
+        var ratingValue = $(this).attr("id");
+        var apartmentId = $(this).parents('.apartment-box').attr("id");
+        var avgRatingText = $(this).parents('.apartment-box').find('.totalAverage');
+        var ESlabel = $(this).parents('.apartment-box').children().find('#success-error-message');
         $.ajax({
             url: '/Home/AddRating',
             type: 'POST',
             data: { apartmentId: apartmentId, ratingValue: ratingValue },
             dataType: 'json',
             success: function (data) {
-                ratingValueText.text("Average rating: " + data.toFixed(2));
+                if (data != null && data.success == true) {
+                    avgRatingText.text(data.avgRating);
+                    ESlabel.text("Successfully rated").css("color", "forestgreen");
+                }
             },
             error: function (data) {
-                alert("not ok");
+                ESlabel.text("Error").css("color", "red");
             }
         });
-        apartments.push(apartmentId);
-
     });
-
-
 });
