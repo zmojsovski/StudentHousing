@@ -1,18 +1,19 @@
 ﻿$(document).ready(function () {
     var apartments = [];
     var flag = 0;
+    var change = true;
     $(".rating").hover(function () {
         flag = 1;
-        for (let i = 1; i <= 5; i++) {
-            $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
+        if (change == true) {
+            for (let i = 1; i <= 5; i++) {
+                $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
+            }
         }
         var apartmentId = $(this).parents(".apartment - box").attr("id");
         if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
             event.preventDefault();
-            var VAL = $(this).attr("value");
-            for (let i = 1; i <= VAL; i++) {
-                $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "yellow");
-            }
+            $(this).css("color", "yellow");
+            $(this).prevUntil().css("color", "yellow");
         }
     },
 
@@ -20,23 +21,22 @@
             var apartmentId = $(this).parents(".apartment - box").attr("id");
             if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
                 var VAL = $(this).attr("value");
-                for (let i = 1; i <= VAL; i++) {
-                    $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
-                }
+                $(this).css("color", "grey");
+                $(this).prevUntil().css("color", "grey");
 
                 var TheColor = $(this).css("color");
 
                 if (TheColor == 'rgb(128, 128, 128)') {
-                    for (i = VAL; i <= 5; i++)
-                        $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
-                }
-                
+                    $(this).css("color", "grey");
+                    $(this).prevUntil().css("color", "grey");
+                }    
             }
+            change = true;
         });
 
     $(".rating").click(function () {
-
         event.preventDefault();
+        change = false;
         flag = 0;
         var ratingValue = $(this).attr("value");
         var apartmentId = $(this).parents('.apartment-box').attr("id");
