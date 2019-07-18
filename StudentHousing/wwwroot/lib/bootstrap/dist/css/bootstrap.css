@@ -1615,6 +1615,7 @@ pre code {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  background-color: white;
 }
 .row-no-gutters {
   margin-right: 0;
@@ -1674,8 +1675,10 @@ pre code {
 .col-lg-12 {
   position: relative;
   min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
+  width: 100%;
+  /*background-color: white;*/
+  /*padding-right: 15px;
+  padding-left: 15px;*/
   
   
 }
@@ -7023,8 +7026,10 @@ button.close {
 }*/
 
 #form-container{
-    background-color: white;
+    /*background-color: white;*/
     padding-left: 157px;
+    width: 100%;
+    
 }
 #form-container h2{
     margin-bottom: 60px;
@@ -7060,4 +7065,5 @@ button.close {
 .backtolist{
     margin-bottom: 100px;
 }
+
 /*# sourceMappingURL=bootstrap.css.map */
