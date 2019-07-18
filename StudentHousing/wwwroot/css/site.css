@@ -15,6 +15,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+
 }
 
 /* Carousel */
@@ -37,10 +38,7 @@ body {
     display: none;
 }
 
-.createbutton {
-    width: 110px;
-    margin-left: 273px;
-}
+
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
