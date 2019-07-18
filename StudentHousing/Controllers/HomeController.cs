@@ -23,7 +23,7 @@ namespace StudentHousing.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var allCities = cityService.GetAll();
+            var allCities = cityService.GetCities();
             apartmentsViewModel.Cities = allCities.Select(x => new SelectListItem
             {
                 Text = x.Name,
@@ -32,6 +32,13 @@ namespace StudentHousing.Controllers
 
             var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null, null, null);
             return this.View(model);
+        }
+        [HttpPost]
+        [Route("home/searchautocomplete")]
+        public JsonResult SearchAutoComplete(int cityId, string nameSubstring)
+        {
+            var names = apartmentService.AutoComplete(cityId, nameSubstring).ToList();
+            return Json(names);
         }
 
         private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)

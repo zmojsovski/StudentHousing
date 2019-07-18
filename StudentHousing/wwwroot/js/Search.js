@@ -1,6 +1,31 @@
 ﻿$(document).ready(function () {
     var sortType = null;
     var sortDirection = null;
+    var cityId = $("#CityDDL").val();
+    $("#name").autocomplete({
+        
+        source: function (request, response) {
+            $.ajax({
+                url: "/home/searchautocomplete",
+                type: "POST",
+                dataType: "json",
+                data: { cityId: cityId, nameSubstring: request.term },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: item, value: item };
+                    }))
+
+                }
+            })
+        },
+        messages: {
+            noResults: 'No suggestions',
+            results: ''
+        },
+        
+       
+    });  
+
     $("#sortPrice").click(function () {
         sortType = "price";
         sortDirection = this.className.split("-")[3];

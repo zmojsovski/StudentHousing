@@ -8,6 +8,6 @@ namespace Services.Interfaces
 {
     public interface ICityService
     {
-        IEnumerable<City> GetAll();
+        IQueryable<City> GetCities();
     }
 }

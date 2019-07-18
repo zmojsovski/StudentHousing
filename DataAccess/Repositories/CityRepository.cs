@@ -10,24 +10,9 @@ namespace DataAccess.Repositories
     public class CityRepository : ICityRepository
     {
        private  SHContext context = new SHContext();
-
-        public City GetById(int Id)
+        public IQueryable<City> GetCities()
         {
-           
-            return context.Cities.FirstOrDefault(x => x.Id == Id);
-          
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
-          
-        }
-
-        public IEnumerable<City> GetAll()
-        {
-            return context.Cities;
-          
+            return context.Cities.AsQueryable();
         }
     }
 }

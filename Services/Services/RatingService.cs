@@ -12,7 +12,6 @@ namespace Services.Services
     public class RatingService : IRatingService
     {
         RatingRepository ratingRepository = new RatingRepository();
-        ApartmentRepository apartmentRepository = new ApartmentRepository();
         public double AddRating(int ratingValue, int apartmentId)
         {
 

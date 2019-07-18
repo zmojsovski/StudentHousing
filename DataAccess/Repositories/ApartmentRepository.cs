@@ -23,26 +23,9 @@ namespace DataAccess.Repositories
             return context.Apartments.AsQueryable();
         }
 
-        //public float GetAverageRating(int id)
-        //{
-        //    var ratings = context.Ratings.Where(x => x.ApartmentId == id).ToList();
-        //    float sum = 0;
-        //    foreach(var rating in ratings)
-        //    {
-        //        sum += rating.RatingValue;
-        //    }
-        //    return sum / ratings.Count;
-        //}
-
         public IQueryable<Apartment> GetByCity(int id)
         {
             return context.Apartments.Where(x => x.CityId == id).Include(x => x.Ratings);         
         }
-
-        //public Apartment GetById(int Id)
-        //{
-        //    return context.Apartments.FirstOrDefault(x => x.Id == Id);
-          
-        //}
     }
 }

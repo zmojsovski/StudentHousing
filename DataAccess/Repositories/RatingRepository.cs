@@ -11,11 +11,6 @@ namespace DataAccess.Repositories
     {
         private SHContext context = new SHContext();
 
-        public IEnumerable<Rating> GetRatingsById(int Id)
-        {
-            return context.Ratings.Where(x => x.Id == Id); 
-        }
-
         public void Add(Rating rating)
         {
             context.Ratings.Add(rating);

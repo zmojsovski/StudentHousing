@@ -8,10 +8,8 @@ namespace DataAccess.Repositories.Interfaces
 {
     public interface IApartmentRepository
     {
-        IQueryable<Apartment> GetApartments();
-        //Apartment GetById(int Id);       
+        IQueryable<Apartment> GetApartments();   
         void Add(Apartment apartment);
         IQueryable<Apartment> GetByCity(int id);
-        //float GetAverageRating(int id);
     }
 }

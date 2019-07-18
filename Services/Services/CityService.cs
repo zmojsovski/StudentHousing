@@ -11,9 +11,9 @@ namespace Services.Services
     public class CityService : ICityService
     {
         CityRepository cityRepository = new CityRepository();
-        public IEnumerable<City> GetAll()
+        public IQueryable<City> GetCities()
         {
-            return cityRepository.GetAll();
+            return cityRepository.GetCities().AsQueryable();
         }
     }
 }

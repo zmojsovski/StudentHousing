@@ -83,7 +83,7 @@ namespace StudentHousing.Controllers
 
         public List<SelectListItem> getAllCities()
         {
-            var allCities = cityService.GetAll();
+            var allCities = cityService.GetCities();
         return    allCities.Select(x => new SelectListItem
             {
                 Text = x.Name,

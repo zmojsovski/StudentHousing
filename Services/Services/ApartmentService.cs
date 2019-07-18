@@ -18,20 +18,28 @@ namespace Services.Services
           apartmentRepository.Add(apartment);
         }
 
-        //public IQueryable<Apartment> GetApartments()
-        //{
-        //    return apartmentRepository.GetAll().AsQueryable();
-        //}
-
         public Apartment GetApartmentByName(string name)
         {
             return apartmentRepository.GetApartments().FirstOrDefault(x => x.Name == name);          
         }
 
-        //public IEnumerable<Apartment> GetApartmentsbyCity(int id)
-        //{
-        //    return (apartmentRepository.GetByCity(id));
-        //}  
+        public List<string> AutoComplete(int cityId, string nameSubstring)
+        {
+            IQueryable<Apartment> query = apartmentRepository.GetByCity(cityId);
+            if (!string.IsNullOrEmpty(nameSubstring))
+            {
+                var listOfAllNames = query.Select(x => x.Name).ToList();
+                var compatibleNames = new List<string>();
+                foreach(var aptName in listOfAllNames)
+                {
+                    if(aptName.Split(" ").Where(s => s.ToLower().StartsWith(nameSubstring.ToLower())).Count() != 0)
+                        compatibleNames.Add(aptName);
+                }
+                return compatibleNames;
+            }
+            return null;
+        }
+        
 
         public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)
         {

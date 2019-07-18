@@ -8,10 +8,9 @@ namespace Services.Interfaces
 {
     public interface IApartmentService
     {
-        //IQueryable<Apartment> GetApartments();
         Apartment GetApartmentByName(string name);
         void CreateApartment(Apartment apartment);
         IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection);
-        //IEnumerable<Apartment> GetApartmentsbyCity(int id);
+        List<string> AutoComplete(int cityId, string nameSubstring);
     }
 }
