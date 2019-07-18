@@ -20,9 +20,15 @@ namespace DataAccess.Models
         public int CityId { get; set; }
         public List<Rating> Ratings { get; set; }
         [NotMapped]
-        public float AverageRating { get { return Ratings.Where(x => x.ApartmentId == Id).Count() == null ? 
-                    0 : 
-                    Ratings.Where(x => 
-                    x.ApartmentId == Id).Sum(x => x.RatingValue) / Ratings.Where(x => x.ApartmentId == Id).Count(); } }
+        public float AverageRating
+        {
+            get
+            {
+                if (Ratings == null || Ratings.Count == 0)
+                    return 0;
+                return (float)Ratings.Sum(x =>
+                    x.RatingValue) / Ratings.Count();
+            }
+    }
     }
 }

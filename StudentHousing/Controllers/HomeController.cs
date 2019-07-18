@@ -36,33 +36,18 @@ namespace StudentHousing.Controllers
 
         private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)
         {
-            var apartments = apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds, sortType, sortDirection)
-                .Select(x => new ApartmentModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Price = x.Price,
-                AvailableFrom = x.AvailableFrom,
-                NumberOfBeds = x.NumberOfBeds,
-                AverageRating = float.Parse(apartmentService.GetaverageRatingbyId(x.Id).ToString("0.00"))
-            }).ToList();
-
-
-            if (sortType == "price")
-            {
-                if (sortDirection == "down")
-                    apartments = apartments.OrderBy(x => x.Price).ToList();
-                else
-                    apartments = apartments.OrderByDescending(x => x.Price).ToList();
-            }
-            else if (sortType == "rating")
-            {
-                if (sortDirection == "down")
-                    apartments = apartments.OrderBy(x => x.AverageRating).ToList();
-                else
-                    apartments = apartments.OrderByDescending(x => x.AverageRating).ToList();
-            }
-            apartmentsViewModel.Apartments = apartments;
+            if (availableFrom == DateTime.MinValue)
+                availableFrom = null;
+            apartmentsViewModel.Apartments = apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds, sortType, sortDirection)
+                 .Select(x => new ApartmentModel
+                 {
+                     Id = x.Id,
+                     Name = x.Name,
+                     Price = x.Price,
+                     AvailableFrom = x.AvailableFrom,
+                     NumberOfBeds = x.NumberOfBeds,
+                     AverageRating = float.Parse(x.AverageRating.ToString("0.00"))
+                 }).ToList();
             return apartmentsViewModel;    
         }
 
@@ -72,7 +57,6 @@ namespace StudentHousing.Controllers
         {
             var model = this.GetFullAndPartialViewModel(cityId, name, availableFrom, numberOfBeds, sortType, sortDirection);
             return PartialView("_ListApartments", model);
-
         }
 
         [HttpPost]
