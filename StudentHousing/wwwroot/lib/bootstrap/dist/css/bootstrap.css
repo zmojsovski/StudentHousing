@@ -2678,6 +2678,7 @@ output {
   transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  margin-bottom: 10px;
 }
 .form-control:focus {
   border-color: #66afe9;
@@ -7026,4 +7027,9 @@ button.close {
 #design{
     width: 400px;
 }
+
+#apartmentform {
+    background-color: white;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

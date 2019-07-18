@@ -19,17 +19,19 @@
     <div class="alert alert-danger">There was an error while creating your apartment please try again.</div>
 }
 
-<h2>Create Apartment</h2>
+
 @Html.HiddenFor(m=>m.NumberOfBedsList, Model.NumberOfBedsList)
 @Html.HiddenFor(m=>m.Cities,Model.Cities)
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center" id="apartmentform">
         <form asp-action="Create" class="form-inline">
+            <h2>Create Apartment</h2>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label">Name:</label>
-                <input asp-for="Name" class="form-control" />
+                <input  asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <br />
@@ -72,36 +74,38 @@
             <div class="form-group">
                 <label asp-for="NumberOfBeds" class="control-label">Number of Beds:</label>
                 @*<select class="form-control" id="NumberOfBeds" name="NumberOfBeds">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>*@
-                @Html.DropDownListFor(m => m.NumberOfBeds, Model.NumberOfBedsList, new { @class = "form-control" });
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>*@
+                @Html.DropDownListFor(m => m.NumberOfBeds, Model.NumberOfBedsList, new { @class = "form-control" })
                 <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="CityId" class="control-label">City:</label>
-                @Html.DropDownListFor(m => m.CityId, Model.Cities, new { @class = "form-control" });
+                <label asp-for="CityId" class="control-label labelagradovi">City:</label>
+                @Html.DropDownListFor(m => m.CityId, Model.Cities, new { @class = "form-control" })
                 <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
             <br />
+
             <br />
             <br />
+            <a asp-controller="Home"
+               asp-action="Index">Back to List</a>
             <div class="form-group">
                 <input id="apartmentcreate" type="submit" value="Create" class="btn createbutton btn-default" />
             </div>
+
         </form>
 
     </div>
-    <div class="col-md-4">
-        <img id="design" src="~/images/create-picture.jpg" />
-    </div>
+    
+    <div class="col-md-2"></div>
 
     <div class="row">
-        <a asp-controller="Home"
-           asp-action="Index">Back to List</a>
+
     </div>
 
     @section Scripts {
