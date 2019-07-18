@@ -16,11 +16,9 @@ namespace DataAccess.Repositories
             return context.Ratings.Where(x => x.Id == Id); 
         }
 
-        public Rating Add(Rating rating)
+        public void Add(Rating rating)
         {
             context.Ratings.Add(rating);
-            Save();
-            return rating;
         }
 
         public void Save()
@@ -29,9 +27,9 @@ namespace DataAccess.Repositories
         }
 
 
-        public IEnumerable<Rating> GetAll()
+        public IQueryable<Rating> GetRatings()
         {
-            return context.Ratings.ToList();
+            return context.Ratings.AsQueryable();
         }
     }
 }

@@ -61,17 +61,19 @@ namespace StudentHousing.Controllers
 
         [HttpPost]
         [Route("home/addrating")]
-        public decimal AddRating(int apartmentId, int ratingValue)
+        public IActionResult AddRating(int apartmentId, int ratingValue)
         {
-            
-            var aptId = apartmentId;
-            var ratVal = ratingValue;
-            var avgRatingNow = ratingService.AddRating(ratVal, aptId);
-            return (decimal)avgRatingNow;
-            
+            try
+            {
+                var avgRating = ratingService.AddRating(ratingValue, apartmentId);
+                return Json(new { success = true, avgRating = avgRating });
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return Json(new { success = false, avgRating = 0 });
+            }
         }
-
-        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

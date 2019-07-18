@@ -13,28 +13,20 @@ namespace Services.Services
     {
         RatingRepository ratingRepository = new RatingRepository();
         ApartmentRepository apartmentRepository = new ApartmentRepository();
-        public float AddRating(int singleRating, int aptId)
+        public double AddRating(int ratingValue, int apartmentId)
         {
 
             Rating rating = new Rating()
             {
-                RatingValue = singleRating,
-                ApartmentId = aptId,
-                //Apartment = apartmentRepository.GetById(aptId)
+                RatingValue = ratingValue,
+                ApartmentId = apartmentId,
             };
             ratingRepository.Add(rating);
             ratingRepository.Save();
-            var ratingsByApartment = ratingRepository.GetAll().Where(x => x.ApartmentId == aptId);
-            return (float)ratingsByApartment.Sum(x => x.RatingValue) / ratingsByApartment.Count();
 
-        }
-        // try catch 
-
-
-
-        public IEnumerable<Apartment> SortByRating()
-        {
-            throw new NotImplementedException();
-        }
+            var ratingsByApartment = ratingRepository.GetRatings().Where(x => x.ApartmentId == apartmentId);
+            var average = (double)ratingsByApartment.Sum(x => x.RatingValue) / ratingsByApartment.Count();
+            return Math.Round(average, 2);
+        }       
     }
 }

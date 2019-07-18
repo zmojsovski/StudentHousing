@@ -6,8 +6,7 @@ using System.Text;
 namespace Services.Interfaces
 {
  public interface IRatingService
-    {
-        IEnumerable<Apartment> SortByRating();
-        float AddRating(int singleRating, int aptId);
+    { 
+        double AddRating(int ratingValue, int apartmentId);
     }
 }
