@@ -71,5 +71,10 @@
             $("#cityResults").html(response);
         });
     });
-   
+
+    $("#details").click(function () {
+        var apartmentId = $(this).parents('.apartment-box').attr("id");;
+        $.get('home/getapartmentmodelbyid', {id: apartmentId}).done(function (response) {
+        });
+    });
 });
