@@ -30,6 +30,11 @@ namespace Services.Services
             return _apartmentRepository.GetApartments().FirstOrDefault(x => x.Name == name);          
         }
 
+        public Apartment GetApartmentById(int id)
+        {
+            return _apartmentRepository.GetApartments().FirstOrDefault(x => x.Id == id);
+        }
+
         public List<string> AutoComplete(int cityId, string nameSubstring)
         {
             IQueryable<Apartment> query = _apartmentRepository.GetByCity(cityId);

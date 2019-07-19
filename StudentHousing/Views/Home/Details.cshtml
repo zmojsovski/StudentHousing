@@ -2,10 +2,52 @@
 @{
     ViewData["Title"] = "Details";
 }
+@using StudentHousing.Models
+@model ApartmentModel
 
 <div class="container body-content">
     <div class="details-block">
-        <h2>Details</h2>
+        <div class="top-part">
+            <img src="~/images/apartment_img.png" />
+            <div class="info-panel">
+                <table>
+                    <tr>
+                        <td>Name: </td>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Price: </td>
+                        <td>@Model.Price</td>
+                    </tr>
+                    <tr>
+                        <td>Available from: </td>
+                        <td>@Model.AvailableFrom</td>
+                    </tr>
+                    <tr>
+                        <td>Number of beds: </td>
+                        <td>@Model.NumberOfBeds</td>
+                    </tr>
+                    <tr>
+                        <td>Ratings: </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Phone: </td>
+                        <td>@Model.Phone</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="bottom-part">
+            <h4>Description</h4>
+            <p>@Model.Description</p>
+        </div>
+        <div class="footer-buttons">
+            <a href="#">Back to Home page</a>
+            <button id="rent">Rent</button>
+        </div>
+
+
     </div>
 </div>
 

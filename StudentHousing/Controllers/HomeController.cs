@@ -98,10 +98,28 @@ namespace StudentHousing.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        public IActionResult Details()
+        [HttpGet]
+        [Route("home/getapartmentmodelbyid")]
+        public ApartmentModel GetApartmentModelById(int id)
         {
-            return View();
+            ApartmentModel apartment = new ApartmentModel()
+            {
+                Id = _apartmentService.GetApartmentById(id).Id,
+                Name = _apartmentService.GetApartmentById(id).Name,
+                Price = _apartmentService.GetApartmentById(id).Price,
+                AvailableFrom = _apartmentService.GetApartmentById(id).AvailableFrom,
+                NumberOfBeds = _apartmentService.GetApartmentById(id).NumberOfBeds,
+                AverageRating = float.Parse(_apartmentService.GetApartmentById(id).AverageRating.ToString("0.00")),
+                Phone = _apartmentService.GetApartmentById(id).Phone,
+                Description = _apartmentService.GetApartmentById(id).Description
+
+            };
+            return apartment;   
+        }
+        public IActionResult Details(int id)
+        {
+            var model = this.GetApartmentModelById(id);
+            return View(model);
         }
 
     }
