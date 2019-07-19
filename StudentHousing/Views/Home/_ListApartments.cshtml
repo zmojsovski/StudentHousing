@@ -4,30 +4,35 @@
 <div class="listOfApts">
     @foreach (var apt in Model.Apartments)
     {
-        <div class="apartment-box" id="@apt.Id">
-            <div class="apartment-content">
-                <span class="apartment-item"><img src="~/images/apartment_img.png" /></span>
-                <span class="apartment-item"><span class="apartment-data" value="@apt.Id">@apt.Name</span></span>
-                <span class="apartment-item"><span class="apartment-data">@apt.AvailableFrom.ToString().Split(" ")[0]</span></span>
-                <span class="apartment-item"><span class="apartment-data">@apt.NumberOfBeds  <img id="bed-icon" src="~/images/bed-icon.png"></span></span>
-                <span class="apartment-item"><span class="apartment-data">$@apt.Price</span></span>
-                <span class="apartment-item" id="stars">
-                    <span class="apartment-data">
-                        <span class="glyphicon glyphicon-star rating" value="1"></span>
-                        <span class="glyphicon glyphicon-star rating" value="2"></span>
-                        <span class="glyphicon glyphicon-star rating" value="3"></span>
-                        <span class="glyphicon glyphicon-star rating" value="4"></span>
-                        <span class="glyphicon glyphicon-star rating" value="5"></span>
-                    </span>
-                    <span class="average-parent">
-                        Average rating: <span class="totalAverage">@apt.AverageRating.ToString()</span>
-                        <p id="success-error-message" class="success-error"></p>
-                    </span>
+    <div class="apartment-box" id="@apt.Id">
+        <div class="apartment-content">
+            <span class="apartment-item"><img src="~/images/apartment_img.png" /></span>
+            <span class="apartment-item"><span class="apartment-data" value="@apt.Id">@apt.Name</span></span>
+            <span class="apartment-item"><span class="apartment-data">@apt.AvailableFrom.ToString().Split(" ")[0]</span></span>
+            <span class="apartment-item"><span class="apartment-data">@apt.NumberOfBeds  <img id="bed-icon" src="~/images/bed-icon.png"></span></span>
+            <span class="apartment-item"><span class="apartment-data">$@apt.Price</span></span>
+            <span class="apartment-item" id="stars">
+                <span class="apartment-data">
+                    <span class="glyphicon glyphicon-star rating" value="1"></span>
+                    <span class="glyphicon glyphicon-star rating" value="2"></span>
+                    <span class="glyphicon glyphicon-star rating" value="3"></span>
+                    <span class="glyphicon glyphicon-star rating" value="4"></span>
+                    <span class="glyphicon glyphicon-star rating" value="5"></span>
                 </span>
-                
-                
+                <span class="average-parent">
+                    Average rating: <span class="totalAverage">@apt.AverageRating.ToString()</span>
+                    <p id="success-error-message" class="success-error"></p>
+                </span>
+            </span>
+            <br />
+            <div class="detaillabel">
+                <a id="details" asp-controller="Home"
+                   asp-action="Details">Details>></a>
             </div>
+
         </div>
+       
+    </div>
     }
 </div>
 <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -7069,5 +7069,10 @@ button.close {
     width: 190px;
 }
 
+.detaillabel{
+    display: block;
+    margin-top: 165px;
+}
+
 
 /*# sourceMappingURL=bootstrap.css.map */
