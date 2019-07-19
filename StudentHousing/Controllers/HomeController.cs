@@ -11,6 +11,7 @@ using Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace StudentHousing.Controllers
 {
@@ -29,46 +30,69 @@ namespace StudentHousing.Controllers
             _log = log;
         }
 
-        //public void LogIndex()
-        //{
-        //    _log.LogInformation("Hello, world!");
-        //}
 
-    [HttpGet]
+        [HttpGet]
         public IActionResult Index()
         {
-            var allCities = _cityService.GetCities();
-            apartmentsViewModel.Cities = allCities.Select(x => new SelectListItem
+            ApartmentsViewModel model = null;
+            try
             {
-                Text = x.Name,
-                Value = x.Id.ToString()
-            }).ToList();
+                var allCities = _cityService.GetCities();
+                apartmentsViewModel.Cities = allCities.Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                }).ToList();
 
-            var model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null, null, null);
+                model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null, null, null);
+                //var e = new Exception("error wow");
+                //throw e;
+            }
+            catch (Exception ex)
+            {
+                _log.LogWarning(ex, ex.Message);
+            }
+            
             return this.View(model);
+            
         }
+
         [HttpPost]
         [Route("home/searchautocomplete")]
         public JsonResult SearchAutoComplete(int cityId, string nameSubstring)
         {
-            var names = _apartmentService.AutoComplete(cityId, nameSubstring).ToList();
+            var names = new List<string>();
+            try
+            {
+                names = _apartmentService.AutoComplete(cityId, nameSubstring).ToList();
+            }
+            catch(Exception ex) {
+                _log.LogWarning(ex, ex.Message);
+            }
             return Json(names);
         }
 
         private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)
         {
-            if (availableFrom == DateTime.MinValue)
-                availableFrom = null;
-            apartmentsViewModel.Apartments = _apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds, sortType, sortDirection)
-                 .Select(x => new ApartmentModel
-                 {
-                     Id = x.Id,
-                     Name = x.Name,
-                     Price = x.Price,
-                     AvailableFrom = x.AvailableFrom,
-                     NumberOfBeds = x.NumberOfBeds,
-                     AverageRating = float.Parse(x.AverageRating.ToString("0.00"))
-                 }).ToList();
+            try
+            {
+                if (availableFrom == DateTime.MinValue)
+                    availableFrom = null;
+                apartmentsViewModel.Apartments = _apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds, sortType, sortDirection)
+                     .Select(x => new ApartmentModel
+                     {
+                         Id = x.Id,
+                         Name = x.Name,
+                         Price = x.Price,
+                         AvailableFrom = x.AvailableFrom,
+                         NumberOfBeds = x.NumberOfBeds,
+                         AverageRating = float.Parse(x.AverageRating.ToString("0.00"))
+                     }).ToList();
+            }
+            catch(Exception ex)
+            {
+                _log.LogWarning(ex, ex.Message);
+            }
             return apartmentsViewModel;    
         }
 
@@ -76,7 +100,15 @@ namespace StudentHousing.Controllers
         [Route("home/getapartmentsbysearch")]
         public IActionResult GetApartmentsBySearch([FromQuery]int cityId, [FromQuery]string name, [FromQuery]DateTime availableFrom, [FromQuery]int numberOfBeds, string sortType, string sortDirection)
         {
-            var model = this.GetFullAndPartialViewModel(cityId, name, availableFrom, numberOfBeds, sortType, sortDirection);
+            ApartmentsViewModel model = null;
+            try
+            {
+                model = this.GetFullAndPartialViewModel(cityId, name, availableFrom, numberOfBeds, sortType, sortDirection);
+            }
+            catch(Exception ex)
+            {
+                _log.LogWarning(ex, ex.Message);
+            }
             return PartialView("_ListApartments", model);
         }
 
@@ -89,9 +121,9 @@ namespace StudentHousing.Controllers
                 var avgRating = _ratingService.AddRating(ratingValue, apartmentId);
                 return Json(new { success = true, avgRating = avgRating });
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Debug.WriteLine(e.Message);
+                _log.LogWarning(ex, ex.Message);
                 return Json(new { success = false, avgRating = 0 });
             }
         }
@@ -104,21 +136,29 @@ namespace StudentHousing.Controllers
         
         private ApartmentModel GetApartmentModelById(int id)
         {
-            ApartmentModel apartment = new ApartmentModel()
+            ApartmentModel apartment = null;
+            try
             {
-                Id = _apartmentService.GetApartmentById(id).Id,
-                Name = _apartmentService.GetApartmentById(id).Name,
-                Price = _apartmentService.GetApartmentById(id).Price,
-                AvailableFrom = _apartmentService.GetApartmentById(id).AvailableFrom,
-                NumberOfBeds = _apartmentService.GetApartmentById(id).NumberOfBeds,
-                AverageRating = float.Parse(_apartmentService.GetApartmentById(id).AverageRating.ToString("0.00")),
-                Phone = _apartmentService.GetApartmentById(id).Phone,
-                Description = _apartmentService.GetApartmentById(id).Description
+                apartment = new ApartmentModel()
+                {
+                    Id = _apartmentService.GetApartmentById(id).Id,
+                    Name = _apartmentService.GetApartmentById(id).Name,
+                    Price = _apartmentService.GetApartmentById(id).Price,
+                    AvailableFrom = _apartmentService.GetApartmentById(id).AvailableFrom,
+                    NumberOfBeds = _apartmentService.GetApartmentById(id).NumberOfBeds,
+                    AverageRating = float.Parse(_apartmentService.GetApartmentById(id).AverageRating.ToString("0.00")),
+                    Phone = _apartmentService.GetApartmentById(id).Phone,
+                    Description = _apartmentService.GetApartmentById(id).Description
 
-            };
-            if(apartment.Description == null || apartment.Description.Length == 0)
+                };
+                if (apartment.Description == null || apartment.Description.Length == 0)
+                {
+                    apartment.Description = "No description available...";
+                }
+            }
+            catch(Exception ex)
             {
-                apartment.Description = "No description available...";
+                _log.LogWarning(ex, ex.Message);
             }
             return apartment;   
         }
@@ -126,8 +166,7 @@ namespace StudentHousing.Controllers
         [Route("home/details")]
         public IActionResult Details(int id)
         {
-            int AptId = id;
-            var model = GetApartmentModelById(AptId);
+            var model = GetApartmentModelById(id);
             return View(model);
         }
 
