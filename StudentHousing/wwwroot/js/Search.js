@@ -3,7 +3,7 @@
     var sortDirection = null;
     var cityId = $("#CityDDL").val();
     $("#name").autocomplete({
-        
+
         source: function (request, response) {
             $.ajax({
                 url: "/home/searchautocomplete",
@@ -22,9 +22,9 @@
             noResults: 'No suggestions',
             results: ''
         },
-        
-       
-    });  
+
+
+    });
 
     $("#sortPrice").click(function () {
         sortType = "price";
@@ -73,8 +73,9 @@
     });
 
     $("#details").click(function () {
-        var apartmentId = $(this).parents('.apartment-box').attr("id");;
-        $.get('home/getapartmentmodelbyid', {id: apartmentId}).done(function (response) {
+        event.preventDefault();
+        var id = $(this).parents('.apartment-box').attr("id");
+        $.get('home/details', { id: id }).done(function (response) {
         });
     });
 });

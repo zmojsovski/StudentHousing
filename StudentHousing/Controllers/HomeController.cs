@@ -98,9 +98,8 @@ namespace StudentHousing.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpGet]
-        [Route("home/getapartmentmodelbyid")]
-        public ApartmentModel GetApartmentModelById(int id)
+        
+        private ApartmentModel GetApartmentModelById(int id)
         {
             ApartmentModel apartment = new ApartmentModel()
             {
@@ -116,9 +115,12 @@ namespace StudentHousing.Controllers
             };
             return apartment;   
         }
+        [HttpGet]
+        [Route("home/details")]
         public IActionResult Details(int id)
         {
-            var model = this.GetApartmentModelById(id);
+            int AptId = id;
+            var model = GetApartmentModelById(AptId);
             return View(model);
         }
 
