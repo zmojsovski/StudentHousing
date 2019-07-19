@@ -11,21 +11,28 @@ namespace Services.Services
 {
    public class ApartmentService : IApartmentService
     {
-        IApartmentRepository apartmentRepository = new ApartmentRepository();
+        private IApartmentRepository _apartmentRepository;
+
+
+        //private  SHContext context = new SHContext();
+        public ApartmentService(IApartmentRepository apartmentRepository)
+        {
+            _apartmentRepository = apartmentRepository;
+        }
 
         public void CreateApartment(Apartment apartment)
         {
-          apartmentRepository.Add(apartment);
+          _apartmentRepository.Add(apartment);
         }
 
         public Apartment GetApartmentByName(string name)
         {
-            return apartmentRepository.GetApartments().FirstOrDefault(x => x.Name == name);          
+            return _apartmentRepository.GetApartments().FirstOrDefault(x => x.Name == name);          
         }
 
         public List<string> AutoComplete(int cityId, string nameSubstring)
         {
-            IQueryable<Apartment> query = apartmentRepository.GetByCity(cityId);
+            IQueryable<Apartment> query = _apartmentRepository.GetByCity(cityId);
             if (!string.IsNullOrEmpty(nameSubstring))
             {
                 var listOfAllNames = query.Select(x => x.Name).ToList();
@@ -43,7 +50,7 @@ namespace Services.Services
 
         public IEnumerable<Apartment> SearchApartments(int cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)
         {
-            IQueryable<Apartment> query = apartmentRepository.GetByCity(cityId);
+            IQueryable<Apartment> query = _apartmentRepository.GetByCity(cityId);
             if (!string.IsNullOrEmpty(name))
                 query = query.Where(x => x.Name.ToLower().Contains(name.ToLower()));
             if (availableFrom != null)

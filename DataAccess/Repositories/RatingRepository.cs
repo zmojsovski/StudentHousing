@@ -9,22 +9,28 @@ namespace DataAccess.Repositories
 {
     public class RatingRepository : IRatingRepository
     {
-        private SHContext context = new SHContext();
+        //private SHContext context = new SHContext();
+        private readonly SHContext _context;
 
+        //private  SHContext context = new SHContext();
+        public RatingRepository(SHContext context)
+        {
+            _context = context;
+        }
         public void Add(Rating rating)
         {
-            context.Ratings.Add(rating);
+            _context.Ratings.Add(rating);
         }
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
 
         public IQueryable<Rating> GetRatings()
         {
-            return context.Ratings.AsQueryable();
+            return _context.Ratings.AsQueryable();
         }
     }
 }

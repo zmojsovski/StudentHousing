@@ -15,15 +15,26 @@ namespace StudentHousing.Controllers
 {
     public class HomeController : Controller
     {
-        IApartmentService apartmentService = new ApartmentService();
-        IRatingService ratingService = new RatingService();
-        ICityService cityService = new CityService();
+        //IApartmentService apartmentService = new ApartmentService();
+        //IRatingService ratingService = new RatingService();
+        //ICityService cityService = new CityService();
         ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+        private IApartmentService _apartmentService;
+        private IRatingService _ratingService;
+        private ICityService _cityService;
+        public HomeController(IApartmentService apartmentService, IRatingService ratingService, ICityService cityService)
+        {
+            _apartmentService = apartmentService;
+            _ratingService = ratingService;
+            _cityService = cityService;
+        }
+
         
+
         [HttpGet]
         public IActionResult Index()
         {
-            var allCities = cityService.GetCities();
+            var allCities = _cityService.GetCities();
             apartmentsViewModel.Cities = allCities.Select(x => new SelectListItem
             {
                 Text = x.Name,
@@ -37,7 +48,7 @@ namespace StudentHousing.Controllers
         [Route("home/searchautocomplete")]
         public JsonResult SearchAutoComplete(int cityId, string nameSubstring)
         {
-            var names = apartmentService.AutoComplete(cityId, nameSubstring).ToList();
+            var names = _apartmentService.AutoComplete(cityId, nameSubstring).ToList();
             return Json(names);
         }
 
@@ -45,7 +56,7 @@ namespace StudentHousing.Controllers
         {
             if (availableFrom == DateTime.MinValue)
                 availableFrom = null;
-            apartmentsViewModel.Apartments = apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds, sortType, sortDirection)
+            apartmentsViewModel.Apartments = _apartmentService.SearchApartments(cityId.GetValueOrDefault(), name, availableFrom, numberOfBeds, sortType, sortDirection)
                  .Select(x => new ApartmentModel
                  {
                      Id = x.Id,
@@ -72,7 +83,7 @@ namespace StudentHousing.Controllers
         {
             try
             {
-                var avgRating = ratingService.AddRating(ratingValue, apartmentId);
+                var avgRating = _ratingService.AddRating(ratingValue, apartmentId);
                 return Json(new { success = true, avgRating = avgRating });
             }
             catch (Exception e)
@@ -87,5 +98,11 @@ namespace StudentHousing.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Details()
+        {
+            return View();
+        }
+
     }
 }

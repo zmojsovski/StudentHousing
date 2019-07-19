@@ -7065,5 +7065,9 @@ button.close {
 .backtolist{
     margin-bottom: 100px;
 }
+#pricelabel{
+    width: 190px;
+}
+
 
 /*# sourceMappingURL=bootstrap.css.map */

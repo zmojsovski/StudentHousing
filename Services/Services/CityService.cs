@@ -1,5 +1,6 @@
 ﻿using DataAccess.Models;
 using DataAccess.Repositories;
+using DataAccess.Repositories.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,17 @@ namespace Services.Services
 {
     public class CityService : ICityService
     {
-        CityRepository cityRepository = new CityRepository();
+        private ICityRepository _cityRepository;
+
+        //CityRepository cityRepository = new CityRepository();
+        public CityService(ICityRepository cityRepository)
+        {
+            _cityRepository = cityRepository;
+        }
+
         public IQueryable<City> GetCities()
         {
-            return cityRepository.GetCities().AsQueryable();
+            return _cityRepository.GetCities().AsQueryable();
         }
     }
 }

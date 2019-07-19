@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using DataAccess.Models;
 using DataAccess.Repositories;
+using DataAccess.Repositories.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,14 @@ namespace Services.Services
 {
     public class RatingService : IRatingService
     {
-        RatingRepository ratingRepository = new RatingRepository();
+        private IRatingRepository _ratingRepository;
+
+        //RatingRepository ratingRepository = new RatingRepository();
+
+        public RatingService(IRatingRepository ratingRepository)
+        {
+            _ratingRepository = ratingRepository;
+        }
         public double AddRating(int ratingValue, int apartmentId)
         {
 
@@ -20,10 +28,10 @@ namespace Services.Services
                 RatingValue = ratingValue,
                 ApartmentId = apartmentId,
             };
-            ratingRepository.Add(rating);
-            ratingRepository.Save();
+            _ratingRepository.Add(rating);
+            _ratingRepository.Save();
 
-            var ratingsByApartment = ratingRepository.GetRatings().Where(x => x.ApartmentId == apartmentId);
+            var ratingsByApartment = _ratingRepository.GetRatings().Where(x => x.ApartmentId == apartmentId);
             var average = (double)ratingsByApartment.Sum(x => x.RatingValue) / ratingsByApartment.Count();
             return Math.Round(average, 2);
         }       

@@ -13,15 +13,18 @@ namespace DataAccess
 
        // private readonly string connectionString;
        //requires a value in the constructor for the repositories
-        public SHContext(string connectionString = "Data Source=192.168.5.117;Database=StudentHousing;User Id=StudentHousing; Password=Student123@;") : base(GetOptions(connectionString))
+        //public SHContext(string connectionString = "Data Source=192.168.5.117;Database=StudentHousing;User Id=StudentHousing; Password=Student123@;") : base(GetOptions(connectionString))
+        //{
+        //}
+        public SHContext(DbContextOptions<SHContext> options) : base(options)
         {
+
         }
 
-
-        private static DbContextOptions GetOptions(string connectionString)
-        {
-            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
-        }
+        //private static DbContextOptions GetOptions(string connectionString)
+        //{
+        //    return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
+        //}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

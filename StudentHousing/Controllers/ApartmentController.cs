@@ -13,9 +13,22 @@ namespace StudentHousing.Controllers
 {
     public class ApartmentController : Controller
     {
-        IApartmentService apartmentService = new ApartmentService();
-        ICityService cityService = new CityService();
-              
+        //IApartmentService apartmentService = new ApartmentService();
+        //ICityService cityService = new CityService();
+
+        public ApartmentController(IApartmentService apartmentService, ICityService cityService)
+        {
+            _apartmentService = apartmentService;
+            _cityService = cityService;
+        }
+
+        //IApartmentService apartmentService = new ApartmentService();
+        //IRatingService ratingService = new RatingService();
+        //ICityService cityService = new CityService();
+        //ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
+        private readonly IApartmentService _apartmentService;
+        private readonly ICityService _cityService;
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -36,7 +49,7 @@ namespace StudentHousing.Controllers
         {
             if (ModelState.IsValid)
             {
-                var apt = apartmentService.GetApartmentByName(model.Name);
+                var apt = _apartmentService.GetApartmentByName(model.Name);
                 if (apt != null)
                 {
                     model.IsDuplicateName = true;
@@ -59,7 +72,7 @@ namespace StudentHousing.Controllers
                 };
                 try
                 {
-                    apartmentService.CreateApartment(apartment);
+                    _apartmentService.CreateApartment(apartment);
                     model.IsSuccess = true;
                 }
                 catch
@@ -83,7 +96,7 @@ namespace StudentHousing.Controllers
 
         public List<SelectListItem> getAllCities()
         {
-            var allCities = cityService.GetCities();
+            var allCities = _cityService.GetCities();
         return    allCities.Select(x => new SelectListItem
             {
                 Text = x.Name,

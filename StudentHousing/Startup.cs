@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccess;
+using DataAccess.Repositories;
+using DataAccess.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Services.Interfaces;
+using Services.Services;
 
 namespace StudentHousing
 {
@@ -32,8 +37,16 @@ namespace StudentHousing
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDbContext<SHContext>(x => x.UseSqlServer(Configuration.GetConnectionString("StudentHousingConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IApartmentRepository, ApartmentRepository>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
+            services.AddScoped<IApartmentService, ApartmentService>();
+            services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<ICityService, CityService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
