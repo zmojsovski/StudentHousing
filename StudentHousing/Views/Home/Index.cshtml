@@ -19,7 +19,7 @@
 
             <form id="form-block" caction="/action_page.php">
                 <input id="name" type="text" placeholder="Search by Apartment Name..." name="searchByName" />
-                <input id="availableFrom" type="date" placeholder="Search by Availability..." name="searchByDate" />
+                <input id="availableFrom" type="text" placeholder="Search by Availability..." name="searchByDate" autocomplete="off" />
                 <select id="numberOfBeds" name="searchByBeds">
                     <option value="" default="" selected="" hidden>no.Beds</option>
                     <option value="0">All</option>
@@ -57,15 +57,15 @@
     </div>
 
 
-    @*@RenderSection("Scripts", required: false)*@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jqueryui/jquery-ui.js"></script>
+        <script src="~/js/ArrowFlip.js"></script>
+        <script src="~/js/Search.js"></script>
+        <script src="~/js/IndexDatePicker.js"></script>
     }
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jqueryui/jquery-ui.js"></script>
-    <script src="~/js/ArrowFlip.js"></script>
-    <script src="~/js/Search.js"></script>
 
 
 </body>

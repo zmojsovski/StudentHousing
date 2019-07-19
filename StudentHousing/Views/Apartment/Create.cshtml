@@ -23,7 +23,6 @@
 @Html.HiddenFor(m => m.Cities, Model.Cities)
 <div class="container body-content">
     <div class="row">
-        @*<div class="col-md-2"></div>*@
         <div class="col-md-12" id="form-container">
             <h2>Create Apartment</h2>
             <form asp-action="Create" class="form-inline">
@@ -66,12 +65,7 @@
                 <br />
                 <div class="form-group">
                     <label asp-for="NumberOfBeds" class="control-label">Number of Beds:</label>
-                    @*<select class="form-control" id="NumberOfBeds" name="NumberOfBeds">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>*@
+                  
                     @Html.DropDownListFor(m => m.NumberOfBeds, Model.NumberOfBedsList, new { @class = "form-control" })
                     <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
                 </div>
@@ -98,7 +92,6 @@
                asp-action="Index">Back to List</a>
         </div>
 
-        @*<div class="col-md-2"></div>*@
 
         <div class="row">
 
