@@ -9,10 +9,8 @@ namespace DataAccess.Repositories
 {
     public class CityRepository : ICityRepository
     {
-        //private  SHContext context = new SHContext();
         private readonly SHContext _context;
 
-        //private  SHContext context = new SHContext();
         public CityRepository(SHContext context)
         {
             _context = context;

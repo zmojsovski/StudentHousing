@@ -11,32 +11,17 @@ namespace DataAccess
    public class SHContext : DbContext
     {
 
-       // private readonly string connectionString;
-       //requires a value in the constructor for the repositories
-        //public SHContext(string connectionString = "Data Source=192.168.5.117;Database=StudentHousing;User Id=StudentHousing; Password=Student123@;") : base(GetOptions(connectionString))
-        //{
-        //}
         public SHContext(DbContextOptions<SHContext> options) : base(options)
         {
 
         }
 
-        //private static DbContextOptions GetOptions(string connectionString)
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //    }
         //}
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-           //     var builder = new ConfigurationBuilder()
-          //  .SetBasePath(Directory.GetCurrentDirectory())
-          
-             //   optionsBuilder.UseSqlServer(ConfigurationManager);
-            }
-        }
-
-
 
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<City> Cities { get; set; }
@@ -44,17 +29,12 @@ namespace DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          /*  modelBuilder.Entity<City>()
-                .HasMany<Apartment>(); */
-
             modelBuilder.Entity<Apartment>()
            .HasOne<City>(s => s.City)
            .WithMany(g => g.Apartments)
            .HasForeignKey(s => s.CityId);
             modelBuilder.Entity<Apartment>().HasMany<Rating>(x => x.Ratings).WithOne(x => x.Apartment).HasPrincipalKey(x => x.Id);
-
-        }
-        
+        }    
     }
 }
 

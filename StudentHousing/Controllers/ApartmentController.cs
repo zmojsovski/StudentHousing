@@ -13,19 +13,12 @@ namespace StudentHousing.Controllers
 {
     public class ApartmentController : Controller
     {
-        //IApartmentService apartmentService = new ApartmentService();
-        //ICityService cityService = new CityService();
-
         public ApartmentController(IApartmentService apartmentService, ICityService cityService)
         {
             _apartmentService = apartmentService;
             _cityService = cityService;
         }
 
-        //IApartmentService apartmentService = new ApartmentService();
-        //IRatingService ratingService = new RatingService();
-        //ICityService cityService = new CityService();
-        //ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
         private readonly IApartmentService _apartmentService;
         private readonly ICityService _cityService;
 
@@ -38,8 +31,6 @@ namespace StudentHousing.Controllers
                 Cities = getAllCities(),
                 AvailableFrom = getTodayDate()
             };
-
-            //  model.c
 
             return View(model);
         }
@@ -57,7 +48,6 @@ namespace StudentHousing.Controllers
                     model.NumberOfBedsList = getNumberOfBeds();
                     return View(model);
                 }
-
 
                 var apartment = new Apartment
                 {

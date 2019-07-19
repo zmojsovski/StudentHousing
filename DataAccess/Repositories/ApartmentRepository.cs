@@ -12,7 +12,6 @@ namespace DataAccess.Repositories
     {
         private readonly SHContext _context;
 
-        //private  SHContext context = new SHContext();
         public ApartmentRepository(SHContext context)
         {
             _context = context;
