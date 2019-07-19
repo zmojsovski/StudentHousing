@@ -20,23 +20,19 @@ namespace StudentHousing.Controllers
         private IApartmentService _apartmentService;
         private IRatingService _ratingService;
         private ICityService _cityService;
-        public HomeController(IApartmentService apartmentService, IRatingService ratingService, ICityService cityService)
+        private readonly ILogger<HomeController> _log;
+        public HomeController(IApartmentService apartmentService, IRatingService ratingService, ICityService cityService, ILogger<HomeController> log)
         {
             _apartmentService = apartmentService;
             _ratingService = ratingService;
             _cityService = cityService;
-        }
-
-        readonly ILogger<HomeController> _log;
-
-        public HomeController(ILogger<HomeController> log)
-        {
             _log = log;
         }
-        public void LogIndex()
-        {
-            _log.LogInformation("Hello, world!");
-        }
+
+        //public void LogIndex()
+        //{
+        //    _log.LogInformation("Hello, world!");
+        //}
 
     [HttpGet]
         public IActionResult Index()

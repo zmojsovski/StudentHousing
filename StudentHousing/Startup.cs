@@ -53,8 +53,7 @@ namespace StudentHousing
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //fix directory
-            loggerFactory.AddFile("Logs/myapp-{Date}.txt");
+            loggerFactory.AddFile("Logs/Student Housing Logs-{Date}.txt");
 
             if (env.IsDevelopment())
             {
