@@ -13,8 +13,6 @@ namespace Services.Services
     {
         private IApartmentRepository _apartmentRepository;
 
-
-        //private  SHContext context = new SHContext();
         public ApartmentService(IApartmentRepository apartmentRepository)
         {
             _apartmentRepository = apartmentRepository;

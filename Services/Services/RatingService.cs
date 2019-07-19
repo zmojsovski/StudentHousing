@@ -14,8 +14,6 @@ namespace Services.Services
     {
         private IRatingRepository _ratingRepository;
 
-        //RatingRepository ratingRepository = new RatingRepository();
-
         public RatingService(IRatingRepository ratingRepository)
         {
             _ratingRepository = ratingRepository;

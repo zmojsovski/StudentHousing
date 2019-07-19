@@ -13,7 +13,6 @@ namespace Services.Services
     {
         private ICityRepository _cityRepository;
 
-        //CityRepository cityRepository = new CityRepository();
         public CityService(ICityRepository cityRepository)
         {
             _cityRepository = cityRepository;

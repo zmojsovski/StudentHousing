@@ -15,9 +15,6 @@ namespace StudentHousing.Controllers
 {
     public class HomeController : Controller
     {
-        //IApartmentService apartmentService = new ApartmentService();
-        //IRatingService ratingService = new RatingService();
-        //ICityService cityService = new CityService();
         ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
         private IApartmentService _apartmentService;
         private IRatingService _ratingService;
@@ -28,8 +25,6 @@ namespace StudentHousing.Controllers
             _ratingService = ratingService;
             _cityService = cityService;
         }
-
-        
 
         [HttpGet]
         public IActionResult Index()
