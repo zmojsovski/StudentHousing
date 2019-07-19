@@ -77,4 +77,10 @@
         minDate: -0,
     });
 
+    $("#clear-filters").click(function () {
+        $("#name").val("");
+        $("#availableFrom").val(null);
+        $("#numberOfBeds").val(0);
+    });
+
 });

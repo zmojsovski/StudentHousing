@@ -16,7 +16,6 @@
         <div class="search-container">
             @Html.DropDownList("CityDDL", Model.Cities)
 
-
             <form id="form-block" caction="/action_page.php">
                 <input id="name" type="text" placeholder="Search by Apartment Name..." name="searchByName" />
                 <input id="availableFrom" type="text" placeholder="Search by Availability..." name="searchByDate" autocomplete="off" />
@@ -30,6 +29,7 @@
                 </select>
                 <button id="submit" type="button"><i class="fa-search"></i>Search</button>
             </form>
+            <button id="clear-filters">Reset filters</button>
         </div>
     </div>
 
@@ -63,7 +63,6 @@
         <script src="~/lib/jqueryui/jquery-ui.js"></script>
         <script src="~/js/ArrowFlip.js"></script>
         <script src="~/js/Search.js"></script>
-        <script src="~/js/IndexDatePicker.js"></script>
     }
 
 

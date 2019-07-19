@@ -30,7 +30,7 @@ namespace Services.Services
             _ratingRepository.Save();
 
             var ratingsByApartment = _ratingRepository.GetRatings().Where(x => x.ApartmentId == apartmentId);
-            var average = (double)ratingsByApartment.Sum(x => x.RatingValue) / ratingsByApartment.Count();
+            var average = (double)ratingsByApartment.Average(x => x.RatingValue);
             return Math.Round(average, 2);
         }       
     }

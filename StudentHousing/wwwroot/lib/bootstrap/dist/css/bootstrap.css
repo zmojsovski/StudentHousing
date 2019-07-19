@@ -6944,6 +6944,20 @@ button.close {
     }
 }
 
+#clear-filters{
+    width: 50px;
+    height: 20px;
+    /*background-color: firebrick;*/
+    background-color: transparent;
+    font-size: 10px;
+    /*color: white;*/
+    color: blue;
+    padding: 0;
+    /*margin-right: 10px;*/
+    align-content: center;
+    font-weight: 300;
+    text-decoration: underline;
+}
 .sorting-area {
     box-sizing: border-box;
     width:100%;
