@@ -10,11 +10,15 @@ using Services.Services;
 using Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.Extensions.Logging;
 
 namespace StudentHousing.Controllers
 {
     public class HomeController : Controller
     {
+
+        
+
         //IApartmentService apartmentService = new ApartmentService();
         //IRatingService ratingService = new RatingService();
         //ICityService cityService = new CityService();
@@ -29,9 +33,18 @@ namespace StudentHousing.Controllers
             _cityService = cityService;
         }
 
-        
+        readonly ILogger<HomeController> _log;
 
-        [HttpGet]
+        public HomeController(ILogger<HomeController> log)
+        {
+            _log = log;
+        }
+        public void LogIndex()
+        {
+            _log.LogInformation("Hello, world!");
+        }
+
+    [HttpGet]
         public IActionResult Index()
         {
             var allCities = _cityService.GetCities();

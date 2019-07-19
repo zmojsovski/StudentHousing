@@ -1,14 +1,13 @@
 ﻿$(document).ready(function () {
     var apartments = [];
     var flag = 0;
-    var change = true;
     $(".rating").hover(function () {
         flag = 1;
-        if (change == true) {
-            for (let i = 1; i <= 5; i++) {
-                $(this).parents(".apartment-data").children(":nth-of-type(" + i + ")").css("color", "grey");
-            }
-        }
+
+        $(this).css("color", "grey");
+        $(this).prevUntil().css("color", "grey");
+        $(this).nextUntil().css("color", "grey");
+
         var apartmentId = $(this).parents(".apartment - box").attr("id");
         if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
             event.preventDefault();
@@ -31,17 +30,16 @@
                     $(this).prevUntil().css("color", "grey");
                 }    
             }
-            change = true;
+            change = true;                                                                            
         });
 
     $(".rating").click(function () {
         event.preventDefault();
-        change = false;
         flag = 0;
         var ratingValue = $(this).attr("value");
         var apartmentId = $(this).parents('.apartment-box').attr("id");
         var avgRatingText = $(this).parents('.apartment-box').find('.totalAverage');
-        var ESlabel = $(this).parents('.apartment-box').children().find('#success-error-message');
+        var ESlabel = $(this).parents('.apartment-box').find('#success-error-message');
         $.ajax({
             url: '/Home/AddRating',
             type: 'POST',
