@@ -113,6 +113,10 @@ namespace StudentHousing.Controllers
                 Description = _apartmentService.GetApartmentById(id).Description
 
             };
+            if(apartment.Description == null || apartment.Description.Length == 0)
+            {
+                apartment.Description = "No description available...";
+            }
             return apartment;   
         }
         [HttpGet]

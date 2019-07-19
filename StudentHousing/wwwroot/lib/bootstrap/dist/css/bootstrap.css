@@ -8,7 +8,7 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  /*background-color: lightgray;*/
+  background-color: lightgray;
 }
 body {
     
@@ -7048,8 +7048,11 @@ button.close {
 #apartmentcreate {
     width: 600px;
     margin-left: 213px;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
+    font-size: 16px;
     background-color: #F4BD6B;
+    border-radius: 10px;
+    cursor: pointer;
 }
 #description-area{
     height: 120px;
@@ -7077,5 +7080,73 @@ button.close {
 .details-block{
     background-color: white;
 }
-
+.top-part{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    /*justify-content: center;*/
+}
+#details-picture{
+    width: 50%;
+    margin: 50px;
+}
+.info-panel {
+    width: 50%;
+    margin: 50px;
+    font-size: large;
+    
+}
+.info-panel h3{
+    margin-bottom: 60px;
+    font-weight: 600;
+}
+.info-panel td, th {
+    padding-bottom: 20px;
+    padding-right: 30px;
+    margin-right: 40px;
+}
+.bottom-part {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    padding: 50px;
+    padding-top: 0;
+    display: block;
+}
+/*.bottom-part h3{
+    width: 100%;
+    height: 20%;
+}*/
+.bottom-part h3 {
+    /*font-size: 16px;*/
+}
+#description-par {
+    font-size: 16px;
+}
+.footer-buttons {
+    width: 100%;
+    height: 25%;
+    padding: 50px;
+    padding-top: 0;
+    padding-bottom: 70px;
+}
+.backtolist {
+    font-size: 14px;
+    float: left;
+    padding-top: 10px;
+    text-decoration: underline;
+}
+#rent {
+    float: right;
+    margin-right: 30px;
+    width: 300px;
+    height: 35px;
+    font-size: 16px;
+    background-color: #F4BD6B;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.details{
+    text-decoration:underline;
+}
 /*# sourceMappingURL=bootstrap.css.map */

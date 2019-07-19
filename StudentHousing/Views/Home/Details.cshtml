@@ -8,8 +8,9 @@
 <div class="container body-content">
     <div class="details-block">
         <div class="top-part">
-            <img src="~/images/apartment_img.png" />
+            <img id="details-picture" src="~/images/apartment_img.png" />
             <div class="info-panel">
+                <h3>@Model.Name</h3>
                 <table>
                     <tr>
                         <td>Name: </td>
@@ -17,33 +18,50 @@
                     </tr>
                     <tr>
                         <td>Price: </td>
-                        <td>@Model.Price</td>
+                        <td>$@Model.Price</td>
                     </tr>
                     <tr>
                         <td>Available from: </td>
-                        <td>@Model.AvailableFrom</td>
+                        <td>@Model.AvailableFrom.ToString().Split(" ")[0]</td>
                     </tr>
                     <tr>
                         <td>Number of beds: </td>
                         <td>@Model.NumberOfBeds</td>
                     </tr>
                     <tr>
-                        <td>Ratings: </td>
-                        <td></td>
+                        <td>Average rating: </td>
+                        <td>@Model.AverageRating</td>
                     </tr>
                     <tr>
                         <td>Contact Phone: </td>
-                        <td>@Model.Phone</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="bottom-part">
-            <h4>Description</h4>
-            <p>@Model.Description</p>
+                        @{
+                            var phone = "";
+                            if (Model.Phone == null)
+                            {
+                                phone = "No Contact Phone available...";
+                            }
+                            else
+                            {
+                                phone = Model.Phone.ToString();
+                            }
+                            }
+                        <td>@phone</td>
+
+                   </tr>
+
+               </table>
+
+           </div>
+
+       </div>
+
+       <div class="bottom-part">
+            <h3>Description</h3>
+            <p id="description-par">@Model.Description</p>
         </div>
         <div class="footer-buttons">
-            <a href="#">Back to Home page</a>
+            <a class="backtolist" asp-controller="Home"
+               asp-action="Index">Back to Home page</a>
             <button id="rent">Rent</button>
         </div>
 
@@ -52,4 +70,4 @@
 </div>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/lib/jqueryui/jquery-ui.js"></script>
-<script src="~/js/Search.js"></script>
+@*<script src="~/js/Search.js"></script>*@

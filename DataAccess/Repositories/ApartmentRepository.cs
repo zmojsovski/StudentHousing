@@ -25,7 +25,7 @@ namespace DataAccess.Repositories
 
         public IQueryable<Apartment> GetApartments()
         {
-            return _context.Apartments.AsQueryable();
+            return _context.Apartments.AsQueryable().Include(x => x.Ratings);
         }
 
         public IQueryable<Apartment> GetByCity(int id)
