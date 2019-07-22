@@ -1,49 +1,31 @@
 ﻿$(document).ready(function () {
-    var apartments = [];
+    //var apartments = [];
     var flag = 0;
     $(".rating").hover(function () {
-        flag = 1;
-
-        $(this).css("color", "grey");
-        $(this).prevUntil().css("color", "grey");
-        $(this).nextUntil().css("color", "grey");
-
-        var apartmentId = $(this).parents(".apartment - box").attr("id");
-        if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
-            event.preventDefault();
-            //$(this).css("color", "yellow");
-            //$(this).prevUntil().css("color", "yellow");
-
-            $(this).toggleClass("ratingfull");
-            $(this).toggleClass("rating");
-
-            //$(this).toggleClass("ratingfull");
-            //$(this).toggleClass("rating-full");
-         //   $(this).toggleClass(".glyphicon glyphicon-star rating");
-            //$(this).toggleClass(".glyphicon glyphicon-star");
+        if (flag == 1) {
+            $(this).parent().children().removeClass("yellow").addClass("grey");
+            flag = 0;
         }
+        var apartmentId = $(this).parents(".apartment - box").attr("id");
+            $(this).prevUntil().addBack().toggleClass("yellow");
+            $(this).prevUntil().addBack.toggleClass("grey");
     },
 
         function () {
             var apartmentId = $(this).parents(".apartment - box").attr("id");
-            if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
-                var VAL = $(this).attr("value");
-                $(this).css("color", "grey");
-                $(this).prevUntil().css("color", "grey");
 
-                var TheColor = $(this).css("color");
+            var VAL = $(this).attr("value");
 
-                if (TheColor == 'rgb(128, 128, 128)') {
-                    $(this).css("color", "grey");
-                    $(this).prevUntil().css("color", "grey");
-                }    
-            }
-            change = true;                                                                            
+            if (flag == 0) {
+
+                $(this).prevUntil().addBack().toggleClass("yellow");
+                $(this).prevUntil().addBack.toggleClass("grey");
+            }                                                                    
         });
 
     $(".rating").click(function () {
         event.preventDefault();
-        flag = 0;
+        flag = 1;
         var ratingValue = $(this).attr("value");
         var apartmentId = $(this).parents('.apartment-box').attr("id");
         var avgRatingText = $(this).parents('.apartment-box').find('.totalAverage');

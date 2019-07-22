@@ -7064,12 +7064,21 @@ button.close {
 }
 .glyphicon-star-empty {
     font-size: 24px;
-    color: black;
+    color: grey;
 }
 
-.rating {
+/*.rating {
     font-size: 24px;
     color: grey;
+}*/
+
+.grey {
+    font-size: 24px;
+    color: lightgrey;
+}
+.yellow {
+    font-size: 24px;
+    color: yellow;
 }
 
 .ratingfull {
