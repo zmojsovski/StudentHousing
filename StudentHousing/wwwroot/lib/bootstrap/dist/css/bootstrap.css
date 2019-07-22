@@ -6877,7 +6877,9 @@ button.close {
     font-size: 17px;
     border: none;
     width: auto;
-    margin-right: 75px;
+    margin-right: 40px;
+    margin-left: 20px;
+
 }
 .search-container input[type=text] {
     padding: 7px;
@@ -6885,22 +6887,24 @@ button.close {
     font-size: 17px;
     border: none;
     width: 300px;
-    /*margin-left: 5px;*/
+    margin-right: 5px;
 }
-    .search-container input[type=date] {
-        padding: 6px;
-        height: 40px;
-        font-size: 17px;
-        border: none;
-        width: 300px;
-    }
-    .search-container select {
-        padding: 9px;
-        height: 40px;
-        font-size: 17px;
-        border: none;
-        width: 150px
-    }
+.search-container input[type=date] {
+    padding: 6px;
+    height: 40px;
+    font-size: 17px;
+    border: none;
+    width: 300px;
+    margin-right: 5px;
+}
+.search-container select {
+    padding: 9px;
+    height: 40px;
+    font-size: 17px;
+    border: none;
+    width: 150px;
+    margin-right: 5px;
+}
 
     .search-container button {
         /*float: right;*/
@@ -6943,13 +6947,22 @@ button.close {
         border: 1px solid #ccc;
     }
 }
+#form-block{
+    width: 950px;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+.searchorclear{
+    width: 150px;
+}
 
 #clear-filters{
-    width: 50px;
+    width: 150px;
     height: 20px;
     /*background-color: firebrick;*/
     background-color: transparent;
-    font-size: 10px;
+    font-size: 12px;
     /*color: white;*/
     color: blue;
     padding: 0;
