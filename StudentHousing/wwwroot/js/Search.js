@@ -78,9 +78,17 @@
     });
 
     $("#clear-filters").click(function () {
+        
         $("#name").val("");
         $("#availableFrom").val(null);
         $("#numberOfBeds").val(0);
+        var name = $("#name").val();
+        var availableFrom = $("#availableFrom").val();
+        var numberOfBeds = $("#numberOfBeds").val();
+        var cityId = $("#CityDDL").val();
+        $.get('home/getapartmentsbysearch', { cityId: cityId, name: name, availableFrom: availableFrom, numberOfBeds: numberOfBeds, sortType: sortType, sortDirection: sortDirection }).done(function (response) {
+            $("#cityResults").html(response);
+        });
     });
 
 });
