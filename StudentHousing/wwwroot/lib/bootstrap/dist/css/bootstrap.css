@@ -6881,7 +6881,6 @@ button.close {
     width: auto;
     margin-right: 40px;
     margin-left: 20px;
-
 }
 .search-container input[type=text] {
     padding: 7px;
@@ -6928,7 +6927,6 @@ button.close {
     .search-container {
         float: none;
     }
-
     a, input[type=text], .search-container button {
     float: none;
     display: block;
@@ -6937,7 +6935,6 @@ button.close {
     margin: 0;
     padding: 14px;
     }
-
     input[type=text] {
         border: 1px solid #ccc;
     }
@@ -6954,13 +6951,10 @@ button.close {
 #clear-filters{
     width: 150px;
     height: 20px;
-    /*background-color: firebrick;*/
     background-color: transparent;
     font-size: 12px;
-    /*color: white;*/
     color: blue;
     padding: 0;
-    /*margin-right: 10px;*/
     align-content: center;
     font-weight: 300;
     text-decoration: underline;
@@ -6978,7 +6972,6 @@ button.close {
     padding-left: 30px;
     padding-right: 65px;
 }
-
 .apartment-box{
     box-sizing: border-box;
     width: 100%;
@@ -7016,10 +7009,6 @@ button.close {
     display: block;
     padding-top: 50px;
 }
-/*#stars p{
-    padding-left: 20px;
-}*/
-
 .average-parent {
     padding-left: 20px;
 }
@@ -7036,20 +7025,13 @@ button.close {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*padding-left: 20%;*/
     font-size: 18px;
 }
 .apartment-item img{
     height: 100%;
     width: 100%;
 }
-/*.row {
-    display: flex;
-    width: 100%;
-}*/
-
 #form-container{
-    /*background-color: white;*/
     padding-left: 157px;
     width: 100%;
     padding-top: 40px;
@@ -7063,12 +7045,6 @@ button.close {
     font-size: 24px;
     color: grey;
 }
-
-/*.rating {
-    font-size: 24px;
-    color: grey;
-}*/
-
 .grey {
     font-size: 24px;
     color: lightgrey;
@@ -7077,12 +7053,10 @@ button.close {
     font-size: 24px;
     color: yellow;
 }
-
 .ratingfull {
     font-size: 24px;
     color: yellow;
 }
-
 #apartmentcreate {
     width: 600px;
     margin-left: 213px;
@@ -7097,7 +7071,6 @@ button.close {
 #design {
     width: 400px;
 }
-
 .createbutton {
     width: 110px;
     margin-left: 273px;
@@ -7108,12 +7081,10 @@ button.close {
 #pricelabel{
     width: 190px;
 }
-
 .detaillabel{
     display: block;
     margin-top: 165px;
 }
-
 .details-block{
     background-color: white;
 }
@@ -7121,7 +7092,6 @@ button.close {
     width: 100%;
     height: 50%;
     display: flex;
-    /*justify-content: center;*/
 }
 #details-picture{
     width: 50%;
@@ -7150,12 +7120,7 @@ button.close {
     padding-top: 0;
     display: block;
 }
-/*.bottom-part h3{
-    width: 100%;
-    height: 20%;
-}*/
 .bottom-part h3 {
-    /*font-size: 16px;*/
 }
 #description-par {
     font-size: 16px;
@@ -7187,7 +7152,8 @@ button.close {
     text-decoration:underline;
 }
 #counter{
-    margin-left: 725px;
+    margin-right: 190px;
+    float: right;
 }
 .descriptionwarning{
     color:red;
