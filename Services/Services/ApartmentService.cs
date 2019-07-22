@@ -11,7 +11,7 @@ namespace Services.Services
 {
    public class ApartmentService : IApartmentService
     {
-        private IApartmentRepository _apartmentRepository;
+        private readonly IApartmentRepository _apartmentRepository;
 
         public ApartmentService(IApartmentRepository apartmentRepository)
         {
@@ -59,7 +59,7 @@ namespace Services.Services
             if (availableFrom != null)
                 query = query.Where(x => x.AvailableFrom.Date >= availableFrom.GetValueOrDefault().Date);
             if (numberOfBeds != null && numberOfBeds > 0)
-                query = query.Where(x => x.NumberOfBeds >= numberOfBeds);
+                query = query.Where(x => x.NumberOfBeds == numberOfBeds);
 
             query = query.ToList().AsQueryable();
             

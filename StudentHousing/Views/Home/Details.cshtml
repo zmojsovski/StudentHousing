@@ -17,7 +17,7 @@
                         <td>@Model.Name</td>
                     </tr>
                     <tr>
-                        <td>Price: </td>
+                        <td>Price per month: </td>
                         <td>$@Model.Price</td>
                     </tr>
                     <tr>
@@ -30,7 +30,10 @@
                     </tr>
                     <tr>
                         <td>Average rating: </td>
-                        <td>@Model.AverageRating</td>
+                        <td>
+                            @Model.AverageRating
+                            <span class="glyphicon glyphicon-star rating yellow"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Contact Phone: </td>

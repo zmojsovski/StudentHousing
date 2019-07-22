@@ -2,8 +2,8 @@
     var sortType = null;
     var sortDirection = null;
     var cityId = $("#CityDDL").val();
-    $("#name").autocomplete({
 
+    $("#name").autocomplete({
         source: function (request, response) {
             $.ajax({
                 url: "/home/searchautocomplete",
@@ -14,7 +14,6 @@
                     response($.map(data, function (item) {
                         return { label: item, value: item };
                     }))
-
                 }
             })
         },
@@ -22,8 +21,6 @@
             noResults: 'No suggestions',
             results: ''
         },
-
-
     });
 
     $("#sortPrice").click(function () {
@@ -62,7 +59,6 @@
 
     $("#submit").click(function () {
         event.preventDefault();
-
         var cityId = $("#CityDDL").val();
         var name = $("#name").val();
         var availableFrom = $("#availableFrom").val();
@@ -78,10 +74,9 @@
     });
 
     $("#clear-filters").click(function () {
-        
         $("#name").val("");
         $("#availableFrom").val(null);
-        $("#numberOfBeds").val(0);
+        $("#numberOfBeds").val("");
         var name = $("#name").val();
         var availableFrom = $("#availableFrom").val();
         var numberOfBeds = $("#numberOfBeds").val();
@@ -90,5 +85,4 @@
             $("#cityResults").html(response);
         });
     });
-
 });
