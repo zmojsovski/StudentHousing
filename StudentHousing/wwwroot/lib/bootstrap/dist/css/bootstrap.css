@@ -7185,4 +7185,10 @@ button.close {
 .details{
     text-decoration:underline;
 }
+#counter{
+    margin-left: 725px;
+}
+.descriptionwarning{
+    color:red;
+}
 /*# sourceMappingURL=bootstrap.css.map */
