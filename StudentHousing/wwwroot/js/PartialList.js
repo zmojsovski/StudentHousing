@@ -1,25 +1,16 @@
 ﻿$(document).ready(function () {
-    //var apartments = [];
     var flag = 0;
     $(".rating").hover(function () {
-        //if (flag == 1) {
-            $(this).parent().children().removeClass("yellow").addClass("grey");
-            flag = 0;
-       // }
-        var apartmentId = $(this).parents(".apartment - box").attr("id");
+        $(this).parent().children().removeClass("yellow").addClass("grey");
+        flag = 0;
         $(this).prevUntil().addBack().addClass("yellow");
-        $(this).prevUntil().addBack.removeClass("grey");
+        $(this).prevUntil().addBack().removeClass("grey");
     },
 
         function () {
-            var apartmentId = $(this).parents(".apartment - box").attr("id");
-
-            var VAL = $(this).attr("value");
-
             if (flag == 0) {
-
                 $(this).prevUntil().addBack().toggleClass("yellow");
-                $(this).prevUntil().addBack.toggleClass("grey");
+                $(this).prevUntil().addBack().toggleClass("grey");
             }                                                                    
         });
 
