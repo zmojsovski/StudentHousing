@@ -45,8 +45,6 @@ namespace StudentHousing.Controllers
                 }).ToList();
 
                 model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null, null, null);
-                //var e = new Exception("error wow");
-                //throw e;
             }
             catch (Exception ex)
             {
@@ -134,6 +132,7 @@ namespace StudentHousing.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
+
         private ApartmentModel GetApartmentModelById(int id)
         {
             ApartmentModel apartment = null;
