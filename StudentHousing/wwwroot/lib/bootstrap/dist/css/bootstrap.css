@@ -1224,7 +1224,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 h1 small,
@@ -3058,6 +3058,7 @@ select[multiple].input-lg {
     margin-bottom: 0;
     vertical-align: middle;
     width: 200px;
+    font-size: 18px;
   }
   .form-inline .radio,
   .form-inline .checkbox {
@@ -6985,7 +6986,9 @@ button.close {
     margin-bottom: 20px;
     background-color: white;
 }
-
+.red{
+    color: red;
+}
 .apartment-content {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -7048,6 +7051,7 @@ button.close {
     /*background-color: white;*/
     padding-left: 157px;
     width: 100%;
+    padding-top: 40px;
     
 }
 #form-container h2{
@@ -7081,8 +7085,7 @@ button.close {
 #apartmentcreate {
     width: 600px;
     margin-left: 213px;
-    /*margin-bottom: 50px;*/
-    font-size: 16px;
+    font-size: 17px;
     background-color: #F4BD6B;
     border-radius: 10px;
     cursor: pointer;
@@ -7099,7 +7102,7 @@ button.close {
     margin-left: 273px;
 }
 .backtolist{
-    margin-bottom: 100px;
+    margin-bottom: 40px;
 }
 #pricelabel{
     width: 190px;
@@ -7171,7 +7174,7 @@ button.close {
 }
 #rent {
     float: right;
-    margin-right: 30px;
+    margin-right: 80px;
     width: 300px;
     height: 35px;
     font-size: 16px;
