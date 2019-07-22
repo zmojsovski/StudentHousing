@@ -11,8 +11,16 @@
         var apartmentId = $(this).parents(".apartment - box").attr("id");
         if ((jQuery.inArray(apartmentId, apartments)) == -1 && flag == 1) {
             event.preventDefault();
-            $(this).css("color", "yellow");
-            $(this).prevUntil().css("color", "yellow");
+            //$(this).css("color", "yellow");
+            //$(this).prevUntil().css("color", "yellow");
+
+            $(this).toggleClass("ratingfull");
+            $(this).toggleClass("rating");
+
+            //$(this).toggleClass("ratingfull");
+            //$(this).toggleClass("rating-full");
+         //   $(this).toggleClass(".glyphicon glyphicon-star rating");
+            //$(this).toggleClass(".glyphicon glyphicon-star");
         }
     },
 
