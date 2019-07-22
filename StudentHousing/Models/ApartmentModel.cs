@@ -38,6 +38,8 @@ namespace StudentHousing.Models
 
         public bool IsTryCatch { get; set; }
 
+        public bool IsLowerDate { get; set; }
+
         public List<SelectListItem> Cities { get; set; }
         public List<SelectListItem> NumberOfBedsList { get; set; }
     }
