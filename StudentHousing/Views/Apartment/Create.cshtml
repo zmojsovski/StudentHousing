@@ -59,6 +59,7 @@
                              @id = "AvailableFrom",
                              @class = "form-control input-md datepicker",
                              @autocomplete = "off",
+                             @readonly = "readonly",
                          })
                     @Html.ValidationMessageFor(model => model.AvailableFrom, "", new { @class = "text-danger" })
                 </div>
