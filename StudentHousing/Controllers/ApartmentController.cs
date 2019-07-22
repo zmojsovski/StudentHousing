@@ -29,7 +29,7 @@ namespace StudentHousing.Controllers
             {
                 NumberOfBedsList = getNumberOfBeds(),
                 Cities = getAllCities(),
-                AvailableFrom = getTodayDate()
+                AvailableFrom = getTodayDate().Date
             };
 
             return View(model);
@@ -97,7 +97,7 @@ namespace StudentHousing.Controllers
         public DateTime getTodayDate()
         {
             DateTime today = DateTime.Today;
-            return today;
+            return today.Date;
         }
     }
 }
