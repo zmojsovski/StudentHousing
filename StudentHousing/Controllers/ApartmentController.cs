@@ -69,6 +69,8 @@ namespace StudentHousing.Controllers
                 {
                     model.IsTryCatch = true;
                 }
+                var apartmentid = _apartmentService.GetApartmentByName(apartment.Name);
+                return RedirectToAction("details", "Home", new { id = apartmentid.Id });
             }
 
             model.Cities = getAllCities();
