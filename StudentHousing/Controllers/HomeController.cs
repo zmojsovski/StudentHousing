@@ -18,9 +18,9 @@ namespace StudentHousing.Controllers
     public class HomeController : Controller
     {
         ApartmentsViewModel apartmentsViewModel = new ApartmentsViewModel();
-        private IApartmentService _apartmentService;
-        private IRatingService _ratingService;
-        private ICityService _cityService;
+        private readonly IApartmentService _apartmentService;
+        private readonly IRatingService _ratingService;
+        private readonly ICityService _cityService;
         private readonly ILogger<HomeController> _log;
         public HomeController(IApartmentService apartmentService, IRatingService ratingService, ICityService cityService, ILogger<HomeController> log)
         {
@@ -29,7 +29,6 @@ namespace StudentHousing.Controllers
             _cityService = cityService;
             _log = log;
         }
-
 
         [HttpGet]
         public IActionResult Index()

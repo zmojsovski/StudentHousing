@@ -12,7 +12,7 @@ namespace Services.Services
 {
     public class RatingService : IRatingService
     {
-        private IRatingRepository _ratingRepository;
+        private readonly IRatingRepository _ratingRepository;
 
         public RatingService(IRatingRepository ratingRepository)
         {
