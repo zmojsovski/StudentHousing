@@ -16,6 +16,7 @@ namespace StudentHousing.Models
         [StringLength(100, ErrorMessage = "Address can contain maximum 100 characters")]
         public string Address { get; set; }
         [Required(ErrorMessage = "Price per month is required")]
+        [Range(0, 99999.99,ErrorMessage ="The Price can contain maximum 5 digits")]
         public decimal Price { get; set; }
         [StringLength(500, ErrorMessage = "Description can contain maximum 500 characters")]
         public string Description { get; set; }
