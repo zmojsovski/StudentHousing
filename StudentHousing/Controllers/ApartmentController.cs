@@ -48,7 +48,13 @@ namespace StudentHousing.Controllers
                     model.NumberOfBedsList = getNumberOfBeds();
                     return View(model);
                 }
-
+                if(model.AvailableFrom < DateTime.Now)
+                {
+                    model.Cities = getAllCities();
+                    model.NumberOfBedsList = getNumberOfBeds();
+                    model.IsLowerDate = true;
+                    return View(model);
+                }
                 var apartment = new Apartment
                 {
                     Name = model.Name,
@@ -63,7 +69,7 @@ namespace StudentHousing.Controllers
                 try
                 {
                     _apartmentService.CreateApartment(apartment);
-                    model.IsSuccess = true;
+                    //model.IsSuccess = true;
                 }
                 catch
                 {
