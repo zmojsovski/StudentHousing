@@ -62,5 +62,10 @@ namespace StudentHousing.Controllers
             }
             return apartment;
         }
+        //return the avg rating to diplay stars
+        //public decimal GetAverageRatingById(int id)
+        //{
+
+        //}
     }
 }
