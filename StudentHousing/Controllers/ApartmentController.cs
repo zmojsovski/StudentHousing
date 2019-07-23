@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using Services.Interfaces;
 using Services.Services;
 using StudentHousing.Models;
@@ -13,14 +14,17 @@ namespace StudentHousing.Controllers
 {
     public class ApartmentController : Controller
     {
-        public ApartmentController(IApartmentService apartmentService, ICityService cityService)
+        private readonly IApartmentService _apartmentService;
+        private readonly ICityService _cityService;
+        private readonly ILogger<ApartmentController> _log;
+        public ApartmentController(IApartmentService apartmentService, ICityService cityService, ILogger<ApartmentController> log)
         {
             _apartmentService = apartmentService;
             _cityService = cityService;
+            _log = log;
         }
 
-        private readonly IApartmentService _apartmentService;
-        private readonly ICityService _cityService;
+        
 
         [HttpGet]
         public IActionResult Create()
@@ -71,9 +75,10 @@ namespace StudentHousing.Controllers
                     _apartmentService.CreateApartment(apartment);
                     //model.IsSuccess = true;
                 }
-                catch
+                catch(Exception ex)
                 {
                     model.IsTryCatch = true;
+                    _log.LogWarning(ex, ex.Message);
                 }
                 var apartmentid = _apartmentService.GetApartmentByName(apartment.Name);
                 return RedirectToAction("details", "Home", new { id = apartmentid.Id });
@@ -94,12 +99,21 @@ namespace StudentHousing.Controllers
 
         public List<SelectListItem> getAllCities()
         {
-            var allCities = _cityService.GetCities();
-        return    allCities.Select(x => new SelectListItem
+            var cities = new List<SelectListItem>();
+            try
             {
-                Text = x.Name,
-                Value = x.Id.ToString()
-            }).ToList();
+              var  allCities = _cityService.GetCities();
+              cities =  allCities.Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                }).ToList();
+            }
+            catch(Exception ex)
+            {
+                _log.LogWarning(ex, ex.Message);
+            }
+            return cities;
         }
 
         public DateTime getTodayDate()
