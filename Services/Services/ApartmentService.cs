@@ -57,7 +57,7 @@ namespace Services.Services
             if (!string.IsNullOrEmpty(name))
                 query = query.Where(x => x.Name.ToLower().Contains(name.ToLower()));
             if (availableFrom != null)
-                query = query.Where(x => x.AvailableFrom.Date >= availableFrom.GetValueOrDefault().Date);
+                query = query.Where(x => availableFrom.GetValueOrDefault().Date >= x.AvailableFrom.Date);
             if (numberOfBeds != null && numberOfBeds > 0)
                 query = query.Where(x => x.NumberOfBeds == numberOfBeds);
 

@@ -13,24 +13,20 @@
                 <h3>@Model.Name</h3>
                 <table>
                     <tr>
-                        <td>Name: </td>
-                        <td>@Model.Name</td>
+                        <td class="propertytype">Price per month: </td>
+                        <td class="propertyvalue">$@Model.Price</td>
                     </tr>
                     <tr>
-                        <td>Price per month: </td>
-                        <td>$@Model.Price</td>
+                        <td class="propertytype">Available from: </td>
+                        <td class="propertyvalue">@Model.AvailableFrom.ToString().Split(" ")[0]</td>
                     </tr>
                     <tr>
-                        <td>Available from: </td>
-                        <td>@Model.AvailableFrom.ToString().Split(" ")[0]</td>
+                        <td class="propertytype">Number of beds: </td>
+                        <td class="propertyvalue">@Model.NumberOfBeds</td>
                     </tr>
                     <tr>
-                        <td>Number of beds: </td>
-                        <td>@Model.NumberOfBeds</td>
-                    </tr>
-                    <tr>
-                        <td>Average rating: </td>
-                        <td>
+                        <td class="propertytype">Average rating: </td>
+                        <td class="propertyvalue">
                             <div class="star-ratings-sprite" id="@Model.AverageRating">
                                 <span style="width:67%" class="star-ratings-sprite-rating"></span>
                                 
@@ -38,7 +34,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Contact Phone: </td>
+                        <td class="propertytype">Contact Phone: </td>
                         @{
                             var phone = "";
                             if (Model.Phone == null)
@@ -50,7 +46,7 @@
                                 phone = Model.Phone.ToString();
                             }
                         }
-                        <td>@phone</td>
+                        <td class="propertyvalue">@phone</td>
                     </tr>
                 </table>
             </div>
@@ -65,9 +61,7 @@
                asp-action="Index">Back to Home page</a>
             <button id="rent">Rent</button>
         </div>
-
     </div>
-    @*<span class="hidden" id="@Model.Id"></span>*@
 </div>
 
 <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -31,9 +31,9 @@ namespace StudentHousing.Controllers
         {
             var model = new ApartmentModel()
             {
-                NumberOfBedsList = getNumberOfBeds(),
-                Cities = getAllCities(),
-                AvailableFrom = getTodayDate().Date
+                NumberOfBedsList = GetNumberOfBeds(),
+                Cities = GetAllCities(),
+                AvailableFrom = GetTodaysDate().Date
             };
 
             return View(model);
@@ -48,14 +48,14 @@ namespace StudentHousing.Controllers
                 if (apt != null)
                 {
                     model.IsDuplicateName = true;
-                    model.Cities = getAllCities();
-                    model.NumberOfBedsList = getNumberOfBeds();
+                    model.Cities = GetAllCities();
+                    model.NumberOfBedsList = GetNumberOfBeds();
                     return View(model);
                 }
                 if(model.AvailableFrom < DateTime.Now)
                 {
-                    model.Cities = getAllCities();
-                    model.NumberOfBedsList = getNumberOfBeds();
+                    model.Cities = GetAllCities();
+                    model.NumberOfBedsList = GetNumberOfBeds();
                     model.IsLowerDate = true;
                     return View(model);
                 }
@@ -83,11 +83,11 @@ namespace StudentHousing.Controllers
                 return RedirectToAction("details", "Home", new { id = apartmentid.Id });
             }
 
-            model.Cities = getAllCities();
-            model.NumberOfBedsList = getNumberOfBeds();
+            model.Cities = GetAllCities();
+            model.NumberOfBedsList = GetNumberOfBeds();
             return View(model);
         }   
-        public List<SelectListItem> getNumberOfBeds() {
+        public List<SelectListItem> GetNumberOfBeds() {
             var listItems = new List<SelectListItem>();
             listItems.Add(new SelectListItem { Text = "1", Value = "1" });
             listItems.Add(new SelectListItem { Text = "2", Value = "2" });
@@ -96,7 +96,7 @@ namespace StudentHousing.Controllers
             return listItems;
         }
 
-        public List<SelectListItem> getAllCities()
+        public List<SelectListItem> GetAllCities()
         {
             var cities = new List<SelectListItem>();
             try
@@ -115,7 +115,7 @@ namespace StudentHousing.Controllers
             return cities;
         }
 
-        public DateTime getTodayDate()
+        public DateTime GetTodaysDate()
         {
             DateTime today = DateTime.Today;
             return today.Date;

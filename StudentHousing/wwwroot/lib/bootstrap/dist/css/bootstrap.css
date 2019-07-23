@@ -7098,12 +7098,13 @@ button.close {
     display: flex;
 }
 #details-picture{
-    width: 50%;
+    width: 40%;
+    height: 100%;
     margin: 50px;
 }
 .info-panel {
     width: 50%;
-    margin: 50px;
+    margin-top: 40px;
     font-size: large;
     
 }
@@ -7113,8 +7114,8 @@ button.close {
 }
 .info-panel td, th {
     padding-bottom: 20px;
-    padding-right: 30px;
-    margin-right: 40px;
+    padding-right: 50px;
+    /*margin-right: 40px;*/
 }
 .bottom-part {
     width: 100%;
@@ -7182,3 +7183,13 @@ button.close {
     height: 21px;
     display: block;
 }
+td.propertytype {
+    font-weight: 600;
+    display: inline-block;
+    width: 200px;
+}
+td.propertyvalue {
+    display: inline-block;
+    width: 300px;
+}
+
