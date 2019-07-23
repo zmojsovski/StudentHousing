@@ -12,10 +12,10 @@
 $("#description-area").keyup(function () {
     var text = $("#description-area").val();
     var counterot = text.toString().length;
-    if (counterot > 500){
+    if (counterot == 500){
         $("#counter").addClass("descriptionwarning");
     }
-    else if (counterot <= 500) {
+    else if (counterot < 500) {
         $("#counter").removeClass("descriptionwarning");
     }
     var counterfield = $("#counter").html("Characters: " + counterot +"/500");
