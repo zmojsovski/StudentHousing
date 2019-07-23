@@ -31,8 +31,10 @@
                     <tr>
                         <td>Average rating: </td>
                         <td>
-                            @Model.AverageRating
-                            <span class="glyphicon glyphicon-star rating yellow"></span>
+                            <div class="star-ratings-sprite" id="@Model.AverageRating">
+                                <span style="width:67%" class="star-ratings-sprite-rating" onload="FillStars()"></span>
+                                
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -47,18 +49,18 @@
                             {
                                 phone = Model.Phone.ToString();
                             }
-                            }
+                        }
                         <td>@phone</td>
 
-                   </tr>
+                    </tr>
 
-               </table>
+                </table>
 
-           </div>
+            </div>
 
-       </div>
+        </div>
 
-       <div class="bottom-part">
+        <div class="bottom-part">
             <h3>Description</h3>
             <p id="description-par">@Model.Description</p>
         </div>
@@ -70,7 +72,10 @@
 
 
     </div>
+
 </div>
+
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/lib/jqueryui/jquery-ui.js"></script>
+@*<script src="~/js/Details.js"></script>*@
 @*<script src="~/js/Search.js"></script>*@
