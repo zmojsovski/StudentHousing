@@ -7010,7 +7010,7 @@ button.close {
     padding-top: 50px;
 }
 .average-parent {
-    padding-left: 20px;
+    padding-left: 30px;
 }
 .success-error {
     padding-left: 20px;
@@ -7026,10 +7026,12 @@ button.close {
     justify-content: center;
     align-items: center;
     font-size: 18px;
+    padding-left: 10px;
 }
 .apartment-item img{
     height: 100%;
     width: 100%;
+    
 }
 #form-container{
     padding-left: 157px;
@@ -7067,7 +7069,8 @@ button.close {
 }
 #description-area{
     height: 120px;
-}
+    max-width: 600px;
+} 
 #design {
     width: 400px;
 }

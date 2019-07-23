@@ -130,43 +130,5 @@ namespace StudentHousing.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
-
-        private ApartmentModel GetApartmentModelById(int id)
-        {
-            ApartmentModel apartment = null;
-            try
-            {
-                apartment = new ApartmentModel()
-                {
-                    Id = _apartmentService.GetApartmentById(id).Id,
-                    Name = _apartmentService.GetApartmentById(id).Name,
-                    Price = _apartmentService.GetApartmentById(id).Price,
-                    AvailableFrom = _apartmentService.GetApartmentById(id).AvailableFrom,
-                    NumberOfBeds = _apartmentService.GetApartmentById(id).NumberOfBeds,
-                    AverageRating = float.Parse(_apartmentService.GetApartmentById(id).AverageRating.ToString("0.00")),
-                    Phone = _apartmentService.GetApartmentById(id).Phone,
-                    Description = _apartmentService.GetApartmentById(id).Description
-
-                };
-                if (apartment.Description == null || apartment.Description.Length == 0)
-                {
-                    apartment.Description = "No description available...";
-                }
-            }
-            catch(Exception ex)
-            {
-                _log.LogWarning(ex, ex.Message);
-            }
-            return apartment;   
-        }
-        [HttpGet]
-        [Route("home/details")]
-        public IActionResult Details(int id)
-        {
-            var model = GetApartmentModelById(id);
-            return View(model);
-        }
-
     }
 }

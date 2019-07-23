@@ -73,7 +73,6 @@ namespace StudentHousing.Controllers
                 try
                 {
                     _apartmentService.CreateApartment(apartment);
-                    //model.IsSuccess = true;
                 }
                 catch(Exception ex)
                 {
