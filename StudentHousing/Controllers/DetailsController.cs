@@ -19,7 +19,7 @@ namespace StudentHousing.Controllers
         private readonly ICityService _cityService;
         private readonly ILogger<DetailsController> _log;
 
-        public IRatingService RatingService => _ratingService;
+       // public IRatingService RatingService = _ratingService;
 
         public DetailsController(IApartmentService apartmentService, IRatingService ratingService, ICityService cityService, ILogger<DetailsController> log)
         {
@@ -29,6 +29,7 @@ namespace StudentHousing.Controllers
             _log = log;
         }
         [HttpGet]
+        [Route("details")]
         public IActionResult Index(int id)
         {
             var model = GetApartmentModelById(id);
@@ -62,10 +63,5 @@ namespace StudentHousing.Controllers
             }
             return apartment;
         }
-        //return the avg rating to diplay stars
-        //public decimal GetAverageRatingById(int id)
-        //{
-
-        //}
     }
 }

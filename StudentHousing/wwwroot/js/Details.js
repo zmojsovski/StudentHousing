@@ -1,7 +1,4 @@
 ﻿$(document).ready(function () {
-    $.get(function (id) {
-
-    });
-    var id = $('.hidden').attr("id");
-   // $('.star-ratings-sprite-rating').attr('style', 'width:' + (Rat/5)*100 + '%');
+    var avgRat = $('.star-ratings-sprite').attr("id");
+    $('.star-ratings-sprite-rating').attr('style', 'width:' + (avgRat/5)*100 + '%');
 });

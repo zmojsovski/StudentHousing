@@ -15,53 +15,25 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         
-        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/fonts/font-awesome.min.css">*@
-
     </environment>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">*@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                @*</button>*@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
                     <img id="logo" src="~/images/logo_transparent.png" />
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 </ul>
             </div>
         </div>
     </nav>
 </head>
-@*<body style="margin-top:50px">
-    
-
-    <partial name="_CookieConsentPartial" />
-    <div class="search-bar">
-        <div class="search-container">
-          
-            <form id="form-block" caction="/action_page.php">
-                <input type="text" placeholder="Search by Apartment Name..." name="searchByName" />
-                <input type="date" placeholder="Search by Availability..." name="searchByDate" />
-                <select name="searchByBeds">
-                    <option value="0">All</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-                <button type="submit"><i class="fa-search"></i>Search</button>
-            </form>
-        </div>
-    </div>*@
 <body style="margin-top:50px">
     <div class="container body-content">
         @RenderBody()
@@ -75,9 +47,6 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/jqueryui/jquery-ui.js"></script>
-        @*<script src="~/js/Rating.js"></script>*@
-
-        @*<script src="~/js/site.js" asp-append-version="true"></script>*@
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
