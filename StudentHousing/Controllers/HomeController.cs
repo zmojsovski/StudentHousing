@@ -43,7 +43,7 @@ namespace StudentHousing.Controllers
                     Value = x.Id.ToString()
                 }).ToList();
 
-                model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id, null, null, null, null, null);
+                model = this.GetFullAndPartialViewModel(allCities.FirstOrDefault().Id);
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace StudentHousing.Controllers
             return Json(names);
         }
 
-        private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name, DateTime? availableFrom, int? numberOfBeds, string sortType, string sortDirection)
+        private ApartmentsViewModel GetFullAndPartialViewModel(int? cityId, string name = null, DateTime? availableFrom = null, int? numberOfBeds = null, string sortType = null, string sortDirection = null)
         {
             try
             {

@@ -31,8 +31,8 @@ namespace StudentHousing.Controllers
         {
             var model = new ApartmentModel()
             {
-                NumberOfBedsList = getNumberOfBeds(),
-                Cities = getAllCities(),
+                NumberOfBedsList = GetNumberOfBeds(),
+                Cities = GetAllCities(),
             };
 
             return View(model);
