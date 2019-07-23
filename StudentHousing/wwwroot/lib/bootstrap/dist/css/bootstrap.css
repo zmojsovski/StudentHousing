@@ -3036,7 +3036,7 @@ select[multiple].input-lg {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: 600px;
+    width: 500px;
     vertical-align: middle;
   }
   .form-inline .form-control-static {
@@ -7043,6 +7043,7 @@ button.close {
     margin-bottom: 60px;
     margin-top: 40px;
 }
+
 .glyphicon-star-empty {
     font-size: 24px;
     color: grey;
@@ -7061,7 +7062,7 @@ button.close {
 }
 
 #apartmentcreate {
-    width: 600px;
+    width: 500px;
     margin-left: 213px;
     font-size: 17px;
     background-color: #F4BD6B;
@@ -7156,7 +7157,7 @@ button.close {
     text-decoration:underline;
 }
 #counter{
-    margin-right: 190px;
+    margin-right: 285px;
     float: right;
 }
 .descriptionwarning{
@@ -7181,4 +7182,9 @@ button.close {
     float: left;
     height: 21px;
     display: block;
+}
+
+#req {
+    font-size: 12px;
+    margin-bottom:50px;
 }

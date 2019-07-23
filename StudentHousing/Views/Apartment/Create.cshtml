@@ -29,8 +29,8 @@
     <div class="row">
         <div class="col-md-12" id="form-container">
             <h1>Create Apartment</h1>
-            <h3>Add you Apartment Details:</h3>
-            <p class="red">*Required fields</p>
+            <h3>Add your Apartment Details:</h3>
+            <p class="red" id="req">Required fields*</p>
             <form asp-action="Create" class="form-inline" id="Form1">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -83,7 +83,7 @@
                 <br />
                 <div class="form-group">
                     <label asp-for="Description" class="control-label">Description:</label>
-                    <textarea asp-for="Description" class="form-control" id="description-area"></textarea>
+                    <textarea asp-for="Description" class="form-control" id="description-area" maxlength="500"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                     <div id="counter">Characters: 0/500</div>
                 </div>

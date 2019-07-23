@@ -33,7 +33,6 @@ namespace StudentHousing.Controllers
             {
                 NumberOfBedsList = getNumberOfBeds(),
                 Cities = getAllCities(),
-                AvailableFrom = getTodayDate().Date
             };
 
             return View(model);
@@ -63,12 +62,12 @@ namespace StudentHousing.Controllers
                 {
                     Name = model.Name,
                     Address = model.Address,
-                    Price = model.Price,
+                    Price = model.Price.GetValueOrDefault(),
                     NumberOfBeds = model.NumberOfBeds,
                     Description = model.Description,
-                    Phone = model.Phone,
+                    Phone = model.Phone.ToString().Replace("-", ""),
                     CityId = model.CityId,
-                    AvailableFrom = model.AvailableFrom
+                    AvailableFrom = model.AvailableFrom.GetValueOrDefault()
                 };
                 try
                 {
@@ -80,7 +79,7 @@ namespace StudentHousing.Controllers
                     _log.LogWarning(ex, ex.Message);
                 }
                 var apartmentid = _apartmentService.GetApartmentByName(apartment.Name);
-                return RedirectToAction("details", "Home", new { id = apartmentid.Id });
+                return RedirectToAction("Index", "Details", new { id = apartmentid.Id });
             }
 
             model.Cities = getAllCities();
