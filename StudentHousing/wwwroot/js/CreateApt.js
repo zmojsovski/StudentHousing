@@ -1,4 +1,9 @@
 ﻿$(document).ready(function () {
+
+    $('#numberofbeds option[value=0]').each(function () {
+        $(this).attr("hidden", "hidden");
+    });
+
     $("#AvailableFrom").datepicker({
         dateFormat: "mm-dd-yy",
         minDate: -0,
