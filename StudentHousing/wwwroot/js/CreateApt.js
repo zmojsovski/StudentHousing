@@ -3,36 +3,34 @@
         dateFormat: "mm-dd-yy",
         minDate: -0,
     });
+    $("form").submit(function (e) {
+        e.preventDefault();
+        var form = this;
+        doConfirm("Are you sure?", function yes() {
+            form.submit();
+        }, function no() {
+            // do nothing
+        });
+    });
     
 });
-$("body").on("submit", "#Form1", function () {
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("apartmentcreate");
-    var span = document.getElementsByClassName("close")[0];
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
 
-    span.onclick = function () {
-        modal.style.display = "none";
-        return false;
-    }
-    //function AreYouSure(value) {
-    //    return value;
-    //}
-    //window.onclick = function (event) {
-    //    if (event.target == modal) {
-    //        modal.style.display = "none";
-    //    }
-    //}
-    //return AreYouSure(this.val());
-    $("#no").onclick = function () {
-        return false;
-    }
-    $("#yes").onclick = function () {
-        return true;
-    }
+
+//$("body").on("submit", "#Form1", function () {
+
+//    return confirm("Are you ready to submit your Apartment?");
+//});
+
+function doConfirm(msg, yesFn, noFn) {
+    var confirmBox = $("#confirmBox");
+    confirmBox.find(".message").text(msg);
+    confirmBox.find(".yes,.no").unbind().click(function () {
+        confirmBox.hide();
     });
+    confirmBox.find(".yes").click(yesFn);
+    confirmBox.find(".no").click(noFn);
+    confirmBox.show();
+}
 
  
 $("#description-area").keyup(function () {
@@ -44,7 +42,7 @@ $("#description-area").keyup(function () {
     else if (counterot < 500) {
         $("#counter").removeClass("descriptionwarning");
     }
-    var counterfield = $("#counter").html("Characters: " + counterot +"/500");
+    $("#counter").html("Characters: " + counterot +"/500");
 });
 
 

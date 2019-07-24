@@ -31,6 +31,15 @@
             <h1>Create Apartment</h1>
             <h3>Add your Apartment Details:</h3>
             <p class="red" id="req">Required fields*</p>
+
+
+            <div id="confirmBox">
+                <div class="message">Are you sure</div>
+                <span class="button yes">Yes</span>
+                <span class="button no">No</span>
+            </div>
+
+
             <form asp-action="Create" class="form-inline" id="Form1">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -97,19 +106,7 @@
                asp-action="Index">Back to Home Page</a>
 
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
 
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>Are you sure you want to create your Apartment?</p>
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-primary" id="yes" value="true">Yes</button>
-                        <button type="button" data-dismiss="modal" class="btn" id="no" value="false">No</button>
-                     </div>
-                </div>
-            </div>
 
 
         </div>
