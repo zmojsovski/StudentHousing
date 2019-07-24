@@ -77,7 +77,7 @@ namespace StudentHousing.Controllers
                 catch(Exception ex)
                 {
                     model.IsTryCatch = true;
-                    _log.LogWarning(ex, ex.Message);
+                    _log.LogError(ex, ex.Message);
                 }
                 var apartmentid = _apartmentService.GetApartmentByName(apartment.Name);
                 return RedirectToAction("Index", "Details", new { id = apartmentid.Id });
@@ -110,7 +110,7 @@ namespace StudentHousing.Controllers
             }
             catch(Exception ex)
             {
-                _log.LogWarning(ex, ex.Message);
+                _log.LogError(ex, ex.Message);
             }
             return cities;
         }

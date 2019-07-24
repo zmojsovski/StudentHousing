@@ -59,7 +59,7 @@ namespace StudentHousing.Controllers
             }
             catch (Exception ex)
             {
-                _log.LogWarning(ex, ex.Message);
+                _log.LogError(ex, ex.Message);
             }
             return apartment;
         }

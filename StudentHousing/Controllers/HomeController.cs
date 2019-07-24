@@ -47,7 +47,7 @@ namespace StudentHousing.Controllers
             }
             catch (Exception ex)
             {
-                _log.LogWarning(ex, ex.Message);
+                _log.LogError(ex, ex.Message);
             }
             
             return this.View(model);
@@ -64,7 +64,7 @@ namespace StudentHousing.Controllers
                 names = _apartmentService.AutoComplete(cityId, nameSubstring).ToList();
             }
             catch(Exception ex) {
-                _log.LogWarning(ex, ex.Message);
+                _log.LogError(ex, ex.Message);
             }
             return Json(names);
         }
@@ -88,7 +88,7 @@ namespace StudentHousing.Controllers
             }
             catch(Exception ex)
             {
-                _log.LogWarning(ex, ex.Message);
+                _log.LogError(ex, ex.Message);
             }
             return apartmentsViewModel;    
         }
@@ -104,7 +104,7 @@ namespace StudentHousing.Controllers
             }
             catch(Exception ex)
             {
-                _log.LogWarning(ex, ex.Message);
+                _log.LogError(ex, ex.Message);
             }
             return PartialView("_ListApartments", model);
         }
@@ -120,7 +120,7 @@ namespace StudentHousing.Controllers
             }
             catch (Exception ex)
             {
-                _log.LogWarning(ex, ex.Message);
+                _log.LogError(ex, ex.Message);
                 return Json(new { success = false, avgRating = 0 });
             }
         }
