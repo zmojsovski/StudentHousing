@@ -89,6 +89,7 @@ namespace StudentHousing.Controllers
         }   
         public List<SelectListItem> GetNumberOfBeds() {
             var listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem { Text = "Number of beds", Value = "0"});
             listItems.Add(new SelectListItem { Text = "1", Value = "1" });
             listItems.Add(new SelectListItem { Text = "2", Value = "2" });
             listItems.Add(new SelectListItem { Text = "3", Value = "3" });
