@@ -29,11 +29,10 @@ namespace DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Apartment>()
-           .HasOne<City>(s => s.City)
-           .WithMany(g => g.Apartments)
-           .HasForeignKey(s => s.CityId);
+            modelBuilder.Entity<Apartment>().HasOne<City>(s => s.City).WithMany(g => g.Apartments).HasForeignKey(s => s.CityId);
+            //modelBuilder.Entity<Apartment>().HasMany<Rating>(x => x.Ratings).WithOne(x => x.Apartment).HasPrincipalKey(x => x.Id);
             modelBuilder.Entity<Apartment>().HasMany<Rating>(x => x.Ratings).WithOne(x => x.Apartment).HasPrincipalKey(x => x.Id);
+            //modelBuilder.Entity<Rating>().HasOne<Apartment>(x => x.Apartment).WithMany(x => x.Ratings).HasForeignKey(x => x.ApartmentId).IsRequired();
         }    
     }
 }

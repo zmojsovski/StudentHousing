@@ -11,16 +11,25 @@ namespace Services.Services
 {
     public class CityService : ICityService
     {
-        private readonly ICityRepository _cityRepository;
+        //private readonly ICityRepository _cityRepository;
+        private IRepository<City> _repository;
 
-        public CityService(ICityRepository cityRepository)
+        public CityService(IRepository<City> repository)
         {
-            _cityRepository = cityRepository;
+            //_apartmentRepository = apartmentRepository;
+            _repository = repository;
         }
+
+        //public CityService(ICityRepository cityRepository)
+        //{
+        //    _cityRepository = cityRepository;
+        //}
 
         public IQueryable<City> GetCities()
         {
-            return _cityRepository.GetCities().AsQueryable();
+            //return _cityRepository.GetCities().AsQueryable();
+            return _repository.GetAll();
+
         }
     }
 }

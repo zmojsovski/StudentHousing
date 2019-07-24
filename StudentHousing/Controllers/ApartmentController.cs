@@ -24,8 +24,6 @@ namespace StudentHousing.Controllers
             _log = log;
         }
 
-        
-
         [HttpGet]
         public IActionResult Create()
         {
@@ -34,7 +32,6 @@ namespace StudentHousing.Controllers
                 NumberOfBedsList = GetNumberOfBeds(),
                 Cities = GetAllCities(),
             };
-
             return View(model);
         }
 
@@ -51,12 +48,16 @@ namespace StudentHousing.Controllers
                     model.NumberOfBedsList = GetNumberOfBeds();
                     return View(model);
                 }
-                if(model.AvailableFrom < DateTime.Now)
+                if(model.AvailableFrom <= DateTime.Now)
                 {
                     model.Cities = GetAllCities();
                     model.NumberOfBedsList = GetNumberOfBeds();
                     model.IsLowerDate = true;
                     return View(model);
+                }
+                if(model.Phone != null)
+                {
+                    model.Phone = model.Phone.ToString().Replace("-", "");
                 }
                 var apartment = new Apartment
                 {
@@ -65,7 +66,7 @@ namespace StudentHousing.Controllers
                     Price = model.Price.GetValueOrDefault(),
                     NumberOfBeds = model.NumberOfBeds,
                     Description = model.Description,
-                    Phone = model.Phone.ToString().Replace("-", ""),
+                    Phone = model.Phone,
                     CityId = model.CityId,
                     AvailableFrom = model.AvailableFrom.GetValueOrDefault()
                 };
