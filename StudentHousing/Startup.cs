@@ -42,9 +42,6 @@ namespace StudentHousing
             services.AddDbContext<SHContext>(x => x.UseSqlServer(Configuration.GetConnectionString("StudentHousingConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            //services.AddScoped<ICityRepository, CityRepository>();
-            //services.AddScoped<IApartmentRepository, ApartmentRepository>();
-            //services.AddScoped<IRatingRepository, RatingRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IApartmentService, ApartmentService>();
             services.AddScoped<IRatingService, RatingService>();
