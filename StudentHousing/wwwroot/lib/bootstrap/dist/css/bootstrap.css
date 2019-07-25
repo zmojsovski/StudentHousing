@@ -7202,16 +7202,23 @@ td.propertyvalue {
 
 #confirmBox {
     display: none;
-    background-color: #eee;
+    background-color: #F4BD6B;
     border-radius: 5px;
     border: 1px solid #aaa;
     position: fixed;
-    width: 300px;
+    width: 500px;
+    height: 250px;
     left: 50%;
     margin-left: -150px;
-    padding: 6px 8px 8px;
+    /*padding: 6px 8px 8px;*/
+    padding: 70px;
+    padding-left: 80px;
+    padding-right: 80px;
     box-sizing: border-box;
     text-align: center;
+    /*display: flex;
+    justify-content: center;*/
+    /*display: inline-block;*/
 }
 
     #confirmBox .button {
@@ -7221,15 +7228,25 @@ td.propertyvalue {
         border: 1px solid #aaa;
         padding: 2px;
         text-align: center;
-        width: 80px;
+        width: 100px;
+        height: 30px;
         cursor: pointer;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    #confirmBox .buttonsyesno{
+        width: 100%;
+    }
+    #confirmBox .button:hover {
+        background-color: #8399FD;
     }
 
-        #confirmBox .button:hover {
-            background-color: #ddd;
-        }
-
     #confirmBox .message {
-        text-align: left;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
         margin-bottom: 8px;
+        width: 100%;
+        padding-bottom: 20px;
+        /*padding-top: 20px;*/
     }

@@ -28,7 +28,7 @@ namespace StudentHousing.Models
         [DataType(DataType.Date)]
         public DateTime? AvailableFrom { get; set; }
         [Required]
-        [Range(1, 4, ErrorMessage = "The Number of beds must be between 1 and 4")]
+        [Range(1, 4, ErrorMessage = "Please select the number of beds")]
         public int NumberOfBeds { get; set; }
         [Required]
         public int CityId { get; set; }

@@ -34,11 +34,12 @@
 
 
             <div id="confirmBox">
-                <div class="message">Are you sure</div>
-                <span class="button yes">Yes</span>
-                <span class="button no">No</span>
+                <div class="message"></div>
+                <div class="buttonsyesno">
+                    <span class="button yes">Yes</span>
+                    <span class="button no">No</span>
+                </div>
             </div>
-
 
             <form asp-action="Create" class="form-inline" id="Form1">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -62,7 +63,7 @@
                 <br />
                 <div class="form-group">
                     <label asp-for="NumberOfBeds" class="control-label">Number of Beds:<span class=" red">*</span></label>
-                    @Html.DropDownListFor(m => m.NumberOfBeds, Model.NumberOfBedsList, new { @class = "form-control", @id="numberofbeds" }) 
+                    @Html.DropDownListFor(m => m.NumberOfBeds, Model.NumberOfBedsList, new { @class = "form-control", @id = "numberofbeds" })
                     <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
                 </div>
                 <br />
@@ -118,6 +119,8 @@
         <script src="~/lib/jquery/jquery.js"></script>
         <script src="~/lib/jqueryui/jquery-ui.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
         <script src="~/js/CreateApt.js"></script>
+
     }
 

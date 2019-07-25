@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-
+    //document.getElementById("coonfirmBox").attr("hidden", "hidden");
     $('#numberofbeds option[value=0]').each(function () {
         $(this).attr("hidden", "hidden");
     });
@@ -8,14 +8,19 @@
         dateFormat: "mm-dd-yy",
         minDate: -0,
     });
+
     $("form").submit(function (e) {
+
         e.preventDefault();
         var form = this;
-        doConfirm("Are you sure?", function yes() {
-            form.submit();
-        }, function no() {
-            // do nothing
-        });
+       // form.validate();
+        //if (form.valid()) {
+            doConfirm("Are you ready to submit your Apartment?", function yes() {
+                form.submit();
+            }, function no() {
+                // do nothing
+            });
+       // }
     });
     
 });
