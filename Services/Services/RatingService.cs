@@ -32,6 +32,6 @@ namespace Services.Services
             var ratingsByApartment = _repository.GetAll().Where(x => x.ApartmentId == apartmentId);
             var average = (double)ratingsByApartment.Average(x => x.RatingValue);
             return Math.Round(average, 2);
-        }       
+        }
     }
 }

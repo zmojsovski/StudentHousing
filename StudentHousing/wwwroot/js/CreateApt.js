@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    //document.getElementById("coonfirmBox").attr("hidden", "hidden");
+
     $('#numberofbeds option[value=0]').each(function () {
         $(this).attr("hidden", "hidden");
     });
@@ -10,30 +10,18 @@
     });
 
     $("form").submit(function (e) {
-
         e.preventDefault();
         var form = this;
-
-
-
-        
-
-        if ($('.text-danger').text()=="") {
+        if ($('.text-danger').text() == "") {
+        $('.dim').attr("hidden", false);
             doConfirm("Are you ready to submit your Apartment?", function yes() {
                 form.submit();
             }, function no() {
-                // do nothing
+                    $('.dim').attr("hidden", "hidden");
             });
         }
     });
-
 });
-
-
-//$("body").on("submit", "#Form1", function () {
-
-//    return confirm("Are you ready to submit your Apartment?");
-//});
 
 function doConfirm(msg, yesFn, noFn) {
     var confirmBox = $("#confirmBox");
@@ -46,7 +34,6 @@ function doConfirm(msg, yesFn, noFn) {
     confirmBox.show();
 }
 
-
 $("#description-area").keyup(function () {
     var text = $("#description-area").val();
     var counterot = text.toString().length;
@@ -58,6 +45,5 @@ $("#description-area").keyup(function () {
     }
     $("#counter").html("Characters: " + counterot + "/500");
 });
-
 
 

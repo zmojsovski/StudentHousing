@@ -10,7 +10,7 @@
         <div class="top-part">
             <img id="details-picture" src="~/images/apartment_img.png" />
             <div class="info-panel">
-                <h3>@Model.Name</h3>
+                <h3 id="aptname">@Model.Name</h3>
                 <table>
                     <tr>
                         <td class="propertytype">Price per month: </td>
@@ -59,7 +59,6 @@
         <div class="footer-buttons">
             <a class="backtolist" asp-controller="Home"
                asp-action="Index">Back to Home page</a>
-            <button id="rent">Rent</button>
         </div>
     </div>
 </div>

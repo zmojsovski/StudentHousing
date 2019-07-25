@@ -51,7 +51,6 @@ namespace StudentHousing.Controllers
             }
             
             return this.View(model);
-            
         }
 
         [HttpPost]

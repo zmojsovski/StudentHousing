@@ -6,14 +6,10 @@
 }
 <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.css" />
 
-@*@if (Model?.IsSuccess == true)
-    {
-        <div class="alert alert-success">Apartment has been successfully created.</div>
-    }*@
 @if (Model?.IsLowerDate == true)
-    {
-        <div class="alert alert-danger">Date can't be in past.</div>
-    }
+{
+    <div class="alert alert-danger">Date can't be in past.</div>
+}
 @if (Model?.IsDuplicateName == true)
 {
     <div class="alert alert-danger">Apartment name already exists.</div>
@@ -32,12 +28,15 @@
             <h3>Add your Apartment Details:</h3>
             <p class="red" id="req">Required fields*</p>
 
-
-            <div id="confirmBox">
-                <div class="message"></div>
-                <div class="buttonsyesno">
-                    <span class="button yes">Yes</span>
-                    <span class="button no">No</span>
+            <div class="dialog_wrapper">
+                <div id="confirmBox">
+                    <div class="white">
+                        <div class="message"></div>
+                        <div class="buttonsyesno">
+                            <span class="button yes">Yes</span>
+                            <span class="button no">No</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -105,22 +104,22 @@
             </form>
             <a class="backtolist" asp-controller="Home"
                asp-action="Index">Back to Home Page</a>
-
-
-
-
-
         </div>
         <div class="row">
         </div>
     </div>
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        <script src="~/lib/jquery/jquery.js"></script>
-        <script src="~/lib/jqueryui/jquery-ui.js"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-        <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
-        <script src="~/js/CreateApt.js"></script>
+</div>
 
-    }
+<div class="dim" hidden>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/js/CreateApt.js"></script>
+
+}
 
