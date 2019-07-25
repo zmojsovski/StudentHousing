@@ -13,16 +13,20 @@
 
         e.preventDefault();
         var form = this;
-       // form.validate();
-        //if (form.valid()) {
+
+
+
+        
+
+        if ($('.text-danger').text()=="") {
             doConfirm("Are you ready to submit your Apartment?", function yes() {
                 form.submit();
             }, function no() {
                 // do nothing
             });
-       // }
+        }
     });
-    
+
 });
 
 
@@ -42,17 +46,17 @@ function doConfirm(msg, yesFn, noFn) {
     confirmBox.show();
 }
 
- 
+
 $("#description-area").keyup(function () {
     var text = $("#description-area").val();
     var counterot = text.toString().length;
-    if (counterot == 500){
+    if (counterot == 500) {
         $("#counter").addClass("descriptionwarning");
     }
     else if (counterot < 500) {
         $("#counter").removeClass("descriptionwarning");
     }
-    $("#counter").html("Characters: " + counterot +"/500");
+    $("#counter").html("Characters: " + counterot + "/500");
 });
 
 
